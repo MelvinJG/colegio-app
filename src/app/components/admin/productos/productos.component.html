@@ -1,0 +1,166 @@
+<!-- Cuando le da clic al boton comprar ahora automaticamente hace la compra y solo descarga un comprobante de compra -->
+<div class="container mt-5 mb-10">
+    <h1 class="text-center pt-4 text-light fadeIn"><i class="fas fa-shopping-cart"></i> Productos del Colegio</h1>
+    <!-- VALIDAR SI TRAE DATOS O NO EL API -->
+    <div *ngIf="!productos.data; else elseBlock">
+        <!-- <app-error></app-error> -->
+        <!-- ERR: {{error.status}} - {{error.statusText}} :( <br />
+        Ooops... Parece que algo salió mal. -->
+        <div class="pt-4">
+            <div class="card fadeInDown">
+                <div class="card-body">
+                    <div class="pt-4 px-5 mx-5">
+                        <p class="fs-4 fw-bold" style="color: rgb(58, 101, 218);">
+                            <a
+                                href="https://learn.microsoft.com/es-es/troubleshoot/developer/webapps/iis/www-administration-management/http-status-code"><i
+                                    class="fa-solid fa-book-open"></i> README</a>
+                        </p>
+                        <p *ngIf="mostrarErrMessage; else elseBlock" class="fs-3" style="color: rgb(58, 101, 218);">
+                            {{error.status}} {{error.statusText}} <br /> {{error.error.message}}
+                        </p>
+                        <ng-template #elseBlock>
+                            <p class="fs-3" style="color: rgb(58, 101, 218);">
+                                {{error.status}} {{error.statusText}}
+                            </p>
+                        </ng-template>
+                        <p class="fs-6 text-muted">
+                            Ooops... Parece que algo salió mal. <br />
+                            Intente actualizar esta página o no dude en contactarnos si el problema persiste
+                        </p>
+                    </div>
+                    <img src="../../../../assets/ERROR IMAGEN.jpg" class="img-fluid" alt="Err" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary btn-lg fadeIn second" type="button" (click)="HabilitarPantallaAgregarProducto()"><i
+                    class="fas fa-plus"></i> Nuevo Producto</button>
+        </div>
+        <div class="row">
+            <!-- <div class="col-sm-4"></div> -->
+            <!-- ESTE ES EL QUE PINTARA TODO LOS Productos -->
+            <div class="col-xl-4 mt-3" *ngFor = 'let producto of productos.data'>
+                <div class="card fadeInDown">
+                    <div *ngIf="producto.foto; else elseBlock" class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src="{{producto.foto}}"
+                            class="img-fluid" />
+                        <a (click)="Eliminar_Actualizar(producto.producto_Id)">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                        </a>
+                    </div>
+                    <ng-template #elseBlock>
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="{{no_Foto_Producto}}"
+                                class="img-fluid" />
+                            <a (click)="Eliminar_Actualizar(producto.producto_Id)">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                            </a>
+                        </div>
+                    </ng-template>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{producto.nombre_Producto}}</h5>
+                        <p class="card-text">
+                            <small>
+                                <b>Precio:</b> Q. {{producto.precio}} <br />
+                                <b>Canditad Disponible:</b> {{producto.cantidad}} Unidades
+                            </small>
+                        </p>
+                        <a class="btn btn-primary fadeIn second">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+            <!-- ESTE ES EL QUE PINTARA TODO LOS Productos -->
+        </div>
+        <!-- Formulario para AGREGAR nuevo Producto bg-glass-->
+        <div class="card mt-4 fadeInDown" *ngIf="agregarProducto">
+            <div class="card-body">
+                <h3 class="card-header text-center fadeIn"><i class="fa-solid fa-folder-plus"></i> Agregar Producto
+                    <label class="obligatorio align-middle">
+                        * Obligatorio
+                    </label>
+                </h3>
+                <form method="post">
+                    <div class="row justify-content-md-center">
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <input type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline text-center">
+                            <input type="text" id="precio" [(ngModel)]="producto.precio" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <input type="text" id="can" [(ngModel)]="producto.cantidad" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <mdb-form-control>
+                                <input mdbInput type="text" id="form1" class="form-control" value="HOLA"/>
+                                <label mdbLabel class="form-label" for="form1">Example label</label>
+                            </mdb-form-control>
+                        </div>
+                        <div class="col-xl-8 mt-3">
+                            <label for="formFile" class="form-label text-right">Seleccione imagen/foto del producto</label>
+                            <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
+                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}}</p>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block text-center pt-3">
+                        <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="addProducto()"><i class="fas fa-plus"></i>
+                            Agregar</button>
+                        <button class="btn btn-danger mx-1 fadeIn second" type="button" (click)="Refresh()"><i
+                                class="fas fa-times"></i>
+                            Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Formulario para ACTUALIZAR nuevo Producto -->
+        <div class="card mt-4 fadeInDown" *ngIf="actualizarProducto">
+            <div class="card-body">
+                <h3 class="card-header text-center fadeIn"><i class="fa-sharp fa-solid fa-square-pen"></i> Actualizar Producto
+                    <label class="obligatorio align-middle">
+                        * Obligatorio
+                    </label>
+                </h3>
+                <form method="post">
+                    <div class="row justify-content-md-center text-center text-muted">
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <!-- <input type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
+                            <span><b class="obligatorio">*</b> Nombre Producto</span> -->
+                            <mdb-form-control>
+                                <input mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" [ngModelOptions]="{standalone: true}" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
+                            </mdb-form-control>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <input type="text" id="precio" [(ngModel)]="producto.precio" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
+                            <!-- <label class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label> -->
+                            <span><b class="obligatorio">*</b> Precio [Q.]</span>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <input type="text" id="can" [(ngModel)]="producto.cantidad" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
+                            <!-- <label class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label> -->
+                            <span><b class="obligatorio">*</b> Cantidad</span>
+                        </div>
+                        <div class="col-xl-8 mt-3">
+                            <label for="formFile" class="form-label text-right">Seleccione imagen/foto del producto</label>
+                            <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
+                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}}</p>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-block text-center pt-3">
+                        <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="updateProducto()"><i class="fas fa-plus"></i>
+                            Actualizar</button>
+                        <button class="btn btn-danger mx-1 fadeIn second" type="button" (click)="Refresh()"><i
+                                class="fas fa-times"></i>
+                            Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-template>
+    <!-- VALIDAR SI TRAE DATOS O NO EL API -->
+</div>

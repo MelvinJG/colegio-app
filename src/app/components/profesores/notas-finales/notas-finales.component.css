@@ -1,0 +1,7 @@
+.bonus-design {
+  border-bottom: 1px solid black;
+}
+
+.bonus-design:focus {
+  border-bottom: 2px solid rgba(37, 37, 241, 0.753);
+}

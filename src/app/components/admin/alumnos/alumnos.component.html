@@ -1,0 +1,85 @@
+<div class="container mt-5 mb-10">
+  <h1 class="text-center pt-4 text-light fadeIn"><i class="fas fa-graduation-cap"></i> {{nombreGrado}}</h1>
+  <div class="row">
+    <!-- VALIDAR SI TRAE DATOS O NO EL API -->
+    <div *ngIf="!alumnos.data; else elseBlock">
+      <!-- <app-error></app-error> -->
+      <!-- ERR: {{error.status}} - {{error.statusText}} :( <br />
+      Ooops... Parece que algo salió mal. -->
+      <div class="pt-4">
+        <div class="card fadeInDown">
+            <div class="card-body">
+                <div class="pt-4 px-5 mx-5">
+                    <p class="fs-4 fw-bold" style="color: rgb(58, 101, 218);">
+                        <a href="https://learn.microsoft.com/es-es/troubleshoot/developer/webapps/iis/www-administration-management/http-status-code"><i class="fa-solid fa-book-open"></i> README</a>
+                    </p>
+                    <p *ngIf="mostrarErrMessage; else elseBlock" class="fs-3" style="color: rgb(58, 101, 218);">
+                      {{error.status}} {{error.statusText}} <br/> {{error.error.message}}
+                    </p>
+                    <ng-template #elseBlock>
+                      <p class="fs-3" style="color: rgb(58, 101, 218);">
+                        {{error.status}} {{error.statusText}}
+                      </p>
+                    </ng-template>
+                    <p class="fs-6 text-muted">
+                        Ooops... Parece que algo salió mal. <br />
+                        Intente actualizar esta página o no dude en contactarnos si el problema persiste
+                    </p>
+                </div>
+                <img src="../../../../assets/ERROR IMAGEN.jpg" class="img-fluid"  alt="Err" loading="lazy" />
+            </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <!-- ESTE ES EL QUE PINTARA TODO LOS ALUMNOS -->
+      <div class="col-xl-4 mt-3" *ngFor = 'let alumno of alumnos.data'>
+        <div class="card reflejo fadeInDown" style="max-width: 540px">
+          <div class="row g-0">
+            <div class="col-md-4" style="
+                background-image: url({{no_Foto}});
+                background-size: cover;
+                background-position: center;
+                border-radius: 8px;
+              " *ngIf="!alumno.foto; else elseBlock">
+            </div>
+            <ng-template #elseBlock>
+              <div class="col-md-4" style="
+                background-image: url({{alumno.foto}});
+                background-size: cover;
+                background-position: center;
+                border-radius: 8px;
+              ">
+              </div>
+            </ng-template>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{alumno.nombre_Alumno}}</h5>
+                <!-- <p class="card-text">CUI: </p> -->
+                <p class="mt-3">
+                  <small>
+                    <b>CUI:</b> {{alumno.cui_Alumno}} <br />
+                    <b>Encargado:</b> {{alumno.nombre_Encargado}} <br />
+                    <b>Relacion:</b> {{alumno.relacion_Encargado}} <br />
+                    <b>No. Cel:</b> {{alumno.no_Cel}}
+                  </small>
+                </p>
+                <!-- <p class="card-text text-center text-success">
+                  <i class="fa-solid fa-circle-check"></i><small class="text-muted"> SOLVENTE</small>
+                </p>
+                <p class="card-text text-center text-danger">
+                  <i class="fa-solid fa-circle-xmark"></i><small class="text-muted"> INSOLVENTE</small>
+                </p> -->
+                <p class="card-text text-center text-danger">
+                  <i class="fa-solid fa-cake-candles"></i> <small class="text-muted"> Cumpleaño: {{alumno.fecha_Nac}}</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ESTE ES EL QUE PINTARA TODO LOS ALUMNOS -->
+    </ng-template>
+    <!-- VALIDAR SI TRAE DATOS O NO EL API -->
+  </div>
+</div>

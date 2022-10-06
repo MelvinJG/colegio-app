@@ -1,148 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient fixed-top text-white">
-  <!-- <nav class="navbar navbar-dark bg-primary"> -->
-  <div class="container-fluid container">
-    <button class="navbar-toggler text-white" type="button" data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i> Menú
-      <!-- <i class="fa-solid fa-circle-chevron-down"></i> -->
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- IF ELSE -->
-      <a class="navbar-brand mt-2 mt-lg-0" routerLink="/home">
-        <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo"
-          loading="lazy" />
-      </a>
-      
-      <!-- ADMINISTRACION -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/administracion/grades">Alumnos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/administracion/personal/listarPersonal">Personal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/administracion/productos">Compras</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/administracion/inscripciones">Inscripción</a>
-        </li>
-        <li class="nav-item">
-          <div mdbDropdown  class="dropdown">
-            <a class="nav-link text-white text-reset me-3 dropdown-toggle hidden-arrow" href="#"
-              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false" mdbDropdownToggle>
-              Pagos
-            </a>
-            <ul mdbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li>
-                <a class="dropdown-item" href="/administracion/pagosColegio/pago-primaria">Colegiatura Primaria</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/administracion/pagosColegio/pago-basicos">Colegiatura Basicos</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/administracion/pagosColegio/pago-inscripcion">Inscripción</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/administracion/pagosColegio/pago-salarial">Pago Salarial</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/administracion/solicitudes">Peticiones Pago Alumnos
-            <span class="badge rounded-pill badge-notification bg-danger">NINGUNO</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+<!-- NUBES BONITAS
+  <style>
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+</style>
 
-    <!-- Right elements -->
-    <div class="d-flex align-items-center">
-      <!-- Avatar -->
-      <!-- <div class="dropdown">
-        <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white" href="#"
-          id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-hand-peace"></i> Hola! Melvin Joj
-          <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
-            alt="Black and White Portrait of a Man" loading="lazy" />
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-          <li>
-            <a class="dropdown-item" routerLink="/shared/modificarPerfil">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
-      </div> -->
-    </div>
-  </div>
-</nav>
+<div class="content" role="main">
+  <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
+    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
+  </svg>
+</div>-->
 
-<div class="container">
-  <!-- PUREBA -->
-            
-  <br /><br /><br /><br />
-  <div class="container">
-      <p>PRUEBA SIN TAG ANGULAR</p>
-      <div class="form-outline">
-          <input type="text" id="form12" class="form-control" />
-          <label class="form-label" for="form12">Example label</label>
-      </div>
-      <br /><br />
-      <p>PRUEBA CON TAG ANGULAR</p>
-      <mdb-form-control>
-          <input mdbInput type="text" id="form1" class="form-control" />
-          <label mdbLabel class="form-label" for="form1">Example label</label>
-      </mdb-form-control>
-      <br /><br />
-      <p>PRUEBA CON TAG ANGULAR</p>
-      <mdb-form-control>
-          <input mdbInput type="text" id="form1" class="form-control" value="Hola"/>
-          <label mdbLabel class="form-label" for="form1">Example label</label>
-      </mdb-form-control>
-      <br /><br />
-      <div mdbDropdown class="dropdown">
-        <a
-          class="btn btn-primary dropdown-toggle"
-          role="button"
-          id="dropdownMenuLink"
-          mdbDropdownToggle
-          aria-expanded="false"
-        >
-          Dropdown link
-        </a>
-        <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-      <br /><br />
-      <div mdbDropdown class="dropdown">
-        <button
-          class="btn btn-primary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          aria-expanded="false"
-          mdbDropdownToggle
-        >
-          Dropdown button
-        </button>
-        <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-      <br /><br />
-      
-  </div>
-  <!-- FIN DE PRUEBA -->
-</div>
+
+<!-- COMENTAO UNICAMENTE PARA DISEÑAR LA FACTURA -->
+<app-navigation></app-navigation>
+    <router-outlet></router-outlet>
+<app-footer></app-footer>
+
+
+<!-- DESCOMENTAR PARA DISEÑAR LA FACTURA -->
+<!-- <router-outlet></router-outlet> -->

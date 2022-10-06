@@ -1,0 +1,141 @@
+<div class="container pt-5 mb-10">
+    
+    <form method="post">
+        <!-- <div class="card mt-4 bg-glass">
+            <div class="card-body">
+                <h3 class="card-header text-center">Inscripción PRUEBA</h3>
+                <div class="row">
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="user" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="user">Alumno</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="user1" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="user1">Alumno</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="use2" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="use2">Alumno</label>
+                    </div>
+                    <div class="col-xl-4 mt-3">
+                        <label for="inputPassword55" class="form-label">Password</label>
+                        <input type="text" id="inputPassword55" class="form-control"
+                            aria-describedby="passwordHelpBlock">
+                    </div>
+                    <div class="col-xl-4 mt-3">
+                        <label for="inputPassword5" class="form-label">Password</label>
+                        <input type="text" id="inputPassword5" class="form-control"
+                            aria-describedby="passwordHelpBlock">
+                    </div>
+                    <div class="col-xl-4 mt-3">
+                        <label for="inputPassword57" class="form-label">Password</label>
+                        <input type="text" id="inputPassword57" class="form-control"
+                            aria-describedby="passwordHelpBlock">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="card mt-4 bg-glass fadeInDown">
+            <div class="card-body">
+                <h3 class="card-header text-center fadeIn">
+                    <i class="fas fa-user-shield"></i> Datos del Encargado 
+                    <label class="obligatorio">
+                        * Obligatorio
+                    </label>
+                </h3>
+                <div class="row">
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="nameEncargado" class="form-control bonus-design" autocomplete="off" [(ngModel)]="name"/>
+                        <label class="form-label" for="nameEncargado"><b class="obligatorio">*</b> Nombre Completo</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <input type="text" id="dpi" class="form-control bonus-design" autocomplete="off" />
+                                <label class="form-label" for="dpi"><b class="obligatorio">*</b> DPI</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-secondary fadeIn fourth" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="mail" name="mail" class="form-control bonus-design" autocomplete="off" [(ngModel)]="mail" />
+                        <label class="form-label" for="mail">Correo Electronico</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="relacion" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="relacion"><b class="obligatorio">*</b> Relacion con Alumno</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="cel" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="cel"><b class="obligatorio">*</b> Número Celular</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="tel" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="tel">Telefono Casa</label>
+                    </div>
+                    <div class="col-xl-8 mt-3 form-outline">
+                        <input type="text" id="dir" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="dir"><b class="obligatorio">*</b> Dirección</label>
+                    </div>
+                    <!-- NEXT col-xl-4 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4 bg-glass fadeInDown">
+            <div class="card-body">
+                <h3 class="card-header text-center fadeIn">
+                    <i class="fas fa-user-graduate"></i> Datos del Alumno 
+                    <label class="obligatorio">
+                        * Obligatorio
+                    </label>
+                </h3>
+                <div class="row">
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="nameAlumno" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="nameAlumno"><b class="obligatorio">*</b> Nombre Completo</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="cui" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="cui"><b class="obligatorio">*</b> CUI</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="fecNac" class="form-control bonus-design" onfocus="(this.type='date')"/>
+                        <label class="form-label" for="fecNac"><b class="obligatorio">*</b> Fecha Nacimiento</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <select class="form-control bonus-design" >
+                            <option selected><b class="obligatorio">*</b> Grado</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-8 mt-3 form-outline">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <input type="text" id="foto" class="form-control bonus-design" onfocus="(this.type='file')"/>
+                                <label class="form-label" for="foto">Foto</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-secondary fadeIn fourth" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir Foto</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-block text-center pt-3">
+            <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-handshake"></i> Inscribir Alumno</button>
+            <button class="btn btn-primary mx-1 fadeIn second" type="button" disabled><i class="far fa-file-pdf"></i> Descargar PDF</button>
+            <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
+        </div>
+    </form>
+
+    <div class="d-grid gap-2 d-md-block text-center pt-3">
+        <button class="btn btn-primary mx-1 fadeIn second" type="button" (click)="createPDFInvoice()"><i class="far fa-file-pdf"></i> PRUEBA Descargar PDF</button>
+        <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="verValor()"><i class="far fa-handshake"></i> VALOR</button>
+    </div>
+</div>

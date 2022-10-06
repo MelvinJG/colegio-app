@@ -1,0 +1,123 @@
+<div class="container pt-5 mb-10">
+    <form method="post">
+        <div class="card mt-4 fadeInDown">
+            <div class="card-body">
+                <h3 class="card-header text-center">
+                    <i class="fas fa-chalkboard-teacher"></i> Datos del Empleado 
+                    <label class="obligatorio align-middle">
+                        * Obligatorio
+                    </label>
+                </h3>
+                <div class="row text-center text-muted">
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="nameEmpleado" class="form-control bonus-design" autocomplete="off"/>
+                        <label class="form-label" for="nameEmpleado"> Nombre Completo</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="dpi" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="dpi"> DPI</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="cel" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="cel"> Número Celular</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="mail" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="mail"> Correo Electronico</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+
+                        <input type="text" id="fecNac" class="form-control bonus-design" onfocus="(this.type='date')"/>
+                        <label class="form-label" for="fecNac"> Fecha Nacimiento</label>
+
+                        <!-- <input type="date" id="fecNac" class="form-control bonus-design" autocomplete="off"/>
+                        <label class="form-label" for="fecNac"> Fecha Nacimiento</label> -->
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <!-- <input type="text" id="grado" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="grado"> Grado</label> -->
+                        <select class="form-control bonus-design" >
+                            <option selected> Grado A Impartir</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="dir" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="dir"> Dirección</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="puesto" class="form-control bonus-design" autocomplete="off" />
+                        <label class="form-label" for="puesto"> Puesto</label>
+                    </div>
+                    <div class="col-xl-4 mt-3 form-outline">
+                        <input type="text" id="roll" class="form-control bonus-design" autocomplete="off" placeholder="54"/>
+                        <label class="form-label" for="roll"> Comision Asignada</label>
+                    </div>
+                    <div class="col-xl-4 mt-3">
+                        <!-- <input type="text" id="pay" class="form-control bonus-design" autocomplete="off" value="45"/>
+                        <label class="form-label" for="pay"> Salario</label> -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <!-- <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div> -->
+                    <div class="col-xl-4 mt-3">
+                        <input type="text" id="can" class="form-control bonus-design" autocomplete="off" placeholder="--" style="border-top: 0; border-left: 0; border-right: 0;"/>
+                        <span><b class="obligatorio">*</b> Salario</span>
+                    </div>
+                    <div class="col-xl-4 mt-3">
+                        <input type="text" id="can" class="form-control outlinenone" autocomplete="off" placeholder="--"/>
+                        <span><b class="obligatorio">*</b> Salario 123</span>
+                    </div>
+                    <div class="col-xl-8 mt-3 form-outline">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <input type="text" id="foto" class="form-control bonus-design" onfocus="(this.type='file')"/>
+                                <label class="form-label" for="foto">Foto</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir Foto</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PUREBA -->
+            
+            <br /><br /><br /><br />
+            <div class="container">
+                <p>PRUEBA SIN TAG ANGULAR</p>
+                <div class="form-outline">
+                    <input type="text" id="form12" class="form-control" />
+                    <label class="form-label" for="form12">Example label</label>
+                </div>
+                <br /><br />
+                <!-- <p>PRUEBA CON TAG ANGULAR</p>
+                <mdb-form-control>
+                    <input mdbInput type="text" id="form1" class="form-control" />
+                    <label mdbLabel class="form-label" for="form1">Example label</label>
+                </mdb-form-control>
+                <br /><br />
+                <p>PRUEBA CON TAG ANGULAR</p>
+                <mdb-form-control>
+                    <input mdbInput type="text" id="form1" class="form-control" value="Hola"/>
+                    <label mdbLabel class="form-label" for="form1">Example label</label>
+                </mdb-form-control>
+                <br /><br /> -->
+            </div>
+            <!-- FIN DE PRUEBA -->
+        </div>
+
+        <div class="d-grid gap-2 d-md-block text-center pt-3">
+            <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-handshake"></i> Contratar</button>
+            <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/administracion/personal/listarPersonal"><i class="fas fa-times"></i> Cancelar</button>
+        </div>
+    </form>
+</div>
+

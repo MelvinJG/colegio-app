@@ -1,0 +1,92 @@
+<div class="container pt-5 mb-10">
+    <div class="card mt-4 bg-glass fadeInDown">
+        <div class="card-body">
+            <h3 class="card-header text-center fadeIn"><i class="fas fa-dollar-sign"></i> {{titulo}}</h3>
+            <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. {{monto}}.00</span></h5>
+            <form method="post">
+                <div class="row">
+                    <div *ngIf="esSalario; else elseBlock">
+                        <!-- EMPLEADOS -->
+                        <div class="row">
+                            <div class="col-xl-6 mt-3 form-outline">
+                                <select class="form-select form-control bonus-design" aria-label="Default select example">
+                                    <option selected>Empleado</option>
+                                    <option value="1">Uno</option>
+                                    <option value="2">Dos</option>
+                                    <option value="3">Tres</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-6 mt-3 form-outline">
+                                <select class="form-select form-control bonus-design" aria-label="Default select example">
+                                    <option selected>Mes de Pago</option>
+                                    <option value="1">Uno</option>
+                                    <option value="2">Dos</option>
+                                    <option value="3">Tres</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <ng-template #elseBlock>
+                        <!-- ALUMNOS -->
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <select class="form-select form-control bonus-design" aria-label="Default select example">
+                                <option selected>Grado</option>
+                                <option value="1">Uno</option>
+                                <option value="2">Dos</option>
+                                <option value="3">Tres</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <select class="form-select form-control bonus-design" aria-label="Default select example">
+                                <option selected>Alumno</option>
+                                <option value="1">Uno</option>
+                                <option value="2">Dos</option>
+                                <option value="3">Tres</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 mt-3 form-outline">
+                            <select class="form-select form-control bonus-design" aria-label="Default select example">
+                                <option selected>Mes de Pago</option>
+                                <option value="1">Uno</option>
+                                <option value="2">Dos</option>
+                                <option value="3">Tres</option>
+                            </select>
+                        </div>
+                    </ng-template>
+                </div>
+                <!-- Pinta el Alumno -->
+                <br /><br /><br />
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"
+                            class="img-fluid" />
+                    </div>
+                    <div class="col-4 align-self-center">
+                        <p>
+                            <small>
+                                <b>CUI:</b> 2780691420304 <br />
+                                <b>Grado:</b> Tercero Basico <br />
+                                <b>Ultimo Mes Cancelado:</b> 2780691420304 <br />
+
+                                <b>Encargado:</b> Melvin Misael Joj Gil <br />
+                                <b>No. Tel:</b> 3516-3511
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <br /><br /><br />
+                <!-- Pinta el Alumno -->
+                <div class="d-grid gap-2 d-md-block text-center ">
+                    <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-money-bill-alt"></i> Realizar
+                        Pago</button>
+                    <button class="btn btn-primary mx-1 fadeIn second" type="button" disabled><i class="far fa-file-pdf"></i>
+                        Descargar Comprobante</button>
+                    <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

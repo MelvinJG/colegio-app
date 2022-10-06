@@ -1,0 +1,171 @@
+<div class="container pt-5 mb-10">
+    <div class="row py-4">
+        <div class="col-xl-12 mt-3 text-center fadeInDown">
+            <img src="https://imgs.search.brave.com/YhoKht41mr7TqTg1vuPLsWj5sKYoVTl2-XgVDjh_f10/rs:fit:640:640:1/g:ce/aHR0cDovL2Nkbi5w/bGF5YnV6ei5jb20v/Y2RuLzkxMzI1M2Nk/LTVhMDItNGJmMi04/M2UxLTE4ZmYyY2M3/MzQwZi9jNTYxNTdk/NS01ZDhlLTQ4MjYt/ODlmOS0zNjE0MTIy/NzVjMzUuanBn" class="rounded-circle" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
+        </div>
+        <div class="col-xl-12 mt-3 text-center h2 fadeIn">
+            Usuario XX
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 mt-3 text-center">
+            <button type="button" class="btn btn-primary btn-lg btn-block fadeIn second" (click)="HabilitarContra()">Cambiar Contraseña</button>
+        </div>
+        <div class="col-xl-6 mt-3 text-center">
+            <button type="button" class="btn btn-secondary btn-lg btn-block fadeIn second" (click)="HabilitarPerfil()">Cambiar Foto De Perfil</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 mt-3">
+            <div class="card fadeInDown" *ngIf="contrasenia">
+                <div class="card-body">
+                    <h3 class="card-header text-center">
+                        <i class="fa-solid fa-lock"></i> Cambio De Contraseña
+                        <label class="obligatorio align-middle">
+                            * Obligatorio
+                        </label>
+                    </h3>
+                    <div class="row">
+                        <div class="col-xl-12 mt-3 form-outline">
+                            <input type="text" id="actual" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="actual"><b class="obligatorio">*</b> Contraseña Actual</label>
+                        </div>
+                        <div class="col-xl-12 mt-3 form-outline">
+                            <input type="text" id="nuevo" class="form-control bonus-design" autocomplete="off"/>
+                            <label class="form-label" for="nuevo"><b class="obligatorio">*</b> Contraseña Nueva</label>
+                        </div>
+                        <div class="col-xl-12 mt-3 form-outline">
+                            <input type="text" id="repetir" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="repetir"><b class="obligatorio">*</b> Vuelve a Escribir la Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3 fadeInDown" *ngIf="perfil">
+                <div class="card-body">
+                    <h3 class="card-header text-center">
+                        Consejo
+                    </h3>
+                    Recuerda darle clic al boton "Subir" para almacenar la foto y posteriormente clic al boton "Realizar Cambio" para finalizar el proceso.
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 mt-3">
+            <div class="card fadeInDown" *ngIf="perfil">
+                <div class="card-body">
+                    <h3 class="card-header text-center">
+                        <i class="fa-sharp fa-solid fa-camera"></i> Cambio Foto De Perfil
+                        <label class="obligatorio align-middle">
+                            * Obligatorio
+                        </label>
+                    </h3>
+                    <div class="row">
+                        <div class="col-xl-12 mt-3">
+                            <div class="row align-items-center">
+                                <div class="col-xl-10">
+                                    <label for="formFile" class="form-label">Seleccionar Foto</label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
+                                <!-- align-self-center  justify-content-end align-items-center-->
+                                <div class="col-xl-2">
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-primary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
+                                    </div>
+                                    <!-- <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-4 fadeInDown" *ngIf="contrasenia">
+                <div class="card-body">
+                    <h3 class="card-header text-center">
+                        Consejo
+                    </h3>
+                    Ten en cuenta que la contraseña es de uso confidencial, no la compartas con ninguna persona. 
+                    Utiliza una contraseña segura y facil de recordar que contenga numeros, caracteres especiales y letras, recuerda darle clic al boton "Realizar Cambio" para finalizar el proceso.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-grid gap-2 d-md-block text-center pt-3" >
+        <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="fa-solid fa-upload"></i> Realizar Cambio</button>
+        <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
+    </div>
+</div>
+
+<!-- NOTA SE ALINEA LOS CARDAS CON SU mt-X de cada CARD -->
+<br/><br /><br />
+
+<div class="container pt-5 mb-10">
+    <div class="row py-4">
+        <div class="col-xl-12 mt-3 text-center fadeInDown">
+            <img src="https://imgs.search.brave.com/YhoKht41mr7TqTg1vuPLsWj5sKYoVTl2-XgVDjh_f10/rs:fit:640:640:1/g:ce/aHR0cDovL2Nkbi5w/bGF5YnV6ei5jb20v/Y2RuLzkxMzI1M2Nk/LTVhMDItNGJmMi04/M2UxLTE4ZmYyY2M3/MzQwZi9jNTYxNTdk/NS01ZDhlLTQ4MjYt/ODlmOS0zNjE0MTIy/NzVjMzUuanBn" class="rounded-circle" height="300" alt="Black and White Portrait of a Man" loading="lazy" />
+        </div>
+        <div class="col-xl-12 mt-3 text-center h2 fadeIn">
+            Usuario XX
+        </div>
+    </div>
+    <div class="row">
+        <br/><br />
+    </div>
+    <div class="row">
+        <div class="col-xl-6 mt-3">
+            <div class="card fadeInDown borde">
+                <div class="card-body">
+                    <h3 class="card-header text-center">
+                        Cambio De Contraseña
+                    </h3>
+                    <div class="row">
+                        <div class="col-xl-12 mt-3 form-outline">
+                            <input type="text" id="actual" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="actual">Contraseña Actual</label>
+                        </div>
+                        <div class="col-xl-12 mt-3 form-outline">
+                            <input type="text" id="nuevo" class="form-control bonus-design" autocomplete="off"/>
+                            <label class="form-label" for="nuevo">Contraseña Nueva</label>
+                        </div>
+                        <div class="col-xl-12 mt-3 form-outline">
+                            <input type="text" id="repetir" class="form-control bonus-design" autocomplete="off" />
+                            <label class="form-label" for="repetir">Vuelve a Escribir la Contraseña</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 mt-3">
+            <div class="card fadeInDown borde">
+                <div class="card-body">
+                    <h3 class="card-header text-center">
+                        Cambio Foto De Perfil
+                    </h3>
+                    <div class="row">
+                        <div class="col-xl-12 mt-3">
+                            <div class="row align-items-center">
+                                <div class="col-xl-10 mt-3 form-outline">
+                                    <input type="text" id="repetir" class="form-control bonus-design" autocomplete="off" />
+                                    <label class="form-label" for="repetir">Seleccionar Foto</label>
+                                </div>
+                                <!-- align-self-center  justify-content-end align-items-center-->
+                                <div class="col-xl-2">
+                                    <div class="d-grid gap-2">
+                                        
+                                    </div>
+                                    <!-- <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-grid gap-2 d-md-block text-center pt-3" >
+        <br/><br /><br/><br />
+    </div>
+</div>

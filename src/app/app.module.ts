@@ -1,26 +1,84 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { LoginComponent } from './components/shared/login/login.component';
+import { HomeComponent } from './components/shared/home/home.component';
+import { NavigationComponent } from './components/shared/navigation/navigation.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { GradesComponent } from './components/admin/grades/grades.component';
+import { AlumnosComponent } from './components/admin/alumnos/alumnos.component';
+import { ProductosComponent } from './components/admin/productos/productos.component';
+import { InscripcionesComponent } from './components/admin/inscripciones/inscripciones.component';
+import { SolicitudesComponent } from './components/admin/solicitudes/solicitudes.component';
+import { PagosComponent } from './components/admin/pagos/pagos.component';
+import { ListarPersonalComponent } from './components/admin/personal/listar-personal/listar-personal.component';
+import { AgregarPersonalComponent } from './components/admin/personal/agregar-personal/agregar-personal.component';
+import { AnuncioTareaComponent } from './components/profesores/anuncio-tarea/anuncio-tarea.component';
+import { CalificarTareaComponent } from './components/profesores/calificar-tarea/calificar-tarea.component';
+import { NotasFinalesComponent } from './components/profesores/notas-finales/notas-finales.component';
+import { AnunciosTareasComponent } from './components/alumnos/anuncios-tareas/anuncios-tareas.component';
+import { TareasComponent } from './components/alumnos/tareas/tareas.component';
+import { VerNotasComponent } from './components/alumnos/ver-notas/ver-notas.component';
+import { GenerarPagoComponent } from './components/alumnos/generar-pago/generar-pago.component';
+import { PdfInvoiceComponent } from './components/shared/pdf-invoice/pdf-invoice.component';
+import { AdminPerfilComponent } from './components/shared/admin-perfil/admin-perfil.component';
+import { ErrorComponent } from './components/shared/error/error.component';
+// Servicios
+import { InfoExtraService } from './services/infoExtra/info-extra.service';
+import { AlumnoService } from './services/alumno/alumno.service';
+import { ProductoService } from './services/producto/producto.service';
+// MDB
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    NavigationComponent,
+    FooterComponent,
+    GradesComponent,
+    AlumnosComponent,
+    ProductosComponent,
+    InscripcionesComponent,
+    SolicitudesComponent,
+    PagosComponent,
+    ListarPersonalComponent,
+    AgregarPersonalComponent,
+    AnuncioTareaComponent,
+    CalificarTareaComponent,
+    NotasFinalesComponent,
+    AnunciosTareasComponent,
+    TareasComponent,
+    VerNotasComponent,
+    GenerarPagoComponent,
+    PdfInvoiceComponent,
+    AdminPerfilComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     MdbFormsModule,
     MdbDropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdbCollapseModule
   ],
-  providers: [],
+  providers: [
+    InfoExtraService,
+    AlumnoService,
+    ProductoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

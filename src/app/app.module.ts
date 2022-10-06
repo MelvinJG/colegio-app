@@ -27,6 +27,7 @@ import { GenerarPagoComponent } from './components/alumnos/generar-pago/generar-
 import { PdfInvoiceComponent } from './components/shared/pdf-invoice/pdf-invoice.component';
 import { AdminPerfilComponent } from './components/shared/admin-perfil/admin-perfil.component';
 import { ErrorComponent } from './components/shared/error/error.component';
+import { SelectGradosComponent } from './components/admin/personal/select-grados/select-grados.component';
 // Servicios
 import { InfoExtraService } from './services/infoExtra/info-extra.service';
 import { AlumnoService } from './services/alumno/alumno.service';
@@ -34,9 +35,13 @@ import { ProductoService } from './services/producto/producto.service';
 // MDB
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
-
+import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
+// PRUEBA
+
+
 
 @NgModule({
   declarations: [
@@ -63,6 +68,7 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
     PdfInvoiceComponent,
     AdminPerfilComponent,
     ErrorComponent,
+    SelectGradosComponent 
   ],
   imports: [
     BrowserModule,
@@ -72,7 +78,9 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
     MdbFormsModule,
     MdbDropdownModule,
     BrowserAnimationsModule,
-    MdbCollapseModule
+    MdbCollapseModule,
+    MdbRadioModule,
+    MdbCheckboxModule
   ],
   providers: [
     InfoExtraService,

@@ -3,121 +3,229 @@
         <div class="card mt-4 fadeInDown">
             <div class="card-body">
                 <h3 class="card-header text-center">
-                    <i class="fas fa-chalkboard-teacher"></i> Datos del Empleado 
+                    <i class="fas fa-chalkboard-teacher"></i> Datos del Empleado
                     <label class="obligatorio align-middle">
                         * Obligatorio
                     </label>
                 </h3>
-                <div class="row text-center text-muted">
+                <div class="row justify-content-md-center">
                     <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="nameEmpleado" class="form-control bonus-design" autocomplete="off"/>
-                        <label class="form-label" for="nameEmpleado"> Nombre Completo</label>
-                    </div>
-                    <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="dpi" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="dpi"> DPI</label>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="dpi" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="dpi"><b class="obligatorio">*</b> DPI</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="cel" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="cel"> Número Celular</label>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="nameEmpleado" class="form-control" autocomplete="off"
+                                required />
+                            <label mdbLabel class="form-label" for="nameEmpleado"><b class="obligatorio">*</b> Nombre
+                                Completo</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="mail" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="mail"> Correo Electronico</label>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="cel" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="cel"><b class="obligatorio">*</b> Número
+                                Celular</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-
-                        <input type="text" id="fecNac" class="form-control bonus-design" onfocus="(this.type='date')"/>
-                        <label class="form-label" for="fecNac"> Fecha Nacimiento</label>
-
-                        <!-- <input type="date" id="fecNac" class="form-control bonus-design" autocomplete="off"/>
-                        <label class="form-label" for="fecNac"> Fecha Nacimiento</label> -->
+                        <mdb-form-control>
+                            <input mdbInput type="date" id="fecNac" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="fecNac"><b class="obligatorio">*</b> Fecha de
+                                Nacimiento</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-                        <!-- <input type="text" id="grado" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="grado"> Grado</label> -->
-                        <select class="form-control bonus-design" >
-                            <option selected> Grado A Impartir</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="dir" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="dir"><b class="obligatorio">*</b> Dirección</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="dir" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="dir"> Dirección</label>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="puesto" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="puesto"><b class="obligatorio">*</b> Puesto</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="puesto" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="puesto"> Puesto</label>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="salario" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="salario"><b class="obligatorio">*</b>
+                                Salario</label>
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
-                        <input type="text" id="roll" class="form-control bonus-design" autocomplete="off" placeholder="54"/>
-                        <label class="form-label" for="roll"> Comision Asignada</label>
+                        <mdb-form-control>
+                            <input mdbInput type="email" id="mail" class="form-control" autocomplete="off" required />
+                            <label mdbLabel class="form-label" for="mail">Correo Electrónico</label>
+                        </mdb-form-control>
                     </div>
-                    <div class="col-xl-4 mt-3">
-                        <!-- <input type="text" id="pay" class="form-control bonus-design" autocomplete="off" value="45"/>
-                        <label class="form-label" for="pay"> Salario</label> -->
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        </div>
-                    </div>
-                    <!-- <div class="input-group mb-3">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div> -->
-                    <div class="col-xl-4 mt-3">
-                        <input type="text" id="can" class="form-control bonus-design" autocomplete="off" placeholder="--" style="border-top: 0; border-left: 0; border-right: 0;"/>
-                        <span><b class="obligatorio">*</b> Salario</span>
-                    </div>
-                    <div class="col-xl-4 mt-3">
-                        <input type="text" id="can" class="form-control outlinenone" autocomplete="off" placeholder="--"/>
-                        <span><b class="obligatorio">*</b> Salario 123</span>
-                    </div>
-                    <div class="col-xl-8 mt-3 form-outline">
+                    <div class="col-xl-4 mt-3 form-outline">
                         <div class="row">
-                            <div class="col-sm-9">
-                                <input type="text" id="foto" class="form-control bonus-design" onfocus="(this.type='file')"/>
-                                <label class="form-label" for="foto">Foto</label>
+                            <div class="col text-end">
+                                <span class="badge bg-primary">¿Impartirá Clases?</span>
                             </div>
-                            <div class="col-sm-3">
-                                <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir Foto</button>
+                            <div class="col text-start">
+                                <div class="form-check form-check-inline">
+                                    <input mdbRadio class="form-check-input" type="radio"
+                                        (change)="valueInputRadio($event)" name="inlineRadioOptions" id="inlineRadio1"
+                                        value="YES" />
+                                    <label class="form-check-label" for="inlineRadio1">SI</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input mdbRadio class="form-check-input" type="radio"
+                                        (change)="valueInputRadio($event)" name="inlineRadioOptions" id="inlineRadio2"
+                                        value="NO" />
+                                    <label class="form-check-label" for="inlineRadio2">NO</label>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-8 mt-3 text-center">
+                        <label for="formFile" class="form-label text-start">Seleccione foto del empleado</label>
+                        <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
+                        <div class="spinner-border text-primary" role="status" *ngIf="lookSpinner">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-block text-center pt-3">
+                    <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-handshake"></i>
+                        Contratar</button>
+                    <button class="btn btn-danger mx-1 fadeIn second" type="button"
+                        routerLink="/administracion/personal/listarPersonal"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </div>
-            <!-- PUREBA -->
-            
-            <br /><br /><br /><br />
-            <div class="container">
-                <p>PRUEBA SIN TAG ANGULAR</p>
-                <div class="form-outline">
-                    <input type="text" id="form12" class="form-control" />
-                    <label class="form-label" for="form12">Example label</label>
-                </div>
-                <br /><br />
-                <!-- <p>PRUEBA CON TAG ANGULAR</p>
-                <mdb-form-control>
-                    <input mdbInput type="text" id="form1" class="form-control" />
-                    <label mdbLabel class="form-label" for="form1">Example label</label>
-                </mdb-form-control>
-                <br /><br />
-                <p>PRUEBA CON TAG ANGULAR</p>
-                <mdb-form-control>
-                    <input mdbInput type="text" id="form1" class="form-control" value="Hola"/>
-                    <label mdbLabel class="form-label" for="form1">Example label</label>
-                </mdb-form-control>
-                <br /><br /> -->
+        </div>
+        <!-- Grados y Cursos -->
+        <div class="card mt-4 fadeInDown">
+            <h5 class="card-header text-center">
+                Asignación de Grados y Cursos
+            </h5>
+            <div class="card-body">
+                <p class="card-text">
+                    En esta sección tendrá que seleccionar el o los grados que impartirá el catedrático y los cursos que impartirá el catedrático en función del grado seleccionado.
+                </p>
+                <app-select-grados ></app-select-grados>
             </div>
-            <!-- FIN DE PRUEBA -->
+            <!-- PRUEBA ARRAY -->
+            <!-- <app-select-grados [dato]="pasarValor"></app-select-grados> -->
         </div>
-
-        <div class="d-grid gap-2 d-md-block text-center pt-3">
-            <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-handshake"></i> Contratar</button>
-            <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/administracion/personal/listarPersonal"><i class="fas fa-times"></i> Cancelar</button>
-        </div>
+        <!--  -->
     </form>
 </div>
 
+
+
+<!-- AGREGAR GRADOS -->
+<!-- 
+
+<div class="row pb-2">
+    <div class="col-4 align-self-center">
+        <div class="form-outline">
+            <select class="form-control bonus-design text-center">
+                <option selected>Seleccione el Grado</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-8 border border-1 rounded-5">
+        <p class="text-muted fw-lighter">Cursos no asignados del Grado XX</p> font-monospace OTRA FUENTE
+        <div class="row mx-2 my-3">
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+            <div class="col form-check form-check-inline d-flex justify-content-center">
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                    value="IdCurso" />
+                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-grid gap-2 d-md-block text-center pt-3">
+    <button class="btn btn-primary btn-lg fadeIn second" type="button"><i class="fas fa-plus"></i> GRADO</button>
+</div>
+
+ -->
+
+<!-- AGREGAR GRADOS -->
+
+<!-- <div class="row row-cols-1 row-cols-md-2 g-4 mt-1">
+    <div class="col">
+        <div class="card fadeInDown">
+            <h5 class="card-header text-center">
+                Asignación de Grados
+            </h5>
+            <div class="card-body">
+                <p class="card-text">
+                    En esta sección tendrá que seleccionar el o los grados que impartirá el catedrático.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card fadeInDown">
+            <h5 class="card-header text-center">
+                Asignación de Cursos/Materias
+            </h5>
+            <div class="card-body">
+                <p class="card-text">
+                    En esta sección tendrá que seleccionar el o los cursos que impartirá el catedrático en función del grado seleccionado.
+                </p>
+            </div>
+        </div>
+    </div>
+</div> -->

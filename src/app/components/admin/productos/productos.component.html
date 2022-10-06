@@ -83,28 +83,32 @@
                 </h3>
                 <form method="post">
                     <div class="row justify-content-md-center">
+                        <!--[ngModelOptions]="{standalone: true}"-->
                         <div class="col-xl-4 mt-3 form-outline">
-                            <input type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
-                            <label class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
+                            <mdb-form-control>
+                                <input mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" name="nameProducto" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
+                            </mdb-form-control>
                         </div>
                         <div class="col-xl-4 mt-3 form-outline text-center">
-                            <input type="text" id="precio" [(ngModel)]="producto.precio" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
-                            <label class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
-                        </div>
-                        <div class="col-xl-4 mt-3 form-outline">
-                            <input type="text" id="can" [(ngModel)]="producto.cantidad" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
-                            <label class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label>
+                            <mdb-form-control>
+                                <input mdbInput type="text" id="precio" [(ngModel)]="producto.precio" name="precio" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
+                            </mdb-form-control>
                         </div>
                         <div class="col-xl-4 mt-3 form-outline">
                             <mdb-form-control>
-                                <input mdbInput type="text" id="form1" class="form-control" value="HOLA"/>
-                                <label mdbLabel class="form-label" for="form1">Example label</label>
+                                <input mdbInput type="text" id="can" [(ngModel)]="producto.cantidad" name="can" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label>
                             </mdb-form-control>
                         </div>
-                        <div class="col-xl-8 mt-3">
-                            <label for="formFile" class="form-label text-right">Seleccione imagen/foto del producto</label>
+                        <div class="col-xl-8 mt-3 text-center">
+                            <label for="formFile" class="form-label text-start">Seleccione imagen/foto del producto</label>
                             <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
-                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}}</p>
+                            <div class="spinner-border text-primary" role="status" *ngIf="lookSpinner">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-block text-center pt-3">
@@ -128,27 +132,30 @@
                 <form method="post">
                     <div class="row justify-content-md-center text-center text-muted">
                         <div class="col-xl-4 mt-3 form-outline">
-                            <!-- <input type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
-                            <span><b class="obligatorio">*</b> Nombre Producto</span> -->
                             <mdb-form-control>
-                                <input mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" [ngModelOptions]="{standalone: true}" class="form-control" autocomplete="off" required/>
+                                <input mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" name="nameProducto" class="form-control" autocomplete="off" required/>
                                 <label mdbLabel class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
                             </mdb-form-control>
                         </div>
                         <div class="col-xl-4 mt-3 form-outline">
-                            <input type="text" id="precio" [(ngModel)]="producto.precio" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
-                            <!-- <label class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label> -->
-                            <span><b class="obligatorio">*</b> Precio [Q.]</span>
+                            <mdb-form-control>
+                                <input mdbInput type="text" id="precio" [(ngModel)]="producto.precio" name="precio" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
+                            </mdb-form-control>
                         </div>
                         <div class="col-xl-4 mt-3 form-outline">
-                            <input type="text" id="can" [(ngModel)]="producto.cantidad" [ngModelOptions]="{standalone: true}" class="form-control bonus-design" autocomplete="off" />
-                            <!-- <label class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label> -->
-                            <span><b class="obligatorio">*</b> Cantidad</span>
+                            <mdb-form-control>
+                                <input mdbInput type="text" id="can" [(ngModel)]="producto.cantidad" name="can" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label>
+                            </mdb-form-control>
                         </div>
                         <div class="col-xl-8 mt-3">
-                            <label for="formFile" class="form-label text-right">Seleccione imagen/foto del producto</label>
+                            <label for="formFile" class="form-label text-start">Seleccione imagen/foto del producto</label>
                             <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
-                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}}</p>
+                            <div class="spinner-border text-primary" role="status" *ngIf="lookSpinner">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-block text-center pt-3">

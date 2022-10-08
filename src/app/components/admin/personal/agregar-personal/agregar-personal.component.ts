@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { InfoExtraService } from '../../../../services/infoExtra/info-extra.service';
+import { EmpleadoService } from '../../../../services/empleado/empleado.service';
 
 import Swal from 'sweetalert2'
+// Interfaz
+import { Empleado } from '../../../../models/Empleado';
 
 @Component({
   selector: 'app-agregar-personal',
@@ -10,15 +14,29 @@ import Swal from 'sweetalert2'
 })
 export class AgregarPersonalComponent implements OnInit {
 
+  empleado: Empleado = {
+    dpi_Empleado: null,
+    nombre: null,
+    no_Cel: null,
+    correo: null,
+    fecha_nac: new Date(),
+    grados: [],
+    direccion: null,
+    puesto: null,
+    salario: null,
+    foto: null,
+  }
+
   textDone: any = []; // Porcentaje de carga de la imagen
   lookTextPhoto: boolean = false; // Ver el TEXTO porcentaje de carga o no
-  photoProducto: string; // Almacena URL foto del producto
+  photoEmpleado: string; // Almacena URL foto del producto
   lookSpinner: boolean = false; // Ver la carga o no
-  // valueRadioButton: any;
+  asignarGradosCursos: boolean = false;
+  noDaraClases: boolean = false;
 
   pasarValor: string = "HOLA ESTOY SINDO PASADO"
 
-  constructor(private API_PHOTO: InfoExtraService) { }
+  constructor(private API_PHOTO: InfoExtraService, private API_EMPLEADO: EmpleadoService, private router: Router) { }
 
   uploadPhoto (event: any){
     this.lookTextPhoto = true;
@@ -29,7 +47,7 @@ export class AgregarPersonalComponent implements OnInit {
     this.API_PHOTO.uploadPhotoToS3(File).subscribe(
       res => { 
         let JSONResponse = JSON.parse(JSON.stringify(res));
-        this.photoProducto = JSONResponse.data.Location
+        this.photoEmpleado = JSONResponse.data.Location
         this.lookSpinner = false;
         this.textDone[0] = "text-success";
         this.textDone[1] = "✅ EXITO";
@@ -58,8 +76,61 @@ export class AgregarPersonalComponent implements OnInit {
     );
   }
 
+  agregarEmpleado(){
+    let objetoFinal: any;
+    if(this.noDaraClases){
+      objetoFinal = Object.assign(this.empleado, {foto: this.photoEmpleado}, {grados: null}, {usuario_Registro: 'app_web_add'})
+    } else{
+      objetoFinal = 'SI DARE CLASES JIJI'
+      // SI DARA CLASES TRABAJAR EN ASIGNACION DE CURSOS Y GRADOS
+    }
+    this.API_EMPLEADO.addEmpleado(objetoFinal).subscribe(
+      res => {
+        console.log("Res ",res)
+        let JSONresponse = JSON.parse(JSON.stringify(res));
+        Swal.fire({
+          icon: 'success',
+          title: '¡Yeeei!',
+          text: JSONresponse.data
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // OK Navegar listar Personal
+            this.router.navigate(['/administracion/personal/listarPersonal']);
+          }}
+        )
+      },
+      err => {
+        console.log("ERROR AGREGAR EMPLEADO -> ",err)
+        if(err.error.code === 'REGISTRATION_DUPLICATE'){
+          Swal.fire({
+            icon: 'info',
+            title: 'Oops...',
+            text: 'El empleado ya se encuentra registrado.'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // OK
+              // this.empleado = {} PENDIENTE DE HACER ALGO
+            }}
+          )
+        } else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '¡Algo salió mal!'
+          })
+        }
+      }
+    );
+  }
+
   valueInputRadio(event: any){
-    console.log("valueRadioButton ", event.target.value)
+    if(event.target.value === 'YES'){
+      this.asignarGradosCursos = true;
+      this.noDaraClases = false
+    } else {
+      this.asignarGradosCursos = false;
+      this.noDaraClases = true;
+    }
   }
 
   ngOnInit(): void {

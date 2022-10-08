@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-//import { Game } from '../Models/Games'; interfaz para agregar o actualizar datos
+// Interfaz
+import { Alumno } from '../../models/Alumno';
+import { Encargado } from '../../models/Encargado';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,23 @@ export class AlumnoService {
   // Obtener alumnos por grado
   getAlumnosPorGrado(idGrado: string){
     return this.http.get(`${this.API_URL}/getAlumnosPorGrado/${idGrado}`);
+  }
+
+  addAlumno(alumno: Alumno){
+    return this.http.post(`${this.API_URL}/addAlumno`,alumno);
+  }
+
+  // encargados
+  addEncargado(encargado: Encargado){
+    return this.http.post(`${this.API_URL}/addEncargado`,encargado);
+  }
+
+  getEncargadoPorDPI(dpiEncargado: string){
+    return this.http.get(`${this.API_URL}/getEncargadoDPI/${dpiEncargado}`);
+  }
+
+  updateEncargado(dpiEncargado: string, encargado: Encargado){
+    return this.http.put(`${this.API_URL}/updateEncargado/${dpiEncargado}`,encargado);
   }
 
 }

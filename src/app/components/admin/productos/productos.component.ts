@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../../services/producto/producto.service';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import {HttpClient, HttpResponse, HttpEventType} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Producto } from '../../../models/Producto';
+// Validar Form
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-productos',
@@ -34,7 +36,30 @@ export class ProductosComponent implements OnInit {
     foto: ''
   };
 
-  constructor(private API_SERVICE: ProductoService, private http: HttpClient, private API_PHOTO: InfoExtraService) { }
+  validationForm: FormGroup;
+  constructor(private API_SERVICE: ProductoService, private http: HttpClient, private API_PHOTO: InfoExtraService) {
+    this.validationForm = new FormGroup({
+      nameProducto: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
+      precio: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
+      can: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
+    });
+  }
+
+  get nameProducto(): AbstractControl {
+    return this.validationForm.get('nameProducto')!;
+  }
+
+  get precio(): AbstractControl {
+    return this.validationForm.get('precio')!;
+  }
+
+  get can(): AbstractControl {
+    return this.validationForm.get('can')!;
+  }
+
+  onSubmit(): void {
+    this.validationForm.markAllAsTouched();
+  }
 
   HabilitarPantallaAgregarProducto() {
     this.producto = {};

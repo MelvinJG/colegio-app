@@ -25,7 +25,6 @@ export class AlumnosComponent implements OnInit {
     this.API_SERVICE.getAlumnosPorGrado(this.idGrado).subscribe(
       res => {
         this.alumnos = res;
-        console.log(this.alumnos)
       },
       err => {
         console.log("ERROR MAIN :( -> ",err);
@@ -37,7 +36,6 @@ export class AlumnosComponent implements OnInit {
         // this.router.navigate(['shared/error',this.error]);
       }
     );
-
   }
 
 }

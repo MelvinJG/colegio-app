@@ -39,8 +39,8 @@ import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-// PRUEBA
-
+import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -80,7 +80,9 @@ import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
     BrowserAnimationsModule,
     MdbCollapseModule,
     MdbRadioModule,
-    MdbCheckboxModule
+    MdbCheckboxModule,
+    MdbValidationModule,
+    ReactiveFormsModule
   ],
   providers: [
     InfoExtraService,

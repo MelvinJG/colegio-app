@@ -16,6 +16,10 @@ export class InfoExtraService {
     return this.http.get(`${this.API_URL}/getGrados`);
   }
 
+  getCursosPorIDGrado(IdGrado: string){
+    return this.http.get(`${this.API_URL}/getCursosPorGrado/${IdGrado}`);
+  }
+
   // Subir fotos a AWS S3
   uploadPhotoToS3(File: any){
     const formData = new FormData();

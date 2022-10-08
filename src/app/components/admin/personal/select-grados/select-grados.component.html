@@ -1,60 +1,22 @@
-<div class="row pb-2" *ngFor="let container of containers">
+<div class="row pb-2" *ngFor="let container of GradoYCursosInterseccion">
     <div class="col-4 align-self-center">
         <div class="form-outline">
-            <select class="form-control bonus-design text-center">
+            <select class="form-control bonus-design text-center" (change)="gradoSelect($event)">
                 <option selected>Seleccione el Grado</option>
-                <option value="1">One</option>
+                <option *ngFor = 'let grado of grados.data' value="{{grado.grado_Id}}">{{grado.grado}}</option>
+                <!-- <option value="1">One</option>
                 <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="3">Three</option> -->
             </select>
         </div>
     </div>
     <div class="col-8 border border-1 rounded-5">
-        <p class="text-muted fw-lighter">Cursos no asignados del Grado XX</p>
-        <div class="row mx-2 my-3">
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
-            </div>
-            <div class="col form-check form-check-inline d-flex justify-content-center">
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="IdCurso" />
-                <label class="form-check-label" for="inlineCheckbox1">MATEMATICA </label>
+        <p class="text-muted fw-lighter">Cursos no asignados</p>
+        <div class="row mx-2 mt-3">
+            <!-- d-flex justify-content-center -->
+            <div class="col-xl-5 form-check form-check-inline mb-3 mx-4" *ngFor = 'let curso of cursos.data'>
+                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{curso.curso_Id}}" />
+                <label class="form-check-label" for="inlineCheckbox1">{{curso.nombre_Curso}}</label>
             </div>
         </div>
     </div>
@@ -62,7 +24,7 @@
 
 <div class="d-grid gap-2 d-md-block text-center pt-3">
     <button class="btn btn-primary btn-lg mx-1 fadeIn second" type="button" (click)="add()"><i class="fas fa-plus"></i> AGREGAR</button>
-    <button class="btn btn-success btn-lg mx-1 fadeIn second" type="button">CHEK ASIGNAR</button>
+    <button class="btn btn-success btn-lg mx-1 fadeIn second" type="button" (click)="asignacionGradosYCursos()"><i class="fa-solid fa-circle-check"></i> FINALIZAR</button>
 </div>
 
 

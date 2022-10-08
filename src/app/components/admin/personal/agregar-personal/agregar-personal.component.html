@@ -11,13 +11,13 @@
                 <div class="row justify-content-md-center">
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="dpi" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="text" id="dpi" [(ngModel)]="empleado.dpi_Empleado" name="dpi" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="dpi"><b class="obligatorio">*</b> DPI</label>
                         </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="nameEmpleado" class="form-control" autocomplete="off"
+                            <input mdbInput type="text" id="nameEmpleado" [(ngModel)]="empleado.nombre" name="nameEmpleado" class="form-control" autocomplete="off"
                                 required />
                             <label mdbLabel class="form-label" for="nameEmpleado"><b class="obligatorio">*</b> Nombre
                                 Completo</label>
@@ -25,40 +25,40 @@
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="cel" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="text" id="cel" [(ngModel)]="empleado.no_Cel" name="cel" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="cel"><b class="obligatorio">*</b> Número
                                 Celular</label>
                         </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="date" id="fecNac" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="date" id="fecNac" [(ngModel)]="empleado.fecha_nac" name="fecNac" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="fecNac"><b class="obligatorio">*</b> Fecha de
                                 Nacimiento</label>
                         </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="dir" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="text" id="dir" [(ngModel)]="empleado.direccion" name="dir" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="dir"><b class="obligatorio">*</b> Dirección</label>
                         </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="puesto" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="text" id="puesto" [(ngModel)]="empleado.puesto" name="puesto" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="puesto"><b class="obligatorio">*</b> Puesto</label>
                         </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="salario" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="text" id="salario" [(ngModel)]="empleado.salario" name="salario" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="salario"><b class="obligatorio">*</b>
                                 Salario</label>
                         </mdb-form-control>
                     </div>
                     <div class="col-xl-4 mt-3 form-outline">
                         <mdb-form-control>
-                            <input mdbInput type="email" id="mail" class="form-control" autocomplete="off" required />
+                            <input mdbInput type="email" id="mail" [(ngModel)]="empleado.correo" name="mail" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="mail">Correo Electrónico</label>
                         </mdb-form-control>
                     </div>
@@ -92,22 +92,22 @@
                         <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                     </div>
                 </div>
-                <div class="d-grid gap-2 d-md-block text-center pt-3">
-                    <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-handshake"></i>
+                <div class="d-grid gap-2 d-md-block text-center pt-3" *ngIf="noDaraClases">
+                    <button class="btn btn-success mx-1 fadeIn" type="button" (click)="agregarEmpleado()"><i class="far fa-handshake"></i>
                         Contratar</button>
-                    <button class="btn btn-danger mx-1 fadeIn second" type="button"
+                    <button class="btn btn-danger mx-1 fadeIn" type="button"
                         routerLink="/administracion/personal/listarPersonal"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </div>
         </div>
         <!-- Grados y Cursos -->
-        <div class="card mt-4 fadeInDown">
+        <div class="card mt-4 fadeInDown" *ngIf="asignarGradosCursos">
             <h5 class="card-header text-center">
                 Asignación de Grados y Cursos
             </h5>
             <div class="card-body">
                 <p class="card-text">
-                    En esta sección tendrá que seleccionar el o los grados que impartirá el catedrático y los cursos que impartirá el catedrático en función del grado seleccionado.
+                    En esta sección tendrá que seleccionar el o los grados que impartirá el catedrático y los cursos en función del grado seleccionado, al terminar el proceso de asignación marcar como finalizado.
                 </p>
                 <app-select-grados ></app-select-grados>
             </div>

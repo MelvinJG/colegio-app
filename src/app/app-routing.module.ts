@@ -17,6 +17,7 @@ import { SolicitudesComponent } from './components/admin/solicitudes/solicitudes
 import { PagosComponent } from './components/admin/pagos/pagos.component';
 import { ListarPersonalComponent } from './components/admin/personal/listar-personal/listar-personal.component';
 import { AgregarPersonalComponent } from './components/admin/personal/agregar-personal/agregar-personal.component';
+import { ReporteComponent } from './components/admin/reporte/reporte.component';
 /* Profesores */
 import { AnuncioTareaComponent } from './components/profesores/anuncio-tarea/anuncio-tarea.component';
 import { CalificarTareaComponent } from './components/profesores/calificar-tarea/calificar-tarea.component';
@@ -87,6 +88,10 @@ const routes: Routes = [
   {
     path: 'administracion/pagosColegio/:id',
     component: PagosComponent
+  },
+  {
+    path: 'administracion/reporte',
+    component: ReporteComponent
   },
   // Profesores
   {

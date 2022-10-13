@@ -28,6 +28,7 @@ import { PdfInvoiceComponent } from './components/shared/pdf-invoice/pdf-invoice
 import { AdminPerfilComponent } from './components/shared/admin-perfil/admin-perfil.component';
 import { ErrorComponent } from './components/shared/error/error.component';
 import { SelectGradosComponent } from './components/admin/personal/select-grados/select-grados.component';
+import { ReporteComponent } from './components/admin/reporte/reporte.component';
 // Servicios
 import { InfoExtraService } from './services/infoExtra/info-extra.service';
 import { AlumnoService } from './services/alumno/alumno.service';
@@ -41,6 +42,8 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ReactiveFormsModule } from '@angular/forms';
+// Grafica
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -68,7 +71,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PdfInvoiceComponent,
     AdminPerfilComponent,
     ErrorComponent,
-    SelectGradosComponent 
+    SelectGradosComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MdbRadioModule,
     MdbCheckboxModule,
     MdbValidationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [
     InfoExtraService,

@@ -1,35 +1,54 @@
-<div class="row pb-2" *ngFor="let container of GradoYCursosInterseccion">
-    <div class="col-4 align-self-center">
-        <div class="form-outline">
-            <select class="form-control bonus-design text-center" (change)="gradoSelect($event)">
-                <option selected>Seleccione el Grado</option>
-                <option *ngFor = 'let grado of grados.data' value="{{grado.grado_Id}}">{{grado.grado}}</option>
-                <!-- <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option> -->
-            </select>
+<form [formGroup]="form">
+    <div class="row pb-2" *ngFor="let container of ArrayGradoYCursosInterseccion">
+        <div class="col-4 align-self-center">
+            <div class="form-outline">
+                <select class="form-control bonus-design text-center" (change)="gradoSelect($event, container)" [disabled]="isDisabled[container+1]">
+                    <option selected [disabled]="true">Seleccione el Grado</option>
+                    <option *ngFor = 'let grado of grados.data' value="{{grado.grado_Id}}">{{grado.grado}}</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="col-8 border border-1 rounded-5">
-        <p class="text-muted fw-lighter">Cursos no asignados</p>
-        <div class="row mx-2 mt-3">
-            <!-- d-flex justify-content-center -->
-            <div class="col-xl-5 form-check form-check-inline mb-3 mx-4" *ngFor = 'let curso of cursos.data'>
-                <input mdbCheckbox class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{curso.curso_Id}}" />
-                <label class="form-check-label" for="inlineCheckbox1">{{curso.nombre_Curso}}</label>
+        <div class="col-8 border border-1 rounded-5">
+            <p class="text-muted fw-lighter">Cursos no asignados</p>
+            <div class="row mx-2 mt-3">
+                <!--  cursos.data -->
+                <div class="col-xl-5 form-check form-check-inline mb-3 mx-4" *ngFor = 'let curso of cursos[container]; let i=index'>
+                    <input class="form-check-input" (change)="cursoSelect($event)" type="checkbox" formArrayName="cursosSelected" [value]="curso.curso_Id" [disabled]="isDisabled[container+1]"/>
+                    <label class="form-check-label" for="inlineCheckbox1">{{curso.nombre_Curso}}</label>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="d-grid gap-2 d-md-block text-center pt-3">
-    <button class="btn btn-primary btn-lg mx-1 fadeIn second" type="button" (click)="add()"><i class="fas fa-plus"></i> AGREGAR</button>
-    <button class="btn btn-success btn-lg mx-1 fadeIn second" type="button" (click)="asignacionGradosYCursos()"><i class="fa-solid fa-circle-check"></i> FINALIZAR</button>
-</div>
+    <div class="d-grid gap-2 d-md-block text-center pt-3">
+        <button class="btn btn-primary btn-lg mx-1 fadeIn second" id="btnAgregar"type="button" (click)="add()" [disabled]="finalizo"><i class="fas fa-plus"></i> AGREGAR</button>
+        <button class="btn btn-success btn-lg mx-1 fadeIn second" type="button" (click)="asignacionGradosYCursos()" [disabled]="agrego"><i class="fa-solid fa-circle-check"></i> FINALIZAR</button>
+        <button class="btn btn-success btn-lg mx-1 fadeIn second" type="button" (click)="verCursos()"><i class="fa-solid fa-circle-check"></i> VER CURSOS Y GRADOS</button>
+    </div>
+</form>
 
-
+<!--  onclick="alertar();"  -->
 <!-- <div class="d-grid gap-2 d-md-block text-center pt-3">
     <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-handshake"></i> Inscribir Alumno</button>
     <button class="btn btn-primary mx-1 fadeIn second" type="button" disabled><i class="far fa-file-pdf"></i> Descargar PDF</button>
     <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
 </div> -->
+
+
+        <!-- <br /><br /><br />
+        Hola
+        <section>
+            Adios
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+              <div *ngFor="let country of cursos.data; let i=index">
+                <input type="checkbox" formArrayName="selectedCountries" [value]="country.curso_Id" (change)="onCheckboxChange($event)" 
+                />
+                {{ country.nombre_Curso}}
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+          
+            <p>{{ form.value | json }}</p>
+          </section> -->
+
+

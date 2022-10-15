@@ -92,7 +92,7 @@
                         <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                     </div>
                 </div>
-                <div class="d-grid gap-2 d-md-block text-center pt-3" *ngIf="noDaraClases">
+                <div class="d-grid gap-2 d-md-block text-center pt-3" *ngIf="mostrarBotones">
                     <button class="btn btn-success mx-1 fadeIn" type="button" (click)="agregarEmpleado()"><i class="far fa-handshake"></i>
                         Contratar</button>
                     <button class="btn btn-danger mx-1 fadeIn" type="button"
@@ -109,7 +109,7 @@
                 <p class="card-text">
                     En esta sección tendrá que seleccionar el o los grados que impartirá el catedrático y los cursos en función del grado seleccionado, al terminar el proceso de asignación marcar como finalizado, cabe recalcar que cada vez que <b>"Agregue"</b> otro grado el proceso de asignación anterior no se podra revertir.
                 </p>
-                <app-select-grados ></app-select-grados>
+                <app-select-grados (miEvento)="recibirDatos($event)"></app-select-grados>
             </div>
             <!-- PRUEBA ARRAY -->
             <!-- <app-select-grados [dato]="pasarValor"></app-select-grados> -->

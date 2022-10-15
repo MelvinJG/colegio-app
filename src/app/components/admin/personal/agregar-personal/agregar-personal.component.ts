@@ -13,7 +13,6 @@ import { Empleado } from '../../../../models/Empleado';
   styleUrls: ['./agregar-personal.component.css']
 })
 export class AgregarPersonalComponent implements OnInit {
-
   empleado: Empleado = {
     dpi_Empleado: null,
     nombre: null,
@@ -33,8 +32,9 @@ export class AgregarPersonalComponent implements OnInit {
   lookSpinner: boolean = false; // Ver la carga o no
   asignarGradosCursos: boolean = false;
   noDaraClases: boolean = false;
-
-  pasarValor: string = "HOLA ESTOY SINDO PASADO"
+  SIDaraClases: boolean = false;
+  mostrarBotones: boolean = false;
+  gradosAsignados: any;
 
   constructor(private API_PHOTO: InfoExtraService, private API_EMPLEADO: EmpleadoService, private router: Router) { }
 
@@ -80,13 +80,12 @@ export class AgregarPersonalComponent implements OnInit {
     let objetoFinal: any;
     if(this.noDaraClases){
       objetoFinal = Object.assign(this.empleado, {foto: this.photoEmpleado}, {grados: null}, {usuario_Registro: 'app_web_add'})
-    } else{
-      objetoFinal = 'SI DARE CLASES JIJI'
-      // SI DARA CLASES TRABAJAR EN ASIGNACION DE CURSOS Y GRADOS
+    } 
+    if(this.SIDaraClases){
+      objetoFinal = Object.assign(this.empleado, {foto: this.photoEmpleado}, {grados: this.gradosAsignados}, {usuario_Registro: 'app_web_add'})
     }
     this.API_EMPLEADO.addEmpleado(objetoFinal).subscribe(
       res => {
-        console.log("Res ",res)
         let JSONresponse = JSON.parse(JSON.stringify(res));
         Swal.fire({
           icon: 'success',
@@ -126,15 +125,22 @@ export class AgregarPersonalComponent implements OnInit {
   valueInputRadio(event: any){
     if(event.target.value === 'YES'){
       this.asignarGradosCursos = true;
-      this.noDaraClases = false
+      this.mostrarBotones = false;
     } else {
       this.asignarGradosCursos = false;
       this.noDaraClases = true;
+      this.mostrarBotones = true;
     }
   }
 
+  recibirDatos(e){
+    this.gradosAsignados = e;
+    this.mostrarBotones = true;
+    this.SIDaraClases = true;
+    this.noDaraClases = false;
+  }
+
   ngOnInit(): void {
-    
   }
 
 }

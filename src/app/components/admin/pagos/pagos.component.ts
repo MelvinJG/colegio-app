@@ -32,8 +32,12 @@ export class PagosComponent implements OnInit {
   empleadoInfo: any = [];
   colorInscripcion: string;
   tipoDePago: number;
+  PersonaPago: string;
+  //Enviar PDF
+  objetoDatosPDF: any;
+  verPDF: boolean = false;
 
-  //EnviarInfo
+  //EnviarInfo API
   alumnoSeleccionado: string = "";
   mesSeleccionado: string = "";
   empleadoSeleccionado: string = "";
@@ -95,7 +99,6 @@ export class PagosComponent implements OnInit {
     }
     //Si todo esta bien Envia api
     if(datosFull){
-      console.log("ENVIA API -> ",objetoFinal)
       this.API_PAGO_SERVICE.realizarPagoVariosADMIN(objetoFinal).subscribe(
         (res) => {
           let JSONresponse = JSON.parse(JSON.stringify(res));
@@ -106,7 +109,9 @@ export class PagosComponent implements OnInit {
           }).then((result) => {
             if (result.isConfirmed) {
               // OK
-              window.location.reload();
+              // Enviamos Datos PDF
+              this.objetoDatosPDF = Object.assign(objetoFinal,{motivoPago: this.titulo},{personaPago: this.PersonaPago})
+              this.verPDF = true;
             }}
           )
         },
@@ -119,14 +124,17 @@ export class PagosComponent implements OnInit {
   }
 
   mesSelect(event: any){
+    this.verPDF = false;
     this.mesSeleccionado = event.target.value;
   }
 
   alumnoSelect(event: any){
+    this.verPDF = false;
     this.alumnoSeleccionado = event.target.value;
     this.API_ALUMNO_SERVICE.getDetalleUltimoPagoAlumno(event.target.value).subscribe(
       res => {
         this.alumnoInfo = res;
+        this.PersonaPago = this.alumnoInfo.data.nombre;
         if(this.alumnoInfo.data.pago_Inscripcion === 'SI'){
           this.colorInscripcion = "text-success";
         } else {
@@ -160,6 +168,7 @@ export class PagosComponent implements OnInit {
     this.verBotones = false;
     this.meses = [];
     this.mesSeleccionado = "";
+    this.verPDF = false;
     let valoresArray = event.target.value.split(',');
     if(!this.esInscripcion){ // Si es pago de inscripcion ignoramos el monto de la mensualidad segun el grado
       this.monto = valoresArray[1];
@@ -204,12 +213,14 @@ export class PagosComponent implements OnInit {
 
   empleadoSelect(event: any){
     this.mesSeleccionado = "";
+    this.verPDF = false;
     let valoresArray = event.target.value.split(',');
     this.monto = valoresArray[1];
     this.empleadoSeleccionado = valoresArray[0];
     this.API_EMPLEADO_SERVICE.getDetalleUltimoPagoEmpleado(valoresArray[0]).subscribe(
       res => {
         this.empleadoInfo = res;
+        this.PersonaPago = this.empleadoInfo.data.nombre;
         this.getMeses(this.empleadoInfo.data.dpi_Empleado,3);
         this.verEmpleado = true;
         this.verBotones = true;

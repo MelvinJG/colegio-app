@@ -1,27 +1,81 @@
-<img src="https://static.vecteezy.com/system/resources/previews/006/004/413/non_2x/university-or-school-engineering-emblem-logo-design-inspiration-vector.jpg"
-    style="float: right; width: 150px;" />
-<p style="background-color: white; font-style: italic;">
-    <strong style="font-size: 35px; font-style: initial;">RECIBO</strong><br />
-    <span style="font-size: 10px; font-style: italic;"><strong>Lugar y fecha de expedición</strong></span><br />
-    En <u style="font-style: initial;"> Guatemala Sumpango, Sacatepéquez </u> a <u style="font-style: initial;"> 28 </u>
-    de <u style="font-style: initial;"> agosto </u> de <u style="font-style: initial;"> 2022 </u><br />
-    Recibí de <u style="font-style: initial;"> Melvin Misael Joj Gil </u> la cantidad de Q <u style="font-style: initial;"> 250.00 </u><br />
-    <span style="font-size: 10px; font-style: italic;"><strong>Cantidad en letras</strong></span><br />
-    <span
-        style="font-style: initial; border: solid 1px black; padding: 5px 50px 5px 50px; border-radius: 15px; background-color: rgba(224, 221, 221, 0.849);"><strong>Docientos
-            cienta quetzales exactos.</strong></span><br />
-            
-    Por concepto de <u style="font-style: initial;"> Pago de colegiatura del mes de Agosto </u><br />
-</p>
-<table >
-    <tr>
-      <td>Table with <b>widths=[100,"*","auto"]</b> and <b>heights=40</b></td>
-    </tr>
-    <tr>
-      <td>Cell1</td>
-      <td>Cell2</td>
-      <td>Cell3</td>
-    </tr>
-  </table>
-
-  https://github.com/bpampuch/pdfmake/issues/802
+<!-- EJEMPLO RECIBO EN PDF -->
+<div class="container">
+  <div class="card fadeInDown">
+    <div class="card-body" id="htmlData">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="border border-2 rounded-5 px-4 py-4 ">
+            <div class="row">
+              <div class="col-xl-5 pt-3">
+                <h4 class="fw-bolder">Comprobante de Pago</h4>
+              </div>
+              <div class="col-xl-7 text-end">
+                <div class="row">
+                  <div class="col-xl-8 pt-3">
+                    <h5>Apple, Inc.</h5>
+                    <small>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </small>
+                  </div>
+                  <div class="col-xl-4" cla>
+                    <img src="{{logo}}" class="img-fluid"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 "><!--fst-italic-->
+                <strong><em><small>Lugar y fecha de expedición</small></em></strong><br />
+                <p class="my-0">En <u class="fw-bolder">&emsp;Sumpango, Sac&emsp;</u> a <u class="fw-bolder">&emsp;{{dia}}&emsp;</u> de <u class="fw-bolder">&emsp;{{mes}}&emsp;</u> de <u class="fw-bolder">&emsp;{{anio}}&emsp;</u></p>
+                <p class="my-2">A nombre de <u class="fw-bolder">&emsp;{{personaPago}}&emsp;</u> la cantidad de Q. <u class="fw-bolder">&emsp;{{monto}}&emsp;</u></p>
+                <strong><em><small>Cantidad en letras</small></em></strong><br />
+                <p class="border border-dark border-1 rounded-8 px- py-2 px-4 fw-bolder" style="background-color: rgb(224, 218, 218);">
+                  {{montoLetras}}
+                </p>
+                Por concepto de <u class="fw-bolder">&emsp;{{motivoPago}}&emsp;</u> <span *ngIf="verMesPago">, del mes de <u class="fw-bolder">&emsp;{{mesPago}}&emsp;</u></span>
+              </div> 
+              <div class="col-xl-12 text-center pt-5">
+                _________________________________<br />
+                Firma y sello
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="border border-2 rounded-5 px-4 py-4 ">
+            <div class="row">
+              <div class="col-xl-5 pt-3">
+                <h4 class="fw-bolder">Comprobante de Pago</h4>
+              </div>
+              <div class="col-xl-7 text-end">
+                <div class="row">
+                  <div class="col-xl-8 pt-3">
+                    <h5>Apple, Inc.</h5>
+                    <small>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </small>
+                  </div>
+                  <div class="col-xl-4" cla>
+                    <img src="{{logo}}" class="img-fluid"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 "><!--fst-italic-->
+                <strong><em><small>Lugar y fecha de expedición</small></em></strong><br />
+                <p class="my-0">En <u class="fw-bolder">&emsp;Sumpango, Sac&emsp;</u> a <u class="fw-bolder">&emsp;{{dia}}&emsp;</u> de <u class="fw-bolder">&emsp;{{mes}}&emsp;</u> de <u class="fw-bolder">&emsp;{{anio}}&emsp;</u></p>
+                <p class="my-2">A nombre de <u class="fw-bolder">&emsp;{{personaPago}}&emsp;</u> la cantidad de Q. <u class="fw-bolder">&emsp;{{monto}}&emsp;</u></p>
+                <strong><em><small>Cantidad en letras</small></em></strong><br />
+                <p class="border border-dark border-1 rounded-8 px- py-2 px-4 fw-bolder" style="background-color: rgb(224, 218, 218);">
+                  {{montoLetras}}
+                </p>
+                Por concepto de <u class="fw-bolder">&emsp;{{motivoPago}}&emsp;</u> <span *ngIf="verMesPago">, del mes de <u class="fw-bolder">&emsp;{{mesPago}}&emsp;</u></span>
+              </div> 
+              <div class="col-xl-12 text-center pt-5">
+                _________________________________<br />
+                Firma y sello
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn col col-lg-4 btn-danger btn-block ml-4 fadeIn second" (click)="downloadPDF()"><i class="far fa-file-pdf"></i> Descargar PDF</button>
+    </div>
+  </div>
+</div>
+<br/><br/><br/><br/><br/>

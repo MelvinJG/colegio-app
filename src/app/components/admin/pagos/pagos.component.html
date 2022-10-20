@@ -88,8 +88,6 @@
                 <div class="d-grid gap-2 d-md-block text-center" *ngIf="verBotones">
                     <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="generarPago()"><i class="far fa-money-bill-alt"></i> Realizar
                         Pago</button>
-                    <button class="btn btn-primary mx-1 fadeIn second" type="button" disabled><i class="far fa-file-pdf"></i>
-                        Descargar Comprobante</button>
                     <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
                 </div>
             </form>
@@ -97,4 +95,9 @@
 
         </div>
     </div>
+</div>
+<!-- <button class="btn btn-primary mx-1 fadeIn second" type="button" ><i class="far fa-file-pdf"></i>
+    Descargar Comprobante</button> -->
+<div class="pdf" *ngIf="verPDF">
+    <app-pdf-invoice [data]="objetoDatosPDF"></app-pdf-invoice>
 </div>

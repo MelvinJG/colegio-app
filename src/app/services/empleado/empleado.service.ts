@@ -19,4 +19,8 @@ export class EmpleadoService {
   addEmpleado(empleado: Empleado){
     return this.http.post(`${this.API_URL}/addEmpleado`,empleado);
   }
+
+  getDetalleUltimoPagoEmpleado(dpiEmpleado: string){
+    return this.http.get(`${this.API_URL}/getDetalleUltimoPagoEmpleado/${dpiEmpleado}`);
+  }
 }

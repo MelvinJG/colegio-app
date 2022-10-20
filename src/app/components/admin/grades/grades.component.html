@@ -44,7 +44,10 @@
               <i class="fas fa-chalkboard-teacher"></i> Profesor: XX XX
             </h6> -->
             <h6 class="pt-4">
-              <i class="fa-solid fa-book"></i> Cantidad de Asignaciones: {{grado.cantidad_Cursos}}
+              <i class="fa-solid fa-book"></i> Cantidad de Asignaciones: <span class="text-primary">{{grado.cantidad_Cursos}}</span>
+            </h6>
+            <h6>
+              <i class="fas fa-dollar-sign"></i> Costo Mensualidad: <span class="text-warning">Q. {{grado.mensualidad}}</span>
             </h6>
             <h6>
               <div *ngIf="grado.cantidad_alumnos; else elseBlock">

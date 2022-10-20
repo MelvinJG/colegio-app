@@ -26,4 +26,14 @@ export class InfoExtraService {
     formData.append("image", File);
     return this.http.post(`${this.API_URL}/foto/uploadPhotoToS3`, formData);
   }
+
+  // Obtener meses pendientes de pago de los ALUMNOS
+  getMesesPendientesPagoAlumno(cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getMesesPendientesPagoAlumno/${cuiAlumno}`);
+  }
+
+  // Obtener meses pendientes de pago de los ALUMNOS
+  getMesesPendientesPagoEmpleado(dpiEmpleado: string){
+    return this.http.get(`${this.API_URL}/getMesesPendientesPagoEmpleado/${dpiEmpleado}`);
+  }
 }

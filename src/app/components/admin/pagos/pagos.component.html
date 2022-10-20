@@ -1,84 +1,92 @@
 <div class="container pt-5 mb-10">
-    <div class="card mt-4 bg-glass fadeInDown">
+    <div class="card mt-4 fadeInDown">
         <div class="card-body">
             <h3 class="card-header text-center fadeIn"><i class="fas fa-dollar-sign"></i> {{titulo}}</h3>
-            <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. {{monto}}.00</span></h5>
+            <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. {{monto}}</span></h5>
             <form method="post">
-                <div class="row">
-                    <div *ngIf="esSalario; else elseBlock">
-                        <!-- EMPLEADOS -->
-                        <div class="row">
-                            <div class="col-xl-6 mt-3 form-outline">
-                                <select class="form-select form-control bonus-design" aria-label="Default select example">
-                                    <option selected>Empleado</option>
-                                    <option value="1">Uno</option>
-                                    <option value="2">Dos</option>
-                                    <option value="3">Tres</option>
-                                </select>
-                            </div>
-                            <div class="col-xl-6 mt-3 form-outline">
-                                <select class="form-select form-control bonus-design" aria-label="Default select example">
-                                    <option selected>Mes de Pago</option>
-                                    <option value="1">Uno</option>
-                                    <option value="2">Dos</option>
-                                    <option value="3">Tres</option>
-                                </select>
-                            </div>
-                        </div>
-                        
+                <div class="row justify-content-around">
+                    <!-- EMPLEADOS -->
+                    <div class="col-xl-4 mt-3 form-outline" *ngIf="esSalario; else elseBlock">
+                        <select class="form-control bonus-design" (change)="empleadoSelect($event)">
+                            <option selected [disabled]="true">Seleccione el Empleado</option>
+                            <option *ngFor = 'let empleado of empleados.data' value="{{empleado.dpi_Empleado}},{{empleado.salario}}">{{empleado.nombre}}</option>
+                        </select>
                     </div>
+                    <!-- ALUMNOS -->
                     <ng-template #elseBlock>
-                        <!-- ALUMNOS -->
                         <div class="col-xl-4 mt-3 form-outline">
-                            <select class="form-select form-control bonus-design" aria-label="Default select example">
-                                <option selected>Grado</option>
-                                <option value="1">Uno</option>
-                                <option value="2">Dos</option>
-                                <option value="3">Tres</option>
+                            <select class="form-control bonus-design" (change)="gradoSelect($event)">
+                                <option selected [disabled]="true">Seleccione el Grado</option>
+                                <option *ngFor = 'let grado of grados.data' value="{{grado.grado_Id}},{{grado.mensualidad}}">{{grado.grado}}</option>
                             </select>
                         </div>
                         <div class="col-xl-4 mt-3 form-outline">
-                            <select class="form-select form-control bonus-design" aria-label="Default select example">
-                                <option selected>Alumno</option>
-                                <option value="1">Uno</option>
-                                <option value="2">Dos</option>
-                                <option value="3">Tres</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-4 mt-3 form-outline">
-                            <select class="form-select form-control bonus-design" aria-label="Default select example">
-                                <option selected>Mes de Pago</option>
-                                <option value="1">Uno</option>
-                                <option value="2">Dos</option>
-                                <option value="3">Tres</option>
+                            <select class="form-control bonus-design" (change)="alumnoSelect($event)">
+                                <option selected >Seleccione al Alumno</option>
+                                <option *ngFor = 'let alumno of alumnos.data' value="{{alumno.cui_Alumno}}">{{alumno.nombre_Alumno}}</option>
                             </select>
                         </div>
                     </ng-template>
+                    <!-- INSCRIPCION NO NECESITA MES -->
+                    <div class="col-xl-4 mt-3 form-outline" *ngIf="!esInscripcion">
+                        <select class="form-control bonus-design" (change)="mesSelect($event)">
+                            <option selected>Seleccione el Mes de Pago</option>
+                            <option *ngFor = 'let mes of meses.data' value="{{mes.mes_Id}}">{{mes.mes}}</option>
+                        </select>
+                    </div>
                 </div>
                 <!-- Pinta el Alumno -->
-                <br /><br /><br />
-                <div class="row justify-content-center">
+                <div class="row justify-content-center py-4" *ngIf="verAlumno">
                     <div class="col-4">
-                        <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"
+                        <img src="{{no_Foto}}"
+                            class="img-fluid" *ngIf="!alumnoInfo.data.foto; else elseBlock"/>
+                        <ng-template #elseBlock>
+                            <img src="{{alumnoInfo.data.foto}}"
                             class="img-fluid" />
+                        </ng-template>
                     </div>
                     <div class="col-4 align-self-center">
-                        <p>
+                        <h4 class="text-center">{{alumnoInfo.data.nombre}}</h4>
+                        <p class="my-0 py-0 px-2 text-muted">Detalle Ultimo Pago</p>
+                        <p class="border border-1 rounded-5 px-3 py-3">
                             <small>
-                                <b>CUI:</b> 2780691420304 <br />
-                                <b>Grado:</b> Tercero Basico <br />
-                                <b>Ultimo Mes Cancelado:</b> 2780691420304 <br />
-
-                                <b>Encargado:</b> Melvin Misael Joj Gil <br />
-                                <b>No. Tel:</b> 3516-3511
+                                <b>Fecha Ultimo Pago:</b> {{alumnoInfo.data.fecha_Pago}} <br />
+                                <b>Motivo Del Pago:</b> {{alumnoInfo.data.tipo_Pago}} <br />
+                                <b>Ultimo Mes Pagado:</b> {{alumnoInfo.data.mes}}<br />
+                                <b>Monto Cancelado:</b> Q. {{alumnoInfo.data.monto}}<br />
+                                <b>Origen Del Pago:</b> {{alumnoInfo.data.origen_Pago}}<br />
+                                <b>Inscripción Pagada: <span class="{{colorInscripcion}}"> {{alumnoInfo.data.pago_Inscripcion}}</span></b>
                             </small>
                         </p>
                     </div>
                 </div>
-                <br /><br /><br />
-                <!-- Pinta el Alumno -->
-                <div class="d-grid gap-2 d-md-block text-center ">
-                    <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="far fa-money-bill-alt"></i> Realizar
+                <!-- Pinta al Empleado -->
+                <div class="row justify-content-center py-4" *ngIf="verEmpleado">
+                    <div class="col-4">
+                        <img src="{{no_Foto}}"
+                            class="img-fluid" *ngIf="!empleadoInfo.data.foto; else elseBlock"/>
+                        <ng-template #elseBlock>
+                            <img src="{{empleadoInfo.data.foto}}"
+                            class="img-fluid" />
+                        </ng-template>
+                    </div>
+                    <div class="col-4 align-self-center">
+                        <h4 class="text-center">{{empleadoInfo.data.nombre}}</h4>
+                        <p class="my-0 py-0 px-2 text-muted">Detalle Ultimo Pago</p>
+                        <p class="border border-1 rounded-5 px-3 py-3">
+                            <small>
+                                <b>Puesto:</b> {{empleadoInfo.data.puesto}} <br />
+                                <b>Fecha Ultimo Pago:</b> {{empleadoInfo.data.fecha_Pago}} <br />
+                                <b>Motivo Del Pago:</b> {{empleadoInfo.data.tipo_Pago}} <br />
+                                <b>Ultimo Mes Pagado:</b> {{empleadoInfo.data.mes}}<br />
+                                <b>Monto Pagado:</b> Q. {{empleadoInfo.data.monto}}<br />
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <!-- Botones -->
+                <div class="d-grid gap-2 d-md-block text-center" *ngIf="verBotones">
+                    <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="generarPago()"><i class="far fa-money-bill-alt"></i> Realizar
                         Pago</button>
                     <button class="btn btn-primary mx-1 fadeIn second" type="button" disabled><i class="far fa-file-pdf"></i>
                         Descargar Comprobante</button>

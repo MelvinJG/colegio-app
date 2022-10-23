@@ -1,43 +1,18 @@
 <!-- Cuando le da clic al boton comprar ahora automaticamente hace la compra y solo descarga un comprobante de compra -->
 <div class="container mt-5 mb-10">
     <h1 class="text-center pt-4 text-light fadeIn"><i class="fas fa-shopping-cart"></i> Productos del Colegio</h1>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary btn-lg fadeIn second" type="button" (click)="HabilitarPantallaAgregarProducto()"><i
+                class="fas fa-plus"></i> Nuevo Producto</button>
+    </div>
     <!-- VALIDAR SI TRAE DATOS O NO EL API -->
-    <div *ngIf="!productos.data; else elseBlock">
-        <!-- <app-error></app-error> -->
-        <!-- ERR: {{error.status}} - {{error.statusText}} :( <br />
-        Ooops... Parece que algo salió mal. -->
-        <div class="pt-4">
-            <div class="card fadeInDown">
-                <div class="card-body">
-                    <div class="pt-4 px-5 mx-5">
-                        <p class="fs-4 fw-bold" style="color: rgb(58, 101, 218);">
-                            <a
-                                href="https://learn.microsoft.com/es-es/troubleshoot/developer/webapps/iis/www-administration-management/http-status-code"><i
-                                    class="fa-solid fa-book-open"></i> README</a>
-                        </p>
-                        <p *ngIf="mostrarErrMessage; else elseBlock" class="fs-3" style="color: rgb(58, 101, 218);">
-                            {{error.status}} {{error.statusText}} <br /> {{error.error.message}}
-                        </p>
-                        <ng-template #elseBlock>
-                            <p class="fs-3" style="color: rgb(58, 101, 218);">
-                                {{error.status}} {{error.statusText}}
-                            </p>
-                        </ng-template>
-                        <p class="fs-6 text-muted">
-                            Ooops... Parece que algo salió mal. <br />
-                            Intente actualizar esta página o no dude en contactarnos si el problema persiste
-                        </p>
-                    </div>
-                    <img src="../../../../assets/ERROR IMAGEN.jpg" class="img-fluid" alt="Err" loading="lazy" />
-                </div>
-            </div>
-        </div>
+    <!-- <div *ngIf="!productos.data; else elseBlock"> -->
+    <div *ngIf="verError; else elseBlock">
+        <!-- PINTAR EL ERROR -->
+        <app-error [SendError]="error"></app-error>
+        <!-- PINTAR EL ERROR -->
     </div>
     <ng-template #elseBlock>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary btn-lg fadeIn second" type="button" (click)="HabilitarPantallaAgregarProducto()"><i
-                    class="fas fa-plus"></i> Nuevo Producto</button>
-        </div>
         <div class="row">
             <!-- <div class="col-sm-4"></div> -->
             <!-- ESTE ES EL QUE PINTARA TODO LOS Productos -->

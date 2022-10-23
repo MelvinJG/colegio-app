@@ -12,7 +12,7 @@ export class AlumnosComponent implements OnInit {
   no_Foto = '../../../../assets/no-foto.jpg';
   alumnos: any = []; // Contendra los alumnos que devuelva la API
   error: any; // Contendra el error que devuelva la API
-  mostrarErrMessage: boolean = false; // Para pintar mensaje de error o no
+  verError: boolean = false; // Pinta la vista error
   idGrado: any; // Contendra el parametro que recibimos
   nombreGrado: any; // Contendra el parametro que recibimos
 
@@ -28,12 +28,8 @@ export class AlumnosComponent implements OnInit {
       },
       err => {
         console.log("ERROR MAIN :( -> ",err);
-        if(err.status === 404) {
-          this.mostrarErrMessage = true;
-        }
         this.error = err;
-        // melvin = "ESTO ES UNA PRUEBA"
-        // this.router.navigate(['shared/error',this.error]);
+        this.verError = true;
       }
     );
   }

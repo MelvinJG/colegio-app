@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grades',
@@ -11,9 +10,9 @@ export class GradesComponent implements OnInit {
 
   grados: any = []; // Contendra los grados que devuelva la API
   error: any; // Contendra el error que devuelva la API
-  mostrarErrMessage: boolean = false; // Para pintar mensaje de error o no
+  verError: boolean = false; // Pinta la vista error
 
-  constructor(private API_SERVICE: InfoExtraService, private router: Router) { }
+  constructor(private API_SERVICE: InfoExtraService) { }
 
   ngOnInit(): void {
     this.getGrados();
@@ -26,12 +25,8 @@ export class GradesComponent implements OnInit {
       },
       err => {
         console.log("ERROR MAIN :( -> ",err);
-        if(err.status === 404) {
-          this.mostrarErrMessage = true;
-        }
         this.error = err;
-        // melvin = "ESTO ES UNA PRUEBA"
-        // this.router.navigate(['shared/error',this.error]);
+        this.verError = true;
       }
     );
   }

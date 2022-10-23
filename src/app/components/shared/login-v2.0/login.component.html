@@ -25,20 +25,24 @@
           <div class="card-body px-4 py-5 px-md-5">
             <!-- text-primary text-muted-->
             <h4 class="pb-4 text-center text-primary">BIENVENIDO</h4>
-            <form >
+            <form [formGroup]="validationForm" (ngSubmit)="onSubmit()">
 
               <!-- User input -->
               <div class="form-outline mb-4 pb-3">
                 <mdb-form-control>
-                  <input mdbInput type="text" id="user" [(ngModel)]="usuario.userName" name="user" class="form-control" autocomplete="off" required />
+                  <input mdbValidate mdbInput type="text" id="user" name="user" class="form-control" formControlName="user" required />
                   <label mdbLabel class="form-label" for="user">Usuario</label>
+                  <mdb-error *ngIf="user?.invalid && (user?.dirty || user?.touched)">Usuario Requerido</mdb-error>
+                  <mdb-success *ngIf="user?.valid && (user?.dirty || user?.touched)">¡Muy Bien!</mdb-success>
                 </mdb-form-control>
               </div>
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <mdb-form-control>
-                  <input mdbInput type="password" id="passw" [(ngModel)]="usuario.pass" name="passw" class="form-control" autocomplete="off" required />
+                  <input mdbValidate mdbInput type="password" id="passw" name="passw" class="form-control" formControlName="passw" required />
                   <label mdbLabel class="form-label" for="passw">Contraseña</label>
+                  <mdb-error *ngIf="passw?.invalid && (passw?.dirty || passw?.touched)">Contraseña Requerida</mdb-error>
+                  <mdb-success *ngIf="passw?.valid && (passw?.dirty || passw?.touched)">¡Muy Bien!</mdb-success>
                 </mdb-form-control>
               </div>
 

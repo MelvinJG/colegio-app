@@ -27,6 +27,9 @@ import { AnunciosTareasComponent } from './components/alumnos/anuncios-tareas/an
 import { TareasComponent } from './components/alumnos/tareas/tareas.component';
 import { VerNotasComponent } from './components/alumnos/ver-notas/ver-notas.component';
 import { GenerarPagoComponent } from './components/alumnos/generar-pago/generar-pago.component';
+/*Guard*/
+import { AuthorizationGuard } from './guards/authorization.guard'
+import { RolesGuard } from './guards/roles.guard'
 
 const routes: Routes = [
   // Root
@@ -59,7 +62,8 @@ const routes: Routes = [
   // Admin
   {
     path: 'administracion/grades',
-    component: GradesComponent
+    component: GradesComponent,
+    canActivate: [AuthorizationGuard] // Valida si existe el token o si ya expiero
   },
   {
     path: 'administracion/alumnos/:grado_Id/:nombre_Grado',
@@ -67,7 +71,9 @@ const routes: Routes = [
   },
   {
     path: 'administracion/productos',
-    component: ProductosComponent
+    component: ProductosComponent,
+    canActivate: [RolesGuard],
+    data: { expectedRole: 'admin' } // Tiene que tener el roll
   },
   {
     path: 'administracion/personal/listarPersonal',

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-error',
@@ -8,12 +7,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor(private activeRoute: ActivatedRoute,) { }
+  @Input()
+  SendError: any;
+  mostrarErrMessage: boolean = false; // Para pintar mensaje de error o no
+  
+  constructor() { }
 
   order: string;
   ngOnInit(): void {
-    // console.log("PARAMETRO -> ", this.activeRoute.snapshot.params.err)
-    // console.log("PARAMETRO -> ", JSON.stringify(this.activeRoute.snapshot.params.err))
+    if(this.SendError.status === 404) {
+      this.mostrarErrMessage = true;
+    }
+    console.log("Recibimos -> ",this.SendError)
   }
 
 }

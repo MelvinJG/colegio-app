@@ -33,6 +33,10 @@ import { ReporteComponent } from './components/admin/reporte/reporte.component';
 import { InfoExtraService } from './services/infoExtra/info-extra.service';
 import { AlumnoService } from './services/alumno/alumno.service';
 import { ProductoService } from './services/producto/producto.service';
+import { EmpleadoService } from './services/empleado/empleado.service';
+import { PagoService } from './services/pago/pago.service';
+import { UserAuthService } from './services/userAuth/user-auth.service';
+
 // MDB
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
@@ -44,7 +48,8 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ReactiveFormsModule } from '@angular/forms';
 // Grafica
 import { ChartsModule } from 'ng2-charts';
-
+// JWT
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt'
 
 @NgModule({
   declarations: [
@@ -92,7 +97,12 @@ import { ChartsModule } from 'ng2-charts';
   providers: [
     InfoExtraService,
     AlumnoService,
-    ProductoService
+    ProductoService,
+    EmpleadoService,
+    PagoService,
+    UserAuthService,
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

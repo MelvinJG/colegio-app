@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../../services/producto/producto.service';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Producto } from '../../../models/Producto';
@@ -21,7 +20,7 @@ export class ProductosComponent implements OnInit {
   actualizarProducto: boolean = false;
   productos: any = []; // Contendra los grados que devuelva la API
   error: any; // Contendra el error que devuelva la API
-  mostrarErrMessage: boolean = false; // Para pintar mensaje de error o no
+  verError: boolean = false; // Pinta la vista error
   textDone: any = []; // Porcentaje de carga de la imagen
   lookTextPhoto: boolean = false; // Ver el TEXTO porcentaje de carga o no
   photoProducto: string; // Almacena URL foto del producto
@@ -37,7 +36,7 @@ export class ProductosComponent implements OnInit {
   };
 
   validationForm: FormGroup;
-  constructor(private API_SERVICE: ProductoService, private http: HttpClient, private API_PHOTO: InfoExtraService) {
+  constructor(private API_SERVICE: ProductoService, private API_PHOTO: InfoExtraService) {
     this.validationForm = new FormGroup({
       nameProducto: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
       precio: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
@@ -242,12 +241,8 @@ export class ProductosComponent implements OnInit {
       },
       err => {
         console.log("ERROR MAIN :( -> ",err);
-        if(err.status === 404) {
-          this.mostrarErrMessage = true;
-        }
         this.error = err;
-        // melvin = "ESTO ES UNA PRUEBA"
-        // this.router.navigate(['shared/error',this.error]);
+        this.verError = true;
       }
     );
   }

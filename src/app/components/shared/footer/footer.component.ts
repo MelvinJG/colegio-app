@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  _unsubscribe: Subject<any>;
+
+  constructor(private API_USER_AUTH: UserAuthService) { 
+    this._unsubscribe = new Subject();
+  }
 
   public isLogged: boolean = false;
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.pipe(takeUntil(this._unsubscribe)).subscribe(data => {
+      if(data === true){  
+        this.isLogged = true;
+      } else {
+        this.isLogged = false;
+      }
+    })
   }
 
 }

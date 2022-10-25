@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 
 @Component({
   selector: 'app-calificar-tarea',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalificarTareaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private API_USER_AUTH: UserAuthService) { }
 
   public formulario:boolean = false;
 
@@ -16,6 +17,7 @@ export class CalificarTareaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
   }
 
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { UserAuthService } from '../services/userAuth/user-auth.service';
-import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 import decode from 'jwt-decode';
 
 @Injectable({
@@ -10,21 +10,22 @@ import decode from 'jwt-decode';
 })
 export class RolesGuard implements CanActivate {
 
-  constructor(private router: Router, private API_USER_AUTH: UserAuthService){}
+  constructor(private API_USER_AUTH: UserAuthService, private router: Router){}
 
   canActivate(route: ActivatedRouteSnapshot): boolean{
-    const expectedRole = ['route.data.expectedRole'];
-    const token = localStorage.getItem('token');
-
-    const decodeToken = decode(token);
-    const userName = JSON.parse(JSON.stringify(decodeToken)).userName;
+    const expectedRole = route.data['expectedRole'];
+    const decodeToken = decode(localStorage.getItem('token'));
     const roleId = JSON.parse(JSON.stringify(decodeToken)).roleId;
-    const id_usuario = JSON.parse(JSON.stringify(decodeToken)).id_usuario;
-
-    console.log("userName -> ",userName)
-    console.log("roleId -> ",roleId)
-    console.log("id_usuario -> ",id_usuario)
+    if(!this.API_USER_AUTH.isAuth() || roleId !== expectedRole){
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops...',
+        text: "Usuario no Autorizado para la Vista."
+      })
+      this.router.navigate(['/home'])
+      // this.router.navigate(['shared/error',]) V2.0 mostrar esta vista de error // private router: Router, // import { Router } from '@angular/router';
+      return false;
+    }
     return true;
   }
-  
 }

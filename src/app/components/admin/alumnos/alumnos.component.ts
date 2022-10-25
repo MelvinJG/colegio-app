@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnoService } from '../../../services/alumno/alumno.service';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -16,9 +17,10 @@ export class AlumnosComponent implements OnInit {
   idGrado: any; // Contendra el parametro que recibimos
   nombreGrado: any; // Contendra el parametro que recibimos
 
-  constructor(private activeRoute: ActivatedRoute, private API_SERVICE: AlumnoService) { }
+  constructor(private activeRoute: ActivatedRoute, private API_SERVICE: AlumnoService, private API_USER_AUTH: UserAuthService) { }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
     this.idGrado = this.activeRoute.snapshot.params['grado_Id'];
     this.nombreGrado = this.activeRoute.snapshot.params['nombre_Grado'];
     // Pintar los alumnos por grado

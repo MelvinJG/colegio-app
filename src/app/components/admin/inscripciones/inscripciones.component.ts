@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
 import { AlumnoService } from '../../../services/alumno/alumno.service';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Alumno } from '../../../models/Alumno';
@@ -40,9 +41,10 @@ export class InscripcionesComponent {
     relacion_Encargado: '',
   }
 
-  constructor(private API_SERVICE: InfoExtraService, private API_ALUMNO_ENCARGADO: AlumnoService, private router: Router) { }
+  constructor(private API_SERVICE: InfoExtraService, private API_ALUMNO_ENCARGADO: AlumnoService, private router: Router, private API_USER_AUTH: UserAuthService) { }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
     this.API_SERVICE.getGrados().subscribe(
       res => {
         this.grados = res;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 
 @Component({
   selector: 'app-admin-perfil',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private API_USER_AUTH: UserAuthService) { }
 
   public contrasenia:boolean = false;
   public perfil:boolean = false;
@@ -23,6 +24,7 @@ export class AdminPerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
   }
 
 }

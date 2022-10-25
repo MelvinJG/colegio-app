@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 
 @Component({
   selector: 'app-grades',
@@ -12,9 +13,10 @@ export class GradesComponent implements OnInit {
   error: any; // Contendra el error que devuelva la API
   verError: boolean = false; // Pinta la vista error
 
-  constructor(private API_SERVICE: InfoExtraService) { }
+  constructor(private API_SERVICE: InfoExtraService, private API_USER_AUTH: UserAuthService) { }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
     this.getGrados();
   }
 

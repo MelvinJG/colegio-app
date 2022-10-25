@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 
 @Component({
   selector: 'app-reporte',
@@ -9,9 +10,11 @@ import { Chart } from 'chart.js';
 export class ReporteComponent implements OnInit {
   public chart: any;
   public graficaSolventes: any;
-  constructor() { }
+
+  constructor(private API_USER_AUTH: UserAuthService) { }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
     this.createChart();
     this.createChart2();
   }

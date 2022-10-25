@@ -113,19 +113,19 @@
       <div mdbDropdown class="dropdown">
         <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white"
           id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false" mdbDropdownToggle>
-          <i class="fa-solid fa-hand-peace"></i> Hola! Melvin Joj
-          <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+          <i class="fa-solid fa-hand-peace"></i> Hola! {{userName}} 
+          <img src="{{foto}}" class="rounded-circle px-2" height="25"
             alt="Black and White Portrait of a Man" loading="lazy" />
         </a>
         <ul mdbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
           <li>
-            <a class="dropdown-item" routerLink="/shared/modificarPerfil">My profile</a>
+            <a class="dropdown-item" routerLink="/shared/modificarPerfil">Mi Perfil</a>
           </li>
-          <li>
+          <!-- <li>
             <a class="dropdown-item" href="#">Settings</a>
-          </li>
+          </li> -->
           <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" (click)="logout()">Cerrar Sesión</a>
           </li>
         </ul>
       </div>

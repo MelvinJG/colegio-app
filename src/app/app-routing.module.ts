@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 // componentes
+/* Raiz */
+
 /* Compartido */
 import { LoginComponent } from './components/shared/login/login.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { PdfInvoiceComponent } from './components/shared/pdf-invoice/pdf-invoice.component'
 import { AdminPerfilComponent } from './components/shared/admin-perfil/admin-perfil.component';
 import { ErrorComponent } from './components/shared/error/error.component';
+import { NavigationComponent } from './components/shared/navigation/navigation.component';
 /* Admin */
 import { GradesComponent } from './components/admin/grades/grades.component';
 import { AlumnosComponent } from './components/admin/alumnos/alumnos.component';
@@ -45,97 +49,129 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'shared/invoicePDF',
-    component: PdfInvoiceComponent
+    component: HomeComponent,
+    canActivate: [AuthorizationGuard]
   },
   {
     path: 'shared/modificarPerfil',
-    component: AdminPerfilComponent
+    component: AdminPerfilComponent,
+    canActivate: [AuthorizationGuard]
   },
   {
-    path: 'shared/error/:err',
-    component: ErrorComponent
+    path: 'shared/error',
+    component: ErrorComponent,
+    canActivate: [AuthorizationGuard]
   },
   // Admin
   {
     path: 'administracion/grades',
     component: GradesComponent,
-    canActivate: [AuthorizationGuard] // Valida si existe el token o si ya expiero
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/alumnos/:grado_Id/:nombre_Grado',
-    component: AlumnosComponent
+    component: AlumnosComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/productos',
     component: ProductosComponent,
-    canActivate: [RolesGuard],
+    canActivate: [AuthorizationGuard, RolesGuard], //[Valida si existe el token (si inicio sesion), Valida el role que tiene (si tiene permisos)]
     data: { expectedRole: 'admin' } // Tiene que tener el roll
   },
   {
     path: 'administracion/personal/listarPersonal',
-    component: ListarPersonalComponent
+    component: ListarPersonalComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/personal/agregarPersonal',
-    component: AgregarPersonalComponent
+    component: AgregarPersonalComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/inscripciones',
-    component: InscripcionesComponent
+    component: InscripcionesComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/solicitudes',
-    component: SolicitudesComponent
+    component: SolicitudesComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/pagosColegio/:id',
-    component: PagosComponent
+    component: PagosComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   {
     path: 'administracion/reporte',
-    component: ReporteComponent
+    component: ReporteComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'admin' }
   },
   // Profesores
   {
     path: 'profesores/misGrados',
-    component: GradesComponent
+    component: GradesComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'prof' }
   },
   {
     path: 'profesores/misAlumnos',
-    component: AlumnosComponent
+    component: AlumnosComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'prof' }
   },
   {
     path: 'profesores/publicarAnuncio-Tarea',
-    component: AnuncioTareaComponent
+    component: AnuncioTareaComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'prof' }
   },
   {
     path: 'profesores/calificarTarea',
-    component: CalificarTareaComponent
+    component: CalificarTareaComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'prof' }
   },
   {
     path: 'profesores/subirNotasFinales',
-    component: NotasFinalesComponent
+    component: NotasFinalesComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'prof' }
   },
   // Alumnos
   {
     path: 'alumnos/Anuncios-Tareas',
-    component: AnunciosTareasComponent
+    component: AnunciosTareasComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'user' }
   },
   {
     path: 'alumnos/verTareas',
-    component: TareasComponent
+    component: TareasComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'user' }
   },
   {
     path: 'alumnos/verNotas',
-    component: VerNotasComponent
+    component: VerNotasComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'user' }
   },
   {
     path: 'alumnos/realizarPago',
-    component: GenerarPagoComponent
+    component: GenerarPagoComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'user' }
   }
 ];
 

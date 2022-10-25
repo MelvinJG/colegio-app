@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../../services/producto/producto.service';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Producto } from '../../../models/Producto';
@@ -36,7 +37,7 @@ export class ProductosComponent implements OnInit {
   };
 
   validationForm: FormGroup;
-  constructor(private API_SERVICE: ProductoService, private API_PHOTO: InfoExtraService) {
+  constructor(private API_SERVICE: ProductoService, private API_PHOTO: InfoExtraService, private API_USER_AUTH: UserAuthService) {
     this.validationForm = new FormGroup({
       nameProducto: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
       precio: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
@@ -235,6 +236,7 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
     this.API_SERVICE.getProductos().subscribe(
       res => {
         this.productos = res;

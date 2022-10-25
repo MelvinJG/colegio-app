@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private API_USER_AUTH: UserAuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.setItem('token','');
+    this.API_USER_AUTH.ShowNavigation.next(false);
+  }
 
   iniciarSesion(){
     if(this.usuario.userName !== "" && this.usuario.pass !== ""){
@@ -31,9 +34,11 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             title: 'Bienvenido',
             showConfirmButton: false,
-            timer: 12000
+            timer: 1200
           });
-          // this.router.navigate(['/home']);
+          //this.router.navigate(['/test']);
+          this.API_USER_AUTH.ShowNavigation.next(true);
+          this.router.navigate(['/home']);
         },
         err => {
           // console.log("ERROR INICIO DE SESION -> ",err)

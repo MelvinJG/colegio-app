@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlumnoService } from '../../../services/alumno/alumno.service';
 import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
 import { EmpleadoService } from '../../../services/empleado/empleado.service';
+import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 import { PagoService } from '../../../services/pago/pago.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
 export class PagosComponent implements OnInit {
 
   constructor(private API_ALUMNO_SERVICE: AlumnoService, private activeRoute: ActivatedRoute, private API_INFO_SERVICE: InfoExtraService, 
-    private API_EMPLEADO_SERVICE: EmpleadoService, private API_PAGO_SERVICE: PagoService) { }
+    private API_EMPLEADO_SERVICE: EmpleadoService, private API_PAGO_SERVICE: PagoService, private API_USER_AUTH: UserAuthService) { }
 
   no_Foto = '../../../../assets/no-foto.jpg';
   titulo: string = "";
@@ -43,6 +44,7 @@ export class PagosComponent implements OnInit {
   empleadoSeleccionado: string = "";
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
     const parametro = this.activeRoute.snapshot.params;
     if(parametro['id'] === 'pago-inscripcion') {
       this.getGrados();

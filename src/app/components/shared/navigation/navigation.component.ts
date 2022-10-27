@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { UserAuthService } from '../../../services/user-auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 

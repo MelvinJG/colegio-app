@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { UserAuthService } from '../../../services/user-auth.service';
+import { AnuncioTareaService } from '../../../services/anuncio-tarea.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-calificar-tarea',
@@ -8,9 +10,9 @@ import { UserAuthService } from '../../../services/userAuth/user-auth.service';
 })
 export class CalificarTareaComponent implements OnInit {
 
-  constructor(private API_USER_AUTH: UserAuthService) { }
-
   public formulario:boolean = false;
+
+  constructor(private API_USER_AUTH: UserAuthService, private API_ANUNCIO_TAREA: AnuncioTareaService) { }
 
   HabilitarFormulario(){
     this.formulario = true;

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { InfoExtraService } from '../../../../services/infoExtra/info-extra.service';
+import { InfoExtraService } from '../../../../services/info-extra.service';
 import Swal from 'sweetalert2';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 

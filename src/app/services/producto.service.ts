@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 // Interfaz
-import { Producto } from '../../models/Producto';
+import { Producto } from '../models/Producto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
-  API_URL = 'http://localhost:2200/api/producto';
+  // API_URL = 'http://localhost:2200/api/producto';
+
+  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  API_URL = `${this.NGROK}/api/producto`;
 
   constructor(private http: HttpClient) { }
 

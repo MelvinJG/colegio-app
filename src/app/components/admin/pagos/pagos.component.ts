@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlumnoService } from '../../../services/alumno/alumno.service';
-import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import { EmpleadoService } from '../../../services/empleado/empleado.service';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
-import { PagoService } from '../../../services/pago/pago.service';
+import { AlumnoService } from '../../../services/alumno.service';
+import { InfoExtraService } from '../../../services/info-extra.service';
+import { EmpleadoService } from '../../../services/empleado.service';
+import { UserAuthService } from '../../../services/user-auth.service';
+import { PagoService } from '../../../services/pago.service';
 import Swal from 'sweetalert2';
 
 @Component({

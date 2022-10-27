@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InfoExtraService } from '../../../../services/infoExtra/info-extra.service';
-import { EmpleadoService } from '../../../../services/empleado/empleado.service';
-
+import { InfoExtraService } from '../../../../services/info-extra.service';
+import { EmpleadoService } from '../../../../services/empleado.service';
+import { UserAuthService } from '../../../../services/user-auth.service';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Empleado } from '../../../../models/Empleado';
@@ -36,7 +36,7 @@ export class AgregarPersonalComponent implements OnInit {
   mostrarBotones: boolean = false;
   gradosAsignados: any;
 
-  constructor(private API_PHOTO: InfoExtraService, private API_EMPLEADO: EmpleadoService, private router: Router) { }
+  constructor(private API_PHOTO: InfoExtraService, private API_EMPLEADO: EmpleadoService, private router: Router, private API_USER_AUTH: UserAuthService) { }
 
   uploadPhoto (event: any){
     this.lookTextPhoto = true;
@@ -141,6 +141,7 @@ export class AgregarPersonalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.API_USER_AUTH.ShowNavigation.next(true);
   }
 
 }

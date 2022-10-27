@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlumnoService } from '../../../services/alumno/alumno.service';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { AlumnoService } from '../../../services/alumno.service';
+import { UserAuthService } from '../../../services/user-auth.service';
+import { EmpleadoService } from '../../../services/empleado.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-alumnos',
@@ -12,12 +14,13 @@ export class AlumnosComponent implements OnInit {
 
   no_Foto = '../../../../assets/no-foto.jpg';
   alumnos: any = []; // Contendra los alumnos que devuelva la API
+  profesores: any = [];
   error: any; // Contendra el error que devuelva la API
   verError: boolean = false; // Pinta la vista error
   idGrado: any; // Contendra el parametro que recibimos
   nombreGrado: any; // Contendra el parametro que recibimos
 
-  constructor(private activeRoute: ActivatedRoute, private API_SERVICE: AlumnoService, private API_USER_AUTH: UserAuthService) { }
+  constructor(private activeRoute: ActivatedRoute, private API_SERVICE: AlumnoService, private API_USER_AUTH: UserAuthService, private API_EMPLEADO: EmpleadoService) { }
 
   ngOnInit(): void {
     this.API_USER_AUTH.ShowNavigation.next(true);
@@ -29,9 +32,33 @@ export class AlumnosComponent implements OnInit {
         this.alumnos = res;
       },
       err => {
-        console.log("ERROR MAIN :( -> ",err);
+        console.log("ERROR MAIN ALUMNOS :( -> ",err);
         this.error = err;
         this.verError = true;
+      }
+    );
+    // Pinta a los profesores por grado
+    this.API_EMPLEADO.getProfesoresPorGrado(this.idGrado).subscribe(
+      res => {
+        this.profesores = res;
+      },
+      err => {
+        console.log("ERROR MAIN PROFESORES :( -> ",err);
+        if(err.status === 404){
+          Swal.fire({
+            icon: 'info',
+            title: 'Oops...',
+            text: err.error.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '¡Algo salió mal!'
+          })
+        }
       }
     );
   }

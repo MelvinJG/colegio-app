@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { InfoExtraService } from '../../../services/info-extra.service';
+import { UserAuthService } from '../../../services/user-auth.service';
 
 @Component({
   selector: 'app-grades',
@@ -21,15 +21,30 @@ export class GradesComponent implements OnInit {
   }
 
   getGrados(){
-    this.API_SERVICE.getGrados().subscribe(
-      res => {
-        this.grados = res;
-      },
-      err => {
-        console.log("ERROR MAIN :( -> ",err);
-        this.error = err;
-        this.verError = true;
-      }
-    );
+    if(this.API_USER_AUTH.getIdRole() === 'admin'){
+      this.API_SERVICE.getGrados().subscribe(
+        res => {
+          this.grados = res;
+        },
+        err => {
+          console.log("ERROR MAIN :( -> ",err);
+          this.error = err;
+          this.verError = true;
+        }
+      );
+    } else if(this.API_USER_AUTH.getIdRole() === 'prof'){
+      this.API_SERVICE.getGradosPROF(this.API_USER_AUTH.getIdUsuario()).subscribe(
+        res => {
+          this.grados = res;
+        },
+        err => {
+          console.log("ERROR MAIN :( -> ",err);
+          this.error = err;
+          this.verError = true;
+        }
+      );
+    } else if(this.API_USER_AUTH.getIdRole() === 'user'){
+      
+    }
   }
 }

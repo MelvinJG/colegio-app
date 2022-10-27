@@ -8,10 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 /* Compartido */
 import { LoginComponent } from './components/shared/login/login.component';
 import { HomeComponent } from './components/shared/home/home.component';
-import { PdfInvoiceComponent } from './components/shared/pdf-invoice/pdf-invoice.component'
 import { AdminPerfilComponent } from './components/shared/admin-perfil/admin-perfil.component';
 import { ErrorComponent } from './components/shared/error/error.component';
-import { NavigationComponent } from './components/shared/navigation/navigation.component';
 /* Admin */
 import { GradesComponent } from './components/admin/grades/grades.component';
 import { AlumnosComponent } from './components/admin/alumnos/alumnos.component';
@@ -70,10 +68,9 @@ const routes: Routes = [
     data: { expectedRole: 'admin' }
   },
   {
-    path: 'administracion/alumnos/:grado_Id/:nombre_Grado',
+    path: 'shared/alumnos/:grado_Id/:nombre_Grado',
     component: AlumnosComponent,
-    canActivate: [AuthorizationGuard, RolesGuard],
-    data: { expectedRole: 'admin' }
+    canActivate: [AuthorizationGuard] // COMPARTIDO 
   },
   {
     path: 'administracion/productos',
@@ -124,12 +121,12 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard, RolesGuard],
     data: { expectedRole: 'prof' }
   },
-  {
-    path: 'profesores/misAlumnos',
-    component: AlumnosComponent,
-    canActivate: [AuthorizationGuard, RolesGuard],
-    data: { expectedRole: 'prof' }
-  },
+  // {
+  //   path: 'profesores/misAlumnos',
+  //   component: AlumnosComponent,
+  //   canActivate: [AuthorizationGuard, RolesGuard],
+  //   data: { expectedRole: 'prof' }
+  // },
   {
     path: 'profesores/publicarAnuncio-Tarea',
     component: AnuncioTareaComponent,

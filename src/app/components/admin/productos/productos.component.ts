@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from '../../../services/producto/producto.service';
-import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { ProductoService } from '../../../services/producto.service';
+import { InfoExtraService } from '../../../services/info-extra.service';
+import { UserAuthService } from '../../../services/user-auth.service';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Producto } from '../../../models/Producto';

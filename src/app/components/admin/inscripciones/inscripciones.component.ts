@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InfoExtraService } from '../../../services/infoExtra/info-extra.service';
-import { AlumnoService } from '../../../services/alumno/alumno.service';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { InfoExtraService } from '../../../services/info-extra.service';
+import { AlumnoService } from '../../../services/alumno.service';
+import { UserAuthService } from '../../../services/user-auth.service';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Alumno } from '../../../models/Alumno';

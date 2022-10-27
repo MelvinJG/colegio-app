@@ -6,7 +6,10 @@ import { HttpClient } from '@angular/common/http'
 })
 export class PagoService {
 
-  API_URL = 'http://localhost:2200/api/pago';
+  // API_URL = 'http://localhost:2200/api/pago';
+
+  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  API_URL = `${this.NGROK}/api/pago`;
 
   constructor(private http: HttpClient) { }
 

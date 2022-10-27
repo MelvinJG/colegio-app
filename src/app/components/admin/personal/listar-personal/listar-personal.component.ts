@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmpleadoService } from '../../../../services/empleado/empleado.service';
-import { UserAuthService } from '../../../../services/userAuth/user-auth.service';
+import { EmpleadoService } from '../../../../services/empleado.service';
+import { UserAuthService } from '../../../../services/user-auth.service';
 
 @Component({
   selector: 'app-listar-personal',

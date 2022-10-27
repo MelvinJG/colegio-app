@@ -10,7 +10,7 @@
     <ng-template #elseBlock>
       <!-- ESTE ES EL QUE PINTARA TODO LOS GRADOS -->
       <div class="col-xl-6 mt-4" *ngFor = 'let grado of grados.data'>
-        <div class="card reflejo fadeInDown" [routerLink]= "['/administracion/alumnos',grado.grado_Id,grado.grado]">
+        <div class="card reflejo fadeInDown" [routerLink]= "['/shared/alumnos',grado.grado_Id,grado.grado]">
           <div class="card-body">
             <h5 class="card-title text-center">
               <i class="fas fa-graduation-cap"></i> {{grado.grado}} - SEC. {{grado.seccion}}

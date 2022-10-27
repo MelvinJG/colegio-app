@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { UserAuthService } from '../../../services/user-auth.service';
 
 @Component({
   selector: 'app-solicitudes',

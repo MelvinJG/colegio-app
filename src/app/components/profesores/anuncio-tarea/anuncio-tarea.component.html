@@ -1,35 +1,25 @@
 <div class="container pt-5 mb-10">
     <h1 class="text-center pt-4 text-light fadeIn"><i class="fas fa-bell"></i> Mis Anuncios / Tareas</h1>
-    <table class="table table-striped table-hover table-light fadeInDown">
+    <table class="table table-hover table-light fadeInDown">
+        <!-- <table class="table table-hover table-light fadeInDown"> -->
         <thead  class="align-middle text-center">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Grado</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Curso</th>
-                <th scope="col">Punteo</th>
+                <th scope="col">TIPO</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">DESCRIPCIÓN</th>
+                <th scope="col">GRADO</th>
+                <th scope="col">CURSO</th>
+                <th scope="col">PUNTEO</th>
             </tr>
         </thead>
-        <tbody  class="align-middle text-center">
+        <tbody  class="align-middle text-center" *ngFor = 'let publicacion of anuncioTarea.data'>
             <tr>
-                <th scope="row">1</th>
-                <td>Anuncio</td>
-                <td>Anuncio XX</td>
-                <td>Grado XX</td>
-                <td>Descripción.</td>
-                <td> -- </td>
-                <td> -- </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Tarea</td>
-                <td>Tarea XX</td>
-                <td>Grado XX</td>
-                <td>Descripción.</td>
-                <td>Curso XX</td>
-                <td>XX Puntos</td>
+                <th scope="row">{{publicacion.tipo}}</th>
+                <td>{{publicacion.titulo}}</td>
+                <td>{{publicacion.descripcion}}</td>
+                <td>{{publicacion.grado}}</td>
+                <td>{{publicacion.nombre_Curso}}</td>
+                <td>{{publicacion.punteo}} pts.</td>
             </tr>
         </tbody>
     </table>

@@ -30,12 +30,12 @@ import { ErrorComponent } from './components/shared/error/error.component';
 import { SelectGradosComponent } from './components/admin/personal/select-grados/select-grados.component';
 import { ReporteComponent } from './components/admin/reporte/reporte.component';
 // Servicios
-import { InfoExtraService } from './services/infoExtra/info-extra.service';
-import { AlumnoService } from './services/alumno/alumno.service';
-import { ProductoService } from './services/producto/producto.service';
-import { EmpleadoService } from './services/empleado/empleado.service';
-import { PagoService } from './services/pago/pago.service';
-import { UserAuthService } from './services/userAuth/user-auth.service';
+import { InfoExtraService } from './services/info-extra.service';
+import { AlumnoService } from './services/alumno.service';
+import { ProductoService } from './services/producto.service';
+import { EmpleadoService } from './services/empleado.service';
+import { PagoService } from './services/pago.service';
+import { UserAuthService } from './services/user-auth.service';
 
 // MDB
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';

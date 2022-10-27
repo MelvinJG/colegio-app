@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
-import { UserAuthService } from '../../../services/userAuth/user-auth.service';
+import { UserAuthService } from '../../../services/user-auth.service';
 // Interfaz
 import { Usuario } from '../../../models/Usuario';
 // Validar Form

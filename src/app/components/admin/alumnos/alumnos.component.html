@@ -58,5 +58,126 @@
       <!-- ESTE ES EL QUE PINTARA TODO LOS ALUMNOS -->
     </ng-template>
     <!-- VALIDAR SI TRAE DATOS O NO EL API -->
+    
   </div>
+  <!-- Mostrar profesores por grado -->
+  <h1 class="text-center pt-4 text-light fadeIn"><i class="fas fa-chalkboard-teacher"></i> PROFESORES</h1>
+  <table class="table table-hover table-light fadeInDown">
+    <thead class="align-middle text-center">
+        <tr>
+            <th scope="col">PROFESOR</th>
+            <th scope="col">CURSO</th>
+        </tr>
+    </thead>
+    <tbody class="align-middle text-center" *ngFor = 'let profesor of profesores.data'>
+      <tr>
+        <td>
+          <div class="row justify-content-center">
+            <div class="col-xl-2 align-self-center py-1">
+              <img
+                src="{{profesor.foto}}"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+            </div>
+            <div class="col-xl-5">
+              <p class="fw-bold mb-1">{{profesor.nombre}}</p>
+              <!-- <p class="text-muted mb-0">{{profesor.correo}}</p> -->
+              <p class="fw-normal mb-1">
+                <i class="fa-solid fa-phone"></i> {{profesor.no_Cel}}
+              </p>
+              <!-- <p class="fw-normal mb-0">
+                <i class="fa-solid fa-cake-candles">{{profesor.fecha_Nac}}</i>45-56-46
+              </p> -->
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="note note-primary">{{profesor.nombre_Curso}}</p>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
 </div>
+
+
+<!-- <table class="table align-middle mb-0 bg-white" *ngFor = 'let alumno of alumnos.data'>
+  <thead class="bg-light">
+    <tr>
+      <th>Nombre</th>
+      <th>Información</th>
+      <th>Curso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <img
+              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">Nombre</p>
+            <p class="text-muted mb-0">Correo</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">
+          <i class="fa-solid fa-phone"></i> 45657895
+        </p>
+        <p class="fw-normal mb-0">
+          <i class="fa-solid fa-cake-candles"></i> 48/78/2000
+        </p>
+      </td>
+      <td>
+        <span class="badge badge-success rounded-pill d-inline">Nombre Curso</span>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+  <!-- <table class="table align-middle mb-0 bg-white"> -->
+    <!-- <table class="table table-striped table-hover table-light fadeInDown">
+      <thead class="align-middle text-center">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Información</th>
+          <th scope="col">Curso</th>
+        </tr>
+      </thead>
+      <tbody *ngFor = 'let profesor of profesores.data'>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img
+                  src="{{profesor.foto}}"
+                  alt=""
+                  style="width: 45px; height: 45px"
+                  class="rounded-circle"
+                  />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">{{profesor.nombre}}</p>
+                <p class="text-muted mb-0">{{profesor.correo}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">
+              <i class="fa-solid fa-phone"></i> {{profesor.no_Cel}}
+            </p>
+            <p class="fw-normal mb-0">
+              <i class="fa-solid fa-cake-candles"></i> {{profesor.fecha_Nac}}
+            </p>
+          </td>
+          <td>
+            <span class="badge badge-success rounded-pill d-inline">{{profesor.nombre_Curso}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->

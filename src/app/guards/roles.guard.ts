@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import { UserAuthService } from '../services/userAuth/user-auth.service';
+import { UserAuthService } from '../services/user-auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
 import decode from 'jwt-decode';

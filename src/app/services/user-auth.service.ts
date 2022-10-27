@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 // Interfaz
-import { Usuario } from '../../models/Usuario';
+import { Usuario } from '../models/Usuario';
 // JWT
 import { JwtHelperService } from '@auth0/angular-jwt'
 import decode from 'jwt-decode';
@@ -12,7 +12,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserAuthService {
 
-  API_URL = 'http://localhost:2200/api/usuarioAuth';
+  // API_URL = 'http://localhost:2200/api/usuarioAuth';
+  
+  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  API_URL = `${this.NGROK}/api/usuarioAuth`;
 
   ShowNavigation: BehaviorSubject<any>;
 

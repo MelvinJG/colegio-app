@@ -12,10 +12,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserAuthService {
 
-  // API_URL = 'http://localhost:2200/api/usuarioAuth';
+  API_URL = 'http://localhost:2200/api/usuarioAuth';
   
-  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
-  API_URL = `${this.NGROK}/api/usuarioAuth`;
+  // NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  // API_URL = `${this.NGROK}/api/usuarioAuth`;
 
   ShowNavigation: BehaviorSubject<any>;
 

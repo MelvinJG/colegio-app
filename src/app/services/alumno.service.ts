@@ -9,10 +9,10 @@ import { Encargado } from '../models/Encargado';
 })
 export class AlumnoService {
 
-  // API_URL = 'http://localhost:2200/api/alumnoEncargado';
+  API_URL = 'http://localhost:2200/api/alumnoEncargado';
 
-  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
-  API_URL = `${this.NGROK}/api/alumnoEncargado`;
+  // NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  // API_URL = `${this.NGROK}/api/alumnoEncargado`;
 
   constructor(private http: HttpClient) { }
 

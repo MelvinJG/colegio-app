@@ -8,10 +8,10 @@ import { Empleado } from '../models/Empleado';
 })
 export class EmpleadoService {
 
-  // API_URL = 'http://localhost:2200/api/empleado';
+  API_URL = 'http://localhost:2200/api/empleado';
 
-  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
-  API_URL = `${this.NGROK}/api/empleado`;
+  // NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  // API_URL = `${this.NGROK}/api/empleado`;
 
   constructor(private http: HttpClient) { }
 

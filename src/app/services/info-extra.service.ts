@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http'
 })
 export class InfoExtraService {
 
-  // API_URL = 'http://localhost:2200/api/infoExtra';
+  API_URL = 'http://localhost:2200/api/infoExtra';
 
-  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
-  API_URL = `${this.NGROK}/api/infoExtra`;
+  // NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  // API_URL = `${this.NGROK}/api/infoExtra`;
 
   constructor(private http: HttpClient) { }
 
@@ -43,5 +43,9 @@ export class InfoExtraService {
   // Obtener los grados asignados al profesor
   getGradosPROF(dpiProfesor: string){
     return this.http.get(`${this.API_URL}/getGradosPROF/${dpiProfesor}`);
+  }
+
+  getCursosPorGradoPROF(dpiProfesor: string, IdGrado: string){
+    return this.http.get(`${this.API_URL}/getCursosPorGradoPROF/${dpiProfesor}/${IdGrado}`);
   }
 }

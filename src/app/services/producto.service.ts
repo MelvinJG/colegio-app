@@ -8,10 +8,10 @@ import { Producto } from '../models/Producto';
 })
 export class ProductoService {
 
-  // API_URL = 'http://localhost:2200/api/producto';
+  API_URL = 'http://localhost:2200/api/producto';
 
-  NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
-  API_URL = `${this.NGROK}/api/producto`;
+  // NGROK = 'https://cbb9-190-121-193-214.ngrok.io'
+  // API_URL = `${this.NGROK}/api/producto`;
 
   constructor(private http: HttpClient) { }
 

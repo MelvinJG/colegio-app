@@ -23,11 +23,13 @@ export class NavigationComponent implements OnInit {
   public isLoggedAlumnos: boolean = false;
   userName: string = "";
   foto: string = "";
+  logo: string = "";
   
   ngOnInit(): void {
     this.API_USER_AUTH.ShowNavigation.pipe(takeUntil(this._unsubscribe)).subscribe(data => {
       if(data === true){  
         this.isLoggedDentroSistema = true;
+        this.logo = '../../../../assets/logoDummy.jpeg';
         this.userName = this.API_USER_AUTH.getUserName();
         // Validacion fotos
         if (this.API_USER_AUTH.getEmpFoto() === null && this.API_USER_AUTH.getAlumFoto() === null){

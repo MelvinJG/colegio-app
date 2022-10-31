@@ -44,7 +44,16 @@ export class GradesComponent implements OnInit {
         }
       );
     } else if(this.API_USER_AUTH.getIdRole() === 'user'){
-      
+      this.API_SERVICE.getGradosALUM(this.API_USER_AUTH.getIdUsuario()).subscribe(
+        res => {
+          this.grados = res;
+        },
+        err => {
+          console.log("ERROR MAIN :( -> ",err);
+          this.error = err;
+          this.verError = true;
+        }
+      );
     }
   }
 }

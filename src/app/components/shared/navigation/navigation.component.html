@@ -13,13 +13,13 @@
       <!-- IF ELSE -->
       <div *ngIf="isLoggedDentroSistema; else elseBlock">
         <a class="navbar-brand mt-2 mt-lg-0" routerLink="/home">
-          <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo"
+          <img src="{{logo}}" height="35" alt="Monte Sinaí Logo"
             loading="lazy" />
         </a>
       </div>
       <ng-template #elseBlock>
         <a class="navbar-brand mt-2 mt-lg-0" routerLink="/login">
-          <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo"
+          <img src="{{logo}}" height="35" alt="Monte Sinaí Logo"
             loading="lazy" />
         </a>
       </ng-template>
@@ -62,7 +62,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/administracion/solicitudes">Peticiones Pago Alumnos
-            <span class="badge rounded-pill badge-notification bg-danger">NINGUNO</span>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
           </a>
         </li>
       </ul>
@@ -92,7 +92,10 @@
       <!-- ALUMNOS -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isLoggedAlumnos">
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/alumnos/Anuncios-Tareas">Anuncios</a>
+          <a class="nav-link text-white" routerLink="/alumnos/miGrado">Mi Grado</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/alumnos/verAnuncios">Anuncios</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/alumnos/verTareas">Tareas</a>
@@ -115,7 +118,7 @@
           id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false" mdbDropdownToggle>
           <i class="fa-solid fa-hand-peace"></i> Hola! {{userName}} 
           <img src="{{foto}}" class="rounded-circle px-2" height="25"
-            alt="Black and White Portrait of a Man" loading="lazy" />
+            alt="Foto De Perfil" loading="lazy" />
         </a>
         <ul mdbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
           <li>

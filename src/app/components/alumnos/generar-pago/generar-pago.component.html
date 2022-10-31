@@ -1,14 +1,14 @@
-<div class="container pt-5">
+<!-- <div class="container pt-5">
     <div class="card mt-4 fadeInDown">
         <h3 class="card-header text-center fadeIn second">
             <i class="fa-solid fa-hand-holding-dollar"></i> Estado de Cuenta
         </h3>
         <div class="card-body">
-            <!-- <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. Monto.00</span></h5> -->
-            <!-- Pinta el Alumno -->
+            <h5 class="text-end pb-2 pt-1 px-4">Monto Colegiatura: <span style="color: green">Q. 200.5</span></h5>
+            Pinta el Alumno
             <div class="row justify-content-center">
                 <div class="col-xl-4">
-                    <img src="https://previews.123rf.com/images/rglinsky/rglinsky1201/rglinsky120100188/12336990-vertical-de-la-imagen-orientada-a-la-famosa-torre-eiffel-en-par%C3%ADs-francia-.jpg"
+                    <img src="https://imgs.search.brave.com/YhoKht41mr7TqTg1vuPLsWj5sKYoVTl2-XgVDjh_f10/rs:fit:640:640:1/g:ce/aHR0cDovL2Nkbi5w/bGF5YnV6ei5jb20v/Y2RuLzkxMzI1M2Nk/LTVhMDItNGJmMi04/M2UxLTE4ZmYyY2M3/MzQwZi9jNTYxNTdk/NS01ZDhlLTQ4MjYt/ODlmOS0zNjE0MTIy/NzVjMzUuanBn"
                         class="img-fluid" />
                 </div>
                 <div class="col-xl-4 align-self-center pt-3">
@@ -29,46 +29,40 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="container mb-10">
+<div class="container mb-10 pt-5">
     <div class="card mt-4 fadeInDown">
         <h3 class="card-header text-center fadeIn second">
-            <i class="fa-solid fa-file-invoice-dollar"></i> <i class="fa-solid fa-money-check-dollar"></i> Subir
-            Comprobante De Pago
+            <i class="fa-solid fa-money-check-dollar"></i> Subir
+            Comprobante De Pago 
+            <label class="obligatorio">
+                * Obligatorio
+            </label>
         </h3>
         <div class="card-body">
             <!-- <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. Monto.00</span></h5> -->
             <form method="post">
                 <div class="row pb-4">
-                    <div class="col-xl-6 mt-3 form-outline">
+                    <div class="col-xl-4 form-outline align-self-center mb-4">
                         <select class="form-select form-control bonus-design" aria-label="Default select example">
-                            <option selected>Mes de Pago</option>
+                            <option selected><b class="obligatorio">*</b> Mes de Pago</option>
                             <option value="1">Uno</option>
                             <option value="2">Dos</option>
                             <option value="3">Tres</option>
                         </select>
                     </div>
-                    <div class="col-xl-6 mt-3 form-outline">
+                    <!-- <div class="col-xl-6 mt-3 form-outline">
                         <input type="text" id="comentarios" class="form-control bonus-design" autocomplete="off" />
                         <label class="form-label" for="fomentarios">Comentarios</label>
-                    </div>
-                    <div class="col-xl-12 mt-3">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10">
-                                <label for="formFile" class="form-label">Seleccione el comprobante de pago</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
-                            <!-- align-self-center  justify-content-end align-items-center-->
-                            <div class="col-xl-2">
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
-                                </div>
-                                <!-- <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
-                                </div> -->
-                            </div>
+                    </div> -->
+                    <div class="col-xl-8 mb-4 text-center">
+                        <label for="formFile" class="form-label text-start"><b class="obligatorio">*</b> Seleccione boleta de banco</label>
+                        <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
+                        <div class="spinner-border text-primary" role="status" *ngIf="lookSpinner">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
+                        <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-block text-center ">
@@ -84,86 +78,3 @@
         </div>
     </div>
 </div>
-
-<br/><br/><br/><br/>
-
-<div class="container pt-5">
-    <div class="card mt-4 fadeInDown borde">
-        <h3 class="card-header text-center fadeIn second">
-            Resumen Ultimo Pago
-        </h3>
-        <div class="card-body">
-            <!-- <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. Monto.00</span></h5> -->
-            <!-- Pinta el Alumno -->
-            <div class="row justify-content-center">
-                <div class="col-xl-4 d-flex justify-content-end">
-                    <img src="https://imgs.search.brave.com/YhoKht41mr7TqTg1vuPLsWj5sKYoVTl2-XgVDjh_f10/rs:fit:640:640:1/g:ce/aHR0cDovL2Nkbi5w/bGF5YnV6ei5jb20v/Y2RuLzkxMzI1M2Nk/LTVhMDItNGJmMi04/M2UxLTE4ZmYyY2M3/MzQwZi9jNTYxNTdk/NS01ZDhlLTQ4MjYt/ODlmOS0zNjE0MTIy/NzVjMzUuanBn"
-                        style="width: 70%; height: auto"
-                        class="rounded mx-auto d-block img-thumbnail"/>
-                </div>
-                <div class="col-xl-4 align-self-center pt-3">
-                    <p>
-                        <small>
-                            <b>CUI:</b> XXX <br />
-                            <b>Grado:</b> XX <br />
-                            <b>Ultimo Mes Cancelado:</b> XX <br />
-                            <b>Encargado:</b> XX <br />
-                            <b>No. Tel:</b> XX-XX
-                        </small>
-                    </p>
-                    <p class="text-center">
-                        <b>SOLVENTE O INSOLVENTE</b>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container mb-10">
-    <div class="card mt-4 fadeInDown borde">
-        <h3 class="card-header text-center fadeIn second">
-            Comprobante De Pago
-        </h3>
-        <div class="card-body">
-            <!-- <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. Monto.00</span></h5> -->
-            <form method="post">
-                <div class="row pb-4">
-                    <div class="col-xl-6 mt-3 form-outline">
-                        <select class="form-select form-control bonus-design" aria-label="Default select example">
-                            <option selected>Mes de Pago</option>
-                            <option value="1">Uno</option>
-                            <option value="2">Dos</option>
-                            <option value="3">Tres</option>
-                        </select>
-                    </div>
-                    <div class="col-xl-6 mt-3 form-outline">
-                        <input type="text" id="comentarios" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="fomentarios">Comentarios</label>
-                    </div>
-                    <div class="col-xl-12 mt-3">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10">
-                                <label for="formFile" class="form-label">Seleccione el comprobante de pago</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
-                            <!-- align-self-center  justify-content-end align-items-center-->
-                            <div class="col-xl-2">
-                                
-                                <!-- <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-grid gap-2 d-md-block text-center ">
-                    <br/><br />
-                </div>
-            </form>
-
-
-        </div>
-    </div>
-</div>
-<br><br><br/>

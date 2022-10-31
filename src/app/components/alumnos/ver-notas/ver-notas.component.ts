@@ -8,6 +8,8 @@ import { UserAuthService } from '../../../services/user-auth.service';
 })
 export class VerNotasComponent implements OnInit {
 
+  foto = this.API_USER_AUTH.getAlumFoto();
+
   constructor(private API_USER_AUTH: UserAuthService) { }
 
   ngOnInit(): void {

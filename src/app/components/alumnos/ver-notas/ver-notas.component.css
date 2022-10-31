@@ -7,36 +7,35 @@
     .desktop {
         display: none;
     }
-    .tablet {
+    /* .tablet {
         display: none;
-    }
+    } */
 }
 
 /**Tablet**/
-@media (min-width: 768px) and (max-width: 990px) {
+/* @media (min-width: 768px) and (max-width: 990px) {
     .desktop {
         display: none;
     }
     .movil {
         display: none;
     }
-}
+} */
 
 /**Escritorio**/
-@media (min-width: 991px) {
-    .tablet {
+@media (min-width: 768px) {
+    /* .tablet {
         display: none;
-    }
+    } */
     .movil {
         display: none;
     }
 }
 
 .bonus-design {
-    border-bottom: 1px solid black;
+    border: 1px solid rgb(194, 192, 192);
   }
   
   .bonus-design:focus {
-    border-bottom: 2px solid rgba(37, 37, 241, 0.753);
+    border: 2px solid rgba(37, 37, 241, 0.753);
   }
-  

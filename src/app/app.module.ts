@@ -20,7 +20,7 @@ import { AgregarPersonalComponent } from './components/admin/personal/agregar-pe
 import { AnuncioTareaComponent } from './components/profesores/anuncio-tarea/anuncio-tarea.component';
 import { CalificarTareaComponent } from './components/profesores/calificar-tarea/calificar-tarea.component';
 import { NotasFinalesComponent } from './components/profesores/notas-finales/notas-finales.component';
-import { AnunciosTareasComponent } from './components/alumnos/anuncios-tareas/anuncios-tareas.component';
+import { AnunciosTareasComponent } from './components/alumnos/anuncios/anuncios.component';
 import { TareasComponent } from './components/alumnos/tareas/tareas.component';
 import { VerNotasComponent } from './components/alumnos/ver-notas/ver-notas.component';
 import { GenerarPagoComponent } from './components/alumnos/generar-pago/generar-pago.component';

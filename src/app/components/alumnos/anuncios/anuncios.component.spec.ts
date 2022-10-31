@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnunciosTareasComponent } from './anuncios-tareas.component';
+import { AnunciosTareasComponent } from './anuncios.component';
 
 describe('AnunciosTareasComponent', () => {
   let component: AnunciosTareasComponent;

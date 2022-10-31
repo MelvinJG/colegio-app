@@ -1,141 +1,32 @@
 <div class="container pt-5 mb-10">
     <h1 class="text-center pt-4 text-light fadeIn second"><i class="fa-solid fa-book"></i> Mis Tareas</h1>
     <div class="row">
-        <div class="col-xl-6 mt-4">
+        <div class="col-xl-6 mt-4" *ngFor = 'let tarea of tareas.data'>
             <div class="card fadeInDown reflejo">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-xl-9 pt-2">
-                            <h5>Nombre Tarea</h5>
+                            <h5>{{tarea.titulo}}</h5>
                         </div>
                         <div class="col-xl-3 pt-2 text-center">
-                            - / XX pts.
+                            - / {{tarea.punteo}} pts.
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <!-- NOTA: Ver si queda bien dentro de blockquote sino sacarlo de ese bloque -->
                     <blockquote class="blockquote mb-0">
-                        <p>Descripción XX.</p>
+                        <p>{{tarea.descripcion}}</p>
                         <footer class="blockquote-footer">
-                            <b>Curso:</b> XX
+                            <b>Curso:</b> {{tarea.nombre_Curso}}
                         </footer>
                         <footer class="blockquote-footer">
-                            <b>Fecha Entrega:</b> XX
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card-footer text-center text-danger"><i class="fa-solid fa-face-frown"></i> No Calificado</div>
-                <div class="card-footer text-center text-success"><i class="fa-solid fa-face-laugh-beam"></i> Calificado</div>
-            </div>
-        </div>
-        <div class="col-xl-6 mt-4">
-            <div class="card fadeInDown reflejo">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-xl-9 pt-2">
-                            <h5>Nombre Tarea</h5>
-                        </div>
-                        <div class="col-xl-3 pt-2 text-center">
-                            - / XX pts.
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!-- NOTA: Ver si queda bien dentro de blockquote sino sacarlo de ese bloque -->
-                    <blockquote class="blockquote mb-0">
-                        <p>Descripción XX.</p>
-                        <footer class="blockquote-footer">
-                            <b>Curso:</b> XX
-                        </footer>
-                        <footer class="blockquote-footer">
-                            <b>Fecha Entrega:</b> XX
+                            <b>Fecha Entrega:</b> {{tarea.fecha_Entrega}}
                         </footer>
                     </blockquote>
                 </div>
-                <div class="card-footer text-center text-danger"><i class="fa-solid fa-face-frown"></i> No Calificado</div>
-                <div class="card-footer text-center text-success"><i class="fa-solid fa-face-laugh-beam"></i> Calificado</div>
-            </div>
-        </div>
-        <div class="col-xl-6 mt-4">
-            <div class="card fadeInDown reflejo">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-xl-9 pt-2">
-                            <h5>Nombre Tarea</h5>
-                        </div>
-                        <div class="col-xl-3 pt-2 text-center">
-                            - / XX pts.
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!-- NOTA: Ver si queda bien dentro de blockquote sino sacarlo de ese bloque -->
-                    <blockquote class="blockquote mb-0">
-                        <p>Descripción XX.</p>
-                        <footer class="blockquote-footer">
-                            <b>Curso:</b> XX
-                        </footer>
-                        <footer class="blockquote-footer">
-                            <b>Fecha Entrega:</b> XX
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card-footer text-center">Calificado o No Calificado</div>
-            </div>
-        </div>
-        <div class="col-xl-6 mt-4">
-            <div class="card fadeInDown reflejo borde">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-xl-9 pt-2">
-                            <h5>Nombre Tarea</h5>
-                        </div>
-                        <div class="col-xl-3 pt-2 text-center">
-                            - / XX pts.
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!-- NOTA: Ver si queda bien dentro de blockquote sino sacarlo de ese bloque -->
-                    <blockquote class="blockquote mb-0">
-                        <p>Descripción XX.</p>
-                        <footer class="blockquote-footer">
-                            <b>Curso:</b> XX
-                        </footer>
-                        <footer class="blockquote-footer">
-                            <b>Fecha Entrega:</b> XX
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card-footer text-center">Calificado o No Calificado</div>
-            </div>
-        </div>
-        <div class="col-xl-6 mt-4">
-            <div class="card fadeInDown reflejo borde">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-xl-9 pt-2">
-                            <h5>Nombre Tarea</h5>
-                        </div>
-                        <div class="col-xl-3 pt-2 text-center">
-                            - / XX pts.
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <!-- NOTA: Ver si queda bien dentro de blockquote sino sacarlo de ese bloque -->
-                    <blockquote class="blockquote mb-0">
-                        <p>Descripción XX.</p>
-                        <footer class="blockquote-footer">
-                            <b>Curso:</b> XX
-                        </footer>
-                        <footer class="blockquote-footer">
-                            <b>Fecha Entrega:</b> XX
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card-footer text-center">Calificado o No Calificado</div>
+                <div class="card-footer text-center text-danger" *ngIf="tarea.calificado === 'NO'"><i class="fa-solid fa-face-frown"></i> No Calificado</div>
+                <div class="card-footer text-center text-success" *ngIf="tarea.calificado === 'SI'"><i class="fa-solid fa-face-laugh-beam"></i> Calificado</div>
             </div>
         </div>
     </div>

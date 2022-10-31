@@ -18,7 +18,19 @@ export class AnuncioTareaService {
     return this.http.get(`${this.API_URL}/getTareaAnuncio/${dpiProfesor}`);
   }
 
+  getTareas(dpiProfesor: string){
+    return this.http.get(`${this.API_URL}/getTareas/${dpiProfesor}`);
+  }
+
   publicarTareaAnuncio(publicacion: AnuncioTarea){
     return this.http.post(`${this.API_URL}/publicarTareaAnuncio`,publicacion);
+  }
+
+  getTareasPorGrado(cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getTareasPorGrado/${cuiAlumno}`);
+  }
+
+  getAnunciosPorGrado(cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getAnunciosPorGrado/${cuiAlumno}`);
   }
 }

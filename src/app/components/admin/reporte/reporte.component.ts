@@ -17,6 +17,7 @@ export class ReporteComponent implements OnInit {
     this.API_USER_AUTH.ShowNavigation.next(true);
     this.createChart();
     this.createChart2();
+    this.createChart3();
   }
 
   // INGRESOS / EGRESOS
@@ -148,7 +149,42 @@ export class ReporteComponent implements OnInit {
     // Ejemplo 2
   }
 
-
+  // ACEPTACION
+  createChart3(){
+    //Ejemplo 2
+    this.chart = new Chart("MyChartAceptacion", {
+      type: 'doughnut', //this denotes tha type of chart
+      data: {// values on X-Axis
+        labels: ['Porcentaje (%) de Aceptación', 'Porcentaje (%) de Rechazo'],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [133, 38],
+          backgroundColor: [
+            'rgb(54, 162, 235)',
+            'rgb(255, 99, 132)'
+          ]
+        }]
+        // labels: ['ENCARGADOS DEL COLEGIO','PROFESORES', 'ALUMNOS'], 
+        // datasets: [
+        //   {
+        //     label: 'Aceptación aplicación',
+        //     data: [9, 10, 114],
+        //     backgroundColor: 'rgb(54, 162, 235)'
+        //   },
+        //   {
+        //     label: 'Rechazo aplicación',
+        //     data: [2, 4, 32],
+        //     backgroundColor: 'rgb(255, 99, 132)'
+        //   }
+        // ]
+      },
+      // options: {
+      //   aspectRatio:2.5
+      // },
+      
+    });
+    // Ejemplo 2
+  }
 
 }
 

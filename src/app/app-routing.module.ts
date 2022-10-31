@@ -25,7 +25,7 @@ import { AnuncioTareaComponent } from './components/profesores/anuncio-tarea/anu
 import { CalificarTareaComponent } from './components/profesores/calificar-tarea/calificar-tarea.component';
 import { NotasFinalesComponent } from './components/profesores/notas-finales/notas-finales.component';
 /* Alumnos */
-import { AnunciosTareasComponent } from './components/alumnos/anuncios-tareas/anuncios-tareas.component';
+import { AnunciosTareasComponent } from './components/alumnos/anuncios/anuncios.component';
 import { TareasComponent } from './components/alumnos/tareas/tareas.component';
 import { VerNotasComponent } from './components/alumnos/ver-notas/ver-notas.component';
 import { GenerarPagoComponent } from './components/alumnos/generar-pago/generar-pago.component';
@@ -147,7 +147,13 @@ const routes: Routes = [
   },
   // Alumnos
   {
-    path: 'alumnos/Anuncios-Tareas',
+    path: 'alumnos/miGrado',
+    component: GradesComponent,
+    canActivate: [AuthorizationGuard, RolesGuard],
+    data: { expectedRole: 'user' }
+  },
+  {
+    path: 'alumnos/verAnuncios',
     component: AnunciosTareasComponent,
     canActivate: [AuthorizationGuard, RolesGuard],
     data: { expectedRole: 'user' }

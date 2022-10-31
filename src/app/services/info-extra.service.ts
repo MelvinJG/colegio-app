@@ -48,4 +48,8 @@ export class InfoExtraService {
   getCursosPorGradoPROF(dpiProfesor: string, IdGrado: string){
     return this.http.get(`${this.API_URL}/getCursosPorGradoPROF/${dpiProfesor}/${IdGrado}`);
   }
+
+  getGradosALUM(cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getGradosALUM/${cuiAlumno}`);
+  }
 }

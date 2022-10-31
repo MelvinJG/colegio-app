@@ -12,6 +12,7 @@ export class AdminPerfilComponent implements OnInit {
 
   public contrasenia:boolean = false;
   public perfil:boolean = false;
+  foto = this.API_USER_AUTH.getAlumFoto();
 
   HabilitarContra() {
     this.contrasenia = true;

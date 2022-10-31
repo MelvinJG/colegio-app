@@ -11,7 +11,8 @@ export class PdfInvoiceComponent implements OnInit {
 
   @Input()
   data: any; // Recibimos Info
-  logo = '../../../../assets/logo.png';
+//   logo = '../../../../assets/logo.png';
+    logo =  '../../../../assets/logoDummy.jpeg';
   dia = new Date().getDate(); //Fecha
   month = new Date().getMonth(); //Fecha
   mes = this.getNombreMes(this.month); //Fecha 

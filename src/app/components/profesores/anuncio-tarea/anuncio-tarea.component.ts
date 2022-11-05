@@ -37,11 +37,13 @@ export class AnuncioTareaComponent implements OnInit {
   PublicarTarea(){
     this.publicarAnuncio = false;
     this.publicarTarea = true;
+    this.pintarGrados();
   }
 
   PublicarAnuncio(){
     this.publicarTarea = false;
     this.publicarAnuncio = true;
+    this.pintarGrados();
   }
 
   ngOnInit(): void {
@@ -69,6 +71,9 @@ export class AnuncioTareaComponent implements OnInit {
         }
       }
     );
+  }
+
+  pintarGrados(){
     this.API_SERVICE.getGradosPROF(this.API_USER_AUTH.getIdUsuario()).subscribe(
       res => {
         this.grados = res;

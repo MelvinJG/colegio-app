@@ -41,4 +41,38 @@ export class TareasComponent implements OnInit {
     );
   }
 
+  getPunteoTareaEspecifica(tareaID){
+    this.API_ANUNCIO_TAREA.getPunteoTarea(tareaID,this.API_USER_AUTH.getIdUsuario()).subscribe(
+      res => {
+        let JSONresponse = JSON.parse(JSON.stringify(res));
+        console.log(JSONresponse.data)
+        Swal.fire({
+          icon: 'success',
+          title: 'Resultados de la Tarea.',
+          html: `
+            <b>Punteo:</b> ${JSONresponse.data.punteo_Tarea} / ${JSONresponse.data.punteo} pts. </br>
+            <b>Observaciones:</b> ${JSONresponse.data.observacion}
+          `
+        });
+      },
+      err => {
+        if(err.status === 404){
+          Swal.fire({
+            icon: 'info',
+            title: 'Oops...',
+            text: err.error.message,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          console.log("ERROR GET PUNTEO TAREA :( -> ",err);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '¡Algo salió mal!'
+          })
+        }
+      }
+    );
+  }
 }

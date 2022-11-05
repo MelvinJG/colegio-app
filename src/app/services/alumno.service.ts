@@ -25,9 +25,9 @@ export class AlumnoService {
     return this.http.post(`${this.API_URL}/addAlumno`,alumno);
   }
 
-  // getAlumnoPorCUI(cuiAlumno: string){ PENDIENTE
-  //   return this.http.get(`${this.API_URL}/getAlumnoCUI/${cuiAlumno}`);
-  // }
+  getAlumnoPorCUI(cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getAlumnoCUI/${cuiAlumno}`);
+  }
 
   getDetalleUltimoPagoAlumno(cuiAlumno: string){
     return this.http.get(`${this.API_URL}/getDetalleUltimoPagoAlumno/${cuiAlumno}`);

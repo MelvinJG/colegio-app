@@ -26,11 +26,19 @@ export class AnuncioTareaService {
     return this.http.post(`${this.API_URL}/publicarTareaAnuncio`,publicacion);
   }
 
+  calificarTarea(calificacion: any){
+    return this.http.post(`${this.API_URL}/calificarTarea`,calificacion);
+  }
+
   getTareasPorGrado(cuiAlumno: string){
     return this.http.get(`${this.API_URL}/getTareasPorGrado/${cuiAlumno}`);
   }
 
   getAnunciosPorGrado(cuiAlumno: string){
     return this.http.get(`${this.API_URL}/getAnunciosPorGrado/${cuiAlumno}`);
+  }
+
+  getPunteoTarea(tareaID: number, cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getPunteoTarea/${tareaID}/${cuiAlumno}`);
   }
 }

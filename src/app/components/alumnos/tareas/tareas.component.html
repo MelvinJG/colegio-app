@@ -2,14 +2,14 @@
     <h1 class="text-center pt-4 text-light fadeIn second"><i class="fa-solid fa-book"></i> Mis Tareas</h1>
     <div class="row">
         <div class="col-xl-6 mt-4" *ngFor = 'let tarea of tareas.data'>
-            <div class="card fadeInDown reflejo">
+            <div class="card fadeInDown reflejo" (click)="getPunteoTareaEspecifica(tarea.anuncio_Tarea_Id)">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-xl-9 pt-2">
+                        <div class="col-sm-9 pt-2">
                             <h5>{{tarea.titulo}}</h5>
                         </div>
-                        <div class="col-xl-3 pt-2 text-center">
-                            - / {{tarea.punteo}} pts.
+                        <div class="col-sm-3 pt-2 text-center">
+                            Valor: {{tarea.punteo}} pts.
                         </div>
                     </div>
                 </div>

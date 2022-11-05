@@ -13,7 +13,7 @@
                             {{tarea.descripcion}}<br />
                             <b>Grado:</b> {{tarea.grado}}<br />
                             <b>Curso:</b> {{tarea.nombre_Curso}}<br />
-                            <a class="btn btn-primary fadeIn second mt-2" (click)="HabilitarFormulario()" *ngIf="tarea.calificado === 'NO'">Calificar Tarea</a>
+                            <a class="btn btn-primary fadeIn second mt-2" (click)="CalificarTarea(tarea.anuncio_Tarea_Id,tarea.titulo,tarea.grado,tarea.grado_Id)" *ngIf="tarea.calificado === 'NO'">Calificar Tarea</a>
                         </small>
                     </p>
                     
@@ -30,64 +30,40 @@
     <!-- PINTAR ALUMNOS PARA CALIFICAR TAREA -->
     <div class="card mt-3 fadeInDown" *ngIf="formulario">
         <h4 class="card-header text-center fadeIn">
-            El Cuerpo Humano - Pre-Primaria
+            {{tareaCalificar}} - {{gradoTareaCalificar}}
             <label class="obligatorio">
                 <small>* Obligatorio</small>
             </label>
         </h4>
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush" *ngFor = 'let alumno of alumnos.data; index as i;'>
             <!-- PINTA ALUMNOS PARA SU NOTA -->
             <li class="list-group-item"> 
                 <div class="row justify-content-md-center">
                     <div class="col-xl-4 pt-2 text-center my-1">
-                        <img src="https://www.cdc.gov/preconception/spanish/images/man-with-arms-crossed.jpg" class="rounded-circle" height="25" alt="Foto alumno" loading="lazy" />  Melvin Misael Joj Gil
+                        <img src="{{no_Foto}}" class="rounded-circle" height="25" alt="Foto alumno" loading="lazy" *ngIf="!alumno.foto; else elseBlock"/>
+                        <ng-template #elseBlock>
+                            <img src="{{alumno.foto}}" class="rounded-circle" height="25" alt="Foto alumno" loading="lazy"/>
+                        </ng-template>
+                        {{alumno.nombre_Alumno}}
                     </div>
                     <div class="col-xl-4 form-outline my-1">
                         <mdb-form-control>
-                            <input mdbInput type="number" id="punteo" [(ngModel)]="calificarTarea.punteo" name="punteo" class="form-control" autocomplete="off" required/>
+                            <input mdbInput type="number" id="punteo" [(ngModel)]="calificarTarea[i][0]" name="punteo" class="form-control" autocomplete="off" required/>
                             <label mdbLabel class="form-label" for="punteo"><b class="obligatorio">*</b> Punteo Obtenido</label>
                         </mdb-form-control>
-                        <!-- <input type="text" id="punteo" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="punteo"><b class="obligatorio">*</b> Punteo Tarea</label> -->
                     </div>
                     <div class="col-xl-4 form-outline my-1">
                         <mdb-form-control>
-                            <input mdbInput type="text" id="observacion" [(ngModel)]="calificarTarea.observacion" name="observacion" class="form-control" autocomplete="off" required/>
+                            <input mdbInput type="text" id="observacion" [(ngModel)]="calificarTarea[i][1]" name="observacion" class="form-control" autocomplete="off" required/>
                             <label mdbLabel class="form-label" for="observacion">Observaciones</label>
                         </mdb-form-control>
-                        <!-- <input type="text" id="observacion" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="observacion">Observaciones</label> -->
                     </div>
                 </div>
             </li>
             <!-- PINTA ALUMNOS PARA SU NOTA -->
-            <li class="list-group-item"> 
-                <div class="row justify-content-md-center">
-                    <div class="col-xl-4 pt-2 text-center my-1">
-                        <img src="{{no_Foto}}" class="rounded-circle" height="25" alt="Foto alumno" loading="lazy" /> Juanito Camey
-                    </div>
-                    <div class="col-xl-4 form-outline my-1">
-                        <mdb-form-control>
-                            <input mdbInput type="number" id="punteo" [(ngModel)]="calificarTarea.punteo" name="punteo" class="form-control" autocomplete="off" required/>
-                            <label mdbLabel class="form-label" for="punteo"><b class="obligatorio">*</b> Punteo Obtenido</label>
-                        </mdb-form-control>
-                        <!-- <input type="text" id="punteo" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="punteo"><b class="obligatorio">*</b> Punteo Tarea</label> -->
-                    </div>
-                    <div class="col-xl-4 form-outline my-1">
-                        <mdb-form-control>
-                            <input mdbInput type="text" id="observacion" [(ngModel)]="calificarTarea.observacion" name="observacion" class="form-control" autocomplete="off" required/>
-                            <label mdbLabel class="form-label" for="observacion">Observaciones</label>
-                        </mdb-form-control>
-                        <!-- <input type="text" id="observacion" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="observacion">Observaciones</label> -->
-                    </div>
-                </div>
-            </li>
-            
         </ul>
         <div class="d-grid gap-2 d-md-block text-center py-4">
-            <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="fa-solid fa-upload"></i> Calificar Tarea</button>
+            <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="SubirCalificacionTarea()"><i class="fa-solid fa-upload"></i> Calificar Tarea</button>
             <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
         </div>
     </div>

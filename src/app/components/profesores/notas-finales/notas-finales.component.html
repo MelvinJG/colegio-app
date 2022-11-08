@@ -47,7 +47,7 @@
                 <span class="badge badge-warning">BIMESTRE 1</span> -->
         </h5>
         <!-- PINTA ALUMNOS PARA SU NOTA -->
-        <table class="table table-hover table-light">
+        <table class="table table-hover table-light fadeInDown" *ngIf="!notasYA; else elseBlock2">
             <thead  class="align-middle text-center">
                 <tr>
                     <th scope="col" style="width:400px;">Materia</th>
@@ -56,14 +56,14 @@
                     <th scope="col">Nota Final</th>
                 </tr>
             </thead>
-            <tbody  class="align-middle text-center">
+            <tbody class="align-middle text-center" *ngFor='let curso of cursos.data; index as i;'>
                 <!-- Pintan los cursos -->
                 <tr>
-                    <th scope="row" style="width:400px;" class="form-label">EDUCACIÓN CRISTIANA</th>
+                    <th scope="row" style="width:400px;" class="form-label">{{curso.nombre_Curso}}</th>
                     <th>
                         <div class="form-outline">
                             <mdb-form-control>
-                                <input mdbInput type="number" id="Zona" name="Zona" class="form-control" autocomplete="off" max="100" required/>
+                                <input mdbInput type="number" id="Zona" [(ngModel)]="punteoFinal[i][0]" name="Zona" class="form-control" autocomplete="off" max="100" required (change)="punteoZona($event,i)"/>
                                 <label mdbLabel class="form-label" for="Zona"><b class="obligatorio">*</b> Zona</label>
                             </mdb-form-control>
                         </div>
@@ -71,14 +71,16 @@
                     <th>
                         <div class="form-outline">
                             <mdb-form-control>
-                                <input mdbInput type="number" id="Examen" name="Examen" class="form-control" autocomplete="off" max="100" required/>
+                                <input mdbInput type="number" id="Examen" [(ngModel)]="punteoFinal[i][1]" name="Examen" class="form-control" autocomplete="off" max="100" required (change)="punteoExamen($event,i)"/>
                                 <label mdbLabel class="form-label" for="Examen"><b class="obligatorio">*</b> Examen</label>
                             </mdb-form-control>
                         </div>
                     </th>
                     <th>
                         <div>
-                            <label class="form-label">83 pts.</label>
+                            <label class="form-label">
+                                {{punteoFinal[i][2]}} pts.
+                            </label>
                         </div>
                     </th>
                 </tr>
@@ -86,8 +88,22 @@
             </tbody>
         </table>
         <!-- PINTA ALUMNOS PARA SU NOTA -->
-        <div class="d-grid gap-2 d-md-block text-center py-4">
-            <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="fa-solid fa-upload"></i> Subir Notas</button>
+        <ng-template #elseBlock2>
+            <div class="pt-4 px-5 mx-5 fadeInDown">
+                <p class="fs-3" style="color: rgb(58, 101, 218);">
+                    <i class="fa-solid fa-circle-check"></i> 200 OK 
+                </p>
+                <p class="fs-5 text-muted">
+                    ¡Yeeei! <br />
+                    Las notas para el alumno seleccionado en el bimestre seleccionado ya fueron subidas.
+                </p>
+            </div>
+            <div class="container text-center pb-4 fadeInDown">
+                <img src="../../../../assets/200_OK.png" class="img-fluid" alt="ok" loading="lazy" />
+            </div>
+        </ng-template>
+        <div class="d-grid gap-2 d-md-block text-center py-4" *ngIf="!notasYA">
+            <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="SubirNotas()"><i class="fa-solid fa-upload"></i> Subir Notas</button>
             <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
         </div>
         

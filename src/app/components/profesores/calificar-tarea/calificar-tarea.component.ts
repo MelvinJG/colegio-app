@@ -27,7 +27,6 @@ export class CalificarTareaComponent implements OnInit {
     let objetos = {}
     for(let i = 0; i < this.calificarTarea.length ; i++){
       objetos = Object.assign({anuncio_Tarea_Id: this.tareaID}, {cui_Alumno: this.alumnos.data[i].cui_Alumno},{punteo_Tarea: this.calificarTarea[i][0]}, {observacion: this.calificarTarea[i][1]})
-      console.log("objetoFinal -> ",objetos)
       this.API_ANUNCIO_TAREA.calificarTarea(objetos).subscribe(
         res => {
           let JSONresponse = JSON.parse(JSON.stringify(res));
@@ -64,7 +63,6 @@ export class CalificarTareaComponent implements OnInit {
     this.API_ALUMNO.getAlumnosPorGrado(gradoID).subscribe(
       res => {
         this.alumnos = res;
-        console.log(this.alumnos.data)
         for(let i = 0 ; i < this.alumnos.data.length; i++){
           this.calificarTarea.push([]);
         }

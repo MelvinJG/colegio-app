@@ -35,17 +35,17 @@ export class UserAuthService {
     return true;
   }
 
-  getUserName(){
+  getUserName(){ //Usuario
     const decodeToken = decode(localStorage.getItem('token'));
     return JSON.parse(JSON.stringify(decodeToken)).userName;
   }
 
-  getIdUsuario(){
+  getIdUsuario(){ //CUI O DPI
     const decodeToken = decode(localStorage.getItem('token'));
     return JSON.parse(JSON.stringify(decodeToken)).id_usuario;
   }
 
-  getIdRole(){
+  getIdRole(){ 
     const decodeToken = decode(localStorage.getItem('token'));
     return JSON.parse(JSON.stringify(decodeToken)).roleId;
   }
@@ -58,5 +58,20 @@ export class UserAuthService {
   getAlumFoto(){
     const decodeToken = decode(localStorage.getItem('token'));
     return JSON.parse(JSON.stringify(decodeToken)).AlumFoto;
+  }
+
+  getEmpName(){
+    const decodeToken = decode(localStorage.getItem('token'));
+    return JSON.parse(JSON.stringify(decodeToken)).EmpName;
+  }
+
+  getAlumName(){
+    const decodeToken = decode(localStorage.getItem('token'));
+    return JSON.parse(JSON.stringify(decodeToken)).AlumName;
+  }
+
+  getMensualidad(){
+    const decodeToken = decode(localStorage.getItem('token'));
+    return JSON.parse(JSON.stringify(decodeToken)).mensualidad;
   }
 }

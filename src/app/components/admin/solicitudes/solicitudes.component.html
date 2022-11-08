@@ -1,33 +1,51 @@
 <div class="container mt-5 mb-10">
     <h1 class="text-center pt-4 text-light fadeIn"><i class="fas fa-bell"></i> Solicitudes Pago de Alumnos</h1>
-    <table class="table table-striped table-hover table-light fadeInDown">
+    <table class="table table-striped table-hover table-light fadeInDown" *ngIf="!ningunaSolicitud; else elseBlock">
         <thead class="align-middle text-center">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Alumno</th>
                 <th scope="col">Grado</th>
-                <th scope="col">Mes de Pago</th>
-                <!-- <th scope="col">Descripción</th> -->
+                <th scope="col">Mes Ultimo Pago</th>
+                <th scope="col">Mes que Desea Pagar</th>
                 <th scope="col">Comprobante</th>
                 <th scope="col">Acción</th>
             </tr>
         </thead>
-        <tbody  class="align-middle text-center">
+        <tbody  class="align-middle text-center" *ngFor = 'let solicitud of solicitudesDePago.data'>
             <tr>
-                <th scope="row">1</th>
-                <td>Melvin Misael Joj Gil</td>
-                <td>PRE-PRIMARIA</td>
-                <td>JUNIO</td>
-                <!-- <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat numquam totam fugiat recusandae
-                    eaque minus labore maxime dolores atque maiores consequatur exercitationem sunt rationes.</td> -->
-                <td><a href="https://cdn.finanzarel.com/wp-content/uploads/2019/01/15093405/factura-word.jpg"><i class="fa-solid fa-image">Comprobante</i></a></td>
+                <th scope="row">{{solicitud.comprobante_Id}}</th>
+                <td>{{solicitud.nombre}}</td>
+                <td>{{solicitud.grado}}</td>
+                <td class="fw-bolder text-danger" *ngIf="solicitud.mesUltimoPago === null; else elseBlock">NINGÚN PAGO REALIZADO</td>
+                <ng-template #elseBlock>
+                    <td>{{solicitud.mesUltimoPago}}</td>
+                </ng-template>
+                <td>{{solicitud.mes}}</td>
+                <td><a href="{{solicitud.img_Comprobante}}"><i class="fa-solid fa-image">Comprobante</i></a></td>
                 <td>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <button class="btn btn-success me-md-2 fadeIn second" type="button">Aceptar</button>
-                        <button class="btn btn-danger fadeIn second" type="button">Rechazar</button>
+                        <button class="btn btn-danger fadeIn second" type="button" (click)="RechazarSolicitud(solicitud.comprobante_Id)">Rechazar</button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
+    <ng-template #elseBlock>
+        <div class="card mt-3 fadeInDown" >
+            <div class="pt-4 px-5 mx-5 fadeIn">
+                <p class="fs-3" style="color: rgb(58, 101, 218);">
+                    <i class="fa-solid fa-circle-check"></i> 200 OK 
+                </p>
+                <p class="fs-5 text-muted">
+                    ¡Yeeei! <br />
+                    Todas las solicitudes ya fueron atendidas.
+                </p>
+            </div>
+            <div class="container text-center pb-4 fadeIn second">
+                <img src="../../../../assets/200_OK.png" class="img-fluid" alt="ok" loading="lazy" />
+            </div>
+        </div>
+    </ng-template>
 </div>

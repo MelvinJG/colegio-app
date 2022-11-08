@@ -1,61 +1,56 @@
-<!-- <div class="container pt-5">
-    <div class="card mt-4 fadeInDown">
+<div class="container pt-5">
+    <div class="card mt-4 fadeInDown" >
         <h3 class="card-header text-center fadeIn second">
             <i class="fa-solid fa-hand-holding-dollar"></i> Estado de Cuenta
         </h3>
-        <div class="card-body">
-            <h5 class="text-end pb-2 pt-1 px-4">Monto Colegiatura: <span style="color: green">Q. 200.5</span></h5>
-            Pinta el Alumno
-            <div class="row justify-content-center">
-                <div class="col-xl-4">
-                    <img src="https://imgs.search.brave.com/YhoKht41mr7TqTg1vuPLsWj5sKYoVTl2-XgVDjh_f10/rs:fit:640:640:1/g:ce/aHR0cDovL2Nkbi5w/bGF5YnV6ei5jb20v/Y2RuLzkxMzI1M2Nk/LTVhMDItNGJmMi04/M2UxLTE4ZmYyY2M3/MzQwZi9jNTYxNTdk/NS01ZDhlLTQ4MjYt/ODlmOS0zNjE0MTIy/NzVjMzUuanBn"
+        <div class="card-body mb-0 pb-0">
+            <h5 class="text-end pb-1 pt-1 px-4">Monto Colegiatura: <span style="color: green">Q. {{mensualidad}}</span></h5>
+            <!-- Pinta el Alumno -->
+            <div class="row justify-content-center py-4">
+                <div class="col-xl-4 d-flex justify-content-center">
+                    <img src="{{no_Foto}}"
+                        class="img-fluid" *ngIf="!alumnoInfo.data.foto; else elseBlock"/>
+                    <ng-template #elseBlock>
+                        <img src="{{alumnoInfo.data.foto}}"
                         class="img-fluid" />
+                    </ng-template>
                 </div>
-                <div class="col-xl-4 align-self-center pt-3">
-                    <p>
+                <div class="col-xl-4 align-self-center">
+                    <h4 class="text-center">{{alumnoInfo.data.nombre}}</h4>
+                    <p class="my-0 py-0 px-2 text-muted">Detalle Ultimo Pago</p>
+                    <p class="border border-1 rounded-5 px-3 py-3">
                         <small>
-                            <b>CUI:</b> 2780691420304 <br />
-                            <b>Grado:</b> Tercero Basico <br />
-                            <b>Ultimo Mes Cancelado:</b> 2780691420304 <br />
-                            <b>Encargado:</b> Melvin Misael Joj Gil <br />
-                            <b>No. Tel:</b> 3516-3511
+                            <b>Fecha Ultimo Pago:</b> {{alumnoInfo.data.fecha_Pago}} <br />
+                            <b>Motivo Del Pago:</b> {{alumnoInfo.data.tipo_Pago}} <br />
+                            <b>Ultimo Mes Pagado:</b> {{alumnoInfo.data.mes}}<br />
+                            <b>Monto Cancelado:</b> Q. {{alumnoInfo.data.monto}}<br />
+                            <b>Origen Del Pago:</b> {{alumnoInfo.data.origen_Pago}}<br />
+                            <b>Inscripción Pagada: <span class="{{colorInscripcion}}"> {{alumnoInfo.data.pago_Inscripcion}}</span></b>
                         </small>
-                    </p>
-                    <p class="text-center">
-                        <b class="text-success"><i class="fa-solid fa-circle-check"></i> SOLVENTE</b> <br />
-                        <b class="text-danger"><i class="fa-solid fa-circle-xmark"></i> NO SOLVENTE</b>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-</div> -->
-
-<div class="container mb-10 pt-5">
+</div>
+<div class="container">
     <div class="card mt-4 fadeInDown">
-        <h3 class="card-header text-center fadeIn second">
+        <h4 class="card-header text-center fadeIn second">
             <i class="fa-solid fa-money-check-dollar"></i> Subir
             Comprobante De Pago 
             <label class="obligatorio">
                 * Obligatorio
             </label>
-        </h3>
+        </h4>
         <div class="card-body">
-            <!-- <h5 class="text-end pt-3 px-4">Monto: <span style="color: green">Q. Monto.00</span></h5> -->
             <form method="post">
-                <div class="row pb-4">
-                    <div class="col-xl-4 form-outline align-self-center mb-4">
-                        <select class="form-select form-control bonus-design" aria-label="Default select example">
+                <div class="row pb-2">
+                    <div class="col-xl-4 form-outline align-self-center mb-3">
+                        <select class="form-control bonus-design" (change)="mesSelect($event)">
                             <option selected><b class="obligatorio">*</b> Mes de Pago</option>
-                            <option value="1">Uno</option>
-                            <option value="2">Dos</option>
-                            <option value="3">Tres</option>
+                            <option *ngFor = 'let mes of meses.data' value="{{mes.mes_Id}}">{{mes.mes}}</option>
                         </select>
                     </div>
-                    <!-- <div class="col-xl-6 mt-3 form-outline">
-                        <input type="text" id="comentarios" class="form-control bonus-design" autocomplete="off" />
-                        <label class="form-label" for="fomentarios">Comentarios</label>
-                    </div> -->
                     <div class="col-xl-8 mb-4 text-center">
                         <label for="formFile" class="form-label text-start"><b class="obligatorio">*</b> Seleccione boleta de banco</label>
                         <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
@@ -64,17 +59,58 @@
                         </div>
                         <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                     </div>
+                    <!-- <div class="col-xl-8 text-center">
+                        <label for="formFile" class="form-label text-start"><b class="obligatorio">*</b> Seleccione boleta de banco</label><br/>
+                        <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
+                        <div class="spinner-border text-primary" role="status" *ngIf="lookSpinner">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
+                    </div> -->
                 </div>
                 <div class="d-grid gap-2 d-md-block text-center ">
-                    <button class="btn btn-success mx-1 fadeIn second" type="button"><i
+                    <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="enviarComprobante()"><i
                             class="far fa-money-bill-alt"></i> Enviar comprobante
                     </button>
                     <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i
                             class="fas fa-times"></i> Cancelar</button>
                 </div>
             </form>
-
-
         </div>
     </div>
+</div>
+<div class="container mb-10">
+    <div class="row justify-content-center">
+        <div class="col-xl-4" *ngFor = 'let comprobante of combrobantesDePago.data; index as i;'>
+            <div class="card mt-4 fadeInDown reflejoBorde">
+                <h4 class="card-header text-center fadeIn second fw-bolder fadeInDown" style="cursor: pointer;" (click)="AccionComprobante(comprobante.comprobante_Id, comprobante.estado_Id, i)">
+                    <img src="../../../../assets/Comprobante.jpg" class="rounded-circle" height="50" alt="Foto Comprobante" loading="lazy" /> Comprobante No. {{comprobante.comprobante_Id}}
+                </h4>
+                <div class="card-body my-1 py-1">
+                    <p class="my-0 py-0 px-2 text-muted">Detalles</p>
+                    <p class="border border-1 rounded-5 px-3 py-3">
+                        <small>
+                            <b>Fecha De Envio:</b> {{comprobante.fecha_Envio}}<br />
+                            <b>Mes De Pago:</b> {{comprobante.mes}}<br />
+                            <b>Monto:</b> Q. {{comprobante.monto}}<br />
+                            <b>Comprobante Enviado: </b> <a href="{{comprobante.img_Comprobante}}"><i class="fa-solid fa-image"> Comprobante</i></a><br />
+                            <b *ngIf="comprobante.estado_Id === 1">Estado: <span class="text-info">{{comprobante.nombre}} <i class="fa-solid fa-clock"></i></span></b>
+                            <b *ngIf="comprobante.estado_Id === 2">Estado: <span class="text-success">{{comprobante.nombre}} <i class="fa-solid fa-circle-check"></i></span></b>
+                            <b *ngIf="comprobante.estado_Id === 3">Estado: <span class="text-danger">{{comprobante.nombre}} <i class="fa-solid fa-circle-xmark"></i></span></b>
+                            <b *ngIf="comprobante.estado_Id === 4">Estado: <span class="text-warning">{{comprobante.nombre}} <i class="fa-solid fa-ban"></i></span></b>
+                            <br />
+                            <em><small class="text-muted text-center d-flex justify-content-center" *ngIf="comprobante.estado_Id === 1" style="margin-top: 6px;">
+                                Las solicitudes son atendidas en 2 días hábiles.
+                            </small></em>
+                            <span *ngIf="comprobante.estado_Id === 2"><b>Fecha Aceptado:</b> {{comprobante.fecha_Respuesta}}</span>
+                            <span *ngIf="comprobante.estado_Id === 3"><b>Fecha Rechazado:</b> {{comprobante.fecha_Respuesta}}</span>
+                            <span *ngIf="comprobante.estado_Id === 4"><b>Fecha Cancelado:</b> {{comprobante.fecha_Cancelado}}</span>
+                        </small>
+                    </p>
+                </div>
+        </div>
+        
+        </div>
+    </div>
+    
 </div>

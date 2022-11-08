@@ -17,4 +17,27 @@ export class PagoService {
     return this.http.post(`${this.API_URL}/realizarPago`,pago);
   }
 
+  realizarPagoApp(pago: any){
+    return this.http.post(`${this.API_URL}/realizarPagoApp`,pago);
+  }
+
+  getAllPagosApp(){
+    return this.http.get(`${this.API_URL}/getAllPagosApp`);
+  }
+
+  getPagosAppAlumno(cuiAlumno: string){
+    return this.http.get(`${this.API_URL}/getPagosAppAlumno/${cuiAlumno}`);
+  }
+
+  countAllPagosApp(){
+    return this.http.get(`${this.API_URL}/countAllPagosApp`);
+  }
+
+  cancelarEnvio(comprobanteID: number){
+    return this.http.put(`${this.API_URL}/cancelarEnvio/${comprobanteID}`,null);
+  }
+
+  rechazarComprobante(comprobanteID: number, comprobante: any){
+    return this.http.put(`${this.API_URL}/rechazarComprobante/${comprobanteID}`,comprobante);
+  }
 }

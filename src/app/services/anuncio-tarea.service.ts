@@ -41,4 +41,16 @@ export class AnuncioTareaService {
   getPunteoTarea(tareaID: number, cuiAlumno: string){
     return this.http.get(`${this.API_URL}/getPunteoTarea/${tareaID}/${cuiAlumno}`);
   }
+
+  subirNotasFinales(notasFinales: AnuncioTarea){
+    return this.http.post(`${this.API_URL}/subirNotasFinales`,notasFinales);
+  }
+
+  validarNotasFinales(cuiAlumno: string, cursoID: number, bimestre: number){
+    return this.http.get(`${this.API_URL}/validarNotasFinales/${cuiAlumno}/${cursoID}/${bimestre}`);
+  }
+
+  getNotasFinalesAlumno(cuiAlumno: string, bimestre: number){
+    return this.http.get(`${this.API_URL}/getNotasFinalesAlumno/${cuiAlumno}/${bimestre}`);
+  }
 }

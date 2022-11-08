@@ -189,7 +189,7 @@ export class ProductosComponent implements OnInit {
   Eliminar_Actualizar(productoID: any){
   this.globalProductoID = productoID;
     Swal.fire({
-      title: '¿Qué Quieres Realizar?',
+      title: '¿Qué quieres realizar?',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'Actualizar Producto',

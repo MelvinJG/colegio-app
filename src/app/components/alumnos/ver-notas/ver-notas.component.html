@@ -1,38 +1,35 @@
 <div class="container pt-5 mb-10">
     <h1 class="text-center pt-4 text-light fadeIn second"><i class="fa-solid fa-list-check"></i> Notas Finales</h1>
     <!-- PINTAR ALUMNOS PARA VER NOTAS -->
-    <div class="card mt-3 fadeInDown borde">
+    <div class="card mt-3 fadeInDown">
         <h4 class="card-header text-center fadeIn">
-            PRE-PRIMARIA
-        </h4>
-        <!-- PINTA FOTO ALUMNO -->
-        <div class="row pb-3">
-            <div class="col-xl-12 mt-3 text-center h5 text-muted">
-                <img src="{{foto}}" class="rounded-circle" height="25" alt="Black and White Portrait of a Man" loading="lazy" /> Melvin Misael Joj Gil
+            <!-- PINTA FOTO ALUMNO -->
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <img src="{{foto}}" class="rounded-circle" height="35" alt="FotoAlumno" loading="lazy" /> {{nombre}}
+                </div>
             </div>
-        </div>
-        <!-- PINTA FOTO ALUMNO -->
-        
-        <div class="row justify-content-center px-5">
-            <div class="col-xl-3 form-outline">
-                <select class="form-control bonus-design text-center">
-                    <option selected>Bimestre</option>
-                    <option value="1">BIMESTRE 1</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+            <!-- PINTA FOTO ALUMNO -->
+        </h4>
+        <div class="row justify-content-center px-5 pt-3">
+            <div class="col-xl-3 form-outline py-1">
+                <select class="form-control bonus-design" (change)="BimestreSelect($event)">
+                    <option selected disabled><b class="obligatorio">*</b> Bimestre</option>
+                    <option value="1">PRIMER BIMESTRE</option>
+                    <option value="2">SEGUNDO BIMESTRE</option>
+                    <option value="3">TERCER BIMESTRE</option>
+                    <option value="4">CUARTO BIMESTRE</option>
+                    <option value="5">QUINTO BIMESTRE</option>
                 </select>
             </div>
-            <div class="col-xl-1 form-outline mt-1 text-center">
+            <div class="col-xl-1 form-outline text-center align-self-center py-1">
                 <span class="badge bg-primary text-wrap px-2 py-2">Año 2022</span>
             </div>
         </div>
-        
         <div class="resolucion">
-
-            <div class="desktop">
+            <div class="desktop pt-2">
                 <!-- <h1>Esto es un ordenador</h1> -->
-                <br/>
-                <table class="table table-hover table-light">
+                <table class="table table-hover table-light fadeInDown" *ngIf="verNotas">
                     <thead  class="align-middle text-center">
                         <tr>
                             <th scope="col" style="width:350px;">Materia</th>
@@ -41,231 +38,83 @@
                             <th scope="col">Nota Final</th>
                         </tr>
                     </thead>
-                    <tbody  class="align-middle text-center">
+                    <tbody  class="align-middle text-center fadeInDown" *ngFor='let nota of notasFinales.data;'>
                         <!-- Pintan los cursos -->
                         <tr>
-                            <th scope="row" style="width:350px;" class="text-start">EDUCACIÓN CRISTIANA</th>
-                            <th>50 pts.</th>
-                            <th>33 pts.</th>
-                            <th class="text-success">83 pts. <i class="fa-solid fa-circle-check"></i></th>
+                            <th scope="row" style="width:350px;" class="text-start">{{nota.nombre_Curso}}</th>
+
+                            <th *ngIf="nota.punteo_Zona === null; else elseBlock1">NnI</th>
+                            <ng-template #elseBlock1>
+                                <th>{{nota.punteo_Zona}} pts.</th>
+                            </ng-template>
+
+                            <th *ngIf="nota.punteo_Examen === null; else elseBlock2">NnI</th>
+                            <ng-template #elseBlock2>
+                                <th>{{nota.punteo_Examen}} pts.</th>
+                            </ng-template>
+
+                            <th *ngIf="nota.punteo_Final === null; else elseBlock3">NnI</th>
+                            <ng-template #elseBlock3>
+                                <th class="text-success" *ngIf="nota.punteo_Final >= 70; else elseBlock4">{{nota.punteo_Final}} pts. <i class="fa-solid fa-circle-check"></i></th>
+                                <ng-template #elseBlock4>
+                                    <th class="text-danger" >{{nota.punteo_Final}} pts. <i class="fa-solid fa-circle-xmark"></i></th>
+                                </ng-template>
+                            </ng-template>
                         </tr>
                         <!-- Pintan los cursos -->
-                        <tr>
-                            <th scope="row" style="width:350px;" class="text-start">KAQCHIKEL</th>
-                            <th>53 pts.</th>
-                            <th>37 pts.</th>
-                            <th class="text-success">90 pts. <i class="fa-solid fa-circle-check"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width:350px;" class="text-start">EDUCACIÓN FÍSICA</th>
-                            <th>60 pts.</th>
-                            <th>35 pts.</th>
-                            <th class="text-success">95 pts. <i class="fa-solid fa-circle-check"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width:350px;" class="text-start">EXPRESIÓN ARTÍSTICA</th>
-                            <th>36 pts.</th>
-                            <th>19 pts.</th>
-                            <th class="text-danger">55 pts. <i class="fa-solid fa-circle-xmark"></i></th>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width:350px;" class="text-start">MEDIO SOCIAL Y NATURAL</th>
-                            <th>NnI</th>
-                            <th>NnI</th>
-                            <th>NnI</th>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width:350px;" class="text-start">COMUNICACIÓN Y LENGUAJE</th>
-                            <th>NnI</th>
-                            <th>NnI</th>
-                            <th>NnI</th>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width:350px;" class="text-start">DESTREZAS DE APRENDIZAJE</th>
-                            <th>NnI</th>
-                            <th>NnI</th>
-                            <th>NnI</th>
-                        </tr>
                     </tbody>
                 </table>
             </div>
             <!-- <div class="tablet">
                 <h1>Esto es un tablet</h1>
             </div> -->
-            <div class="movil">
+            <div class="movil pt-2 pb-2">
                 <!-- <h1>Esto es un movil</h1> -->
-                <br/>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush fadeInDown" *ngIf="verNotas">
                     <!-- Pintan los cursos -->
-                    <li class="list-group-item"> 
+                    <li class="list-group-item" *ngFor='let nota of notasFinales.data;'> 
                         <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> EDUCACIÓN CRISTIANA
+                            <div class="col-xl-4 fw-bolder text-uppercase h4 fadeInDown">
+                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> {{nota.nombre_Curso}}
                             </div>
                             <div class="col-xl-8 text-center">
                                 <div class="row justify-content-md-center">
                                     <div class="col text-center">
                                         Zona<br/>
-                                        <b>50 pts.</b>
+                                        <b *ngIf="nota.punteo_Zona === null; else elseBlock5" class="fadeIn">NnI</b>
+                                        <ng-template #elseBlock5>
+                                            <b class="fadeIn">{{nota.punteo_Zona}} pts.</b>
+                                        </ng-template>
                                     </div>
                                     <div class="col text-center">
                                         Examen<br/>
-                                        <b>33 pts.</b>
+                                        <b *ngIf="nota.punteo_Examen === null; else elseBlock6" class="fadeIn">NnI</b>
+                                        <ng-template #elseBlock6>
+                                            <b class="fadeIn">{{nota.punteo_Examen}} pts.</b>
+                                        </ng-template>
                                     </div>
                                     <div class="col text-center">
                                         Nota Final<br/>
-                                        <b class="text-success">83 pts. <i class="fa-solid fa-circle-check"></i></b>
+                                        <b *ngIf="nota.punteo_Final === null; else elseBlock7" class="fadeIn">NnI</b>
+                                        <ng-template #elseBlock7>
+                                            <b class="text-success fadeIn" *ngIf="nota.punteo_Final >= 70; else elseBlock8">{{nota.punteo_Final}} pts. <i class="fa-solid fa-circle-check"></i></b>
+                                            <ng-template #elseBlock8>
+                                                <b class="text-danger fadeIn">{{nota.punteo_Final}} pts. <i class="fa-solid fa-circle-xmark"></i></b>
+                                            </ng-template>
+                                        </ng-template>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <!-- Pintan los cursos -->
-                    <li class="list-group-item"> 
-                        <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> KAQCHIKEL
-                            </div>
-                            <div class="col-xl-8 text-center">
-                                <div class="row justify-content-md-center">
-                                    <div class="col text-center">
-                                        Zona<br/>
-                                        <b>53 pts.</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Examen<br/>
-                                        <b>37 pts.</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Nota Final<br/>
-                                        <b class="text-success">90 pts. <i class="fa-solid fa-circle-check"></i></b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item"> 
-                        <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> EDUCACIÓN FÍSICA
-                            </div>
-                            <div class="col-xl-8 text-center">
-                                <div class="row justify-content-md-center">
-                                    <div class="col text-center">
-                                        Zona<br/>
-                                        <b>60 pts.</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Examen<br/>
-                                        <b>35 pts.</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Nota Final<br/>
-                                        <b class="text-success">95 pts. <i class="fa-solid fa-circle-check"></i></b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item"> 
-                        <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> EXPRESIÓN ARTÍSTICA
-                            </div>
-                            <div class="col-xl-8 text-center">
-                                <div class="row justify-content-md-center">
-                                    <div class="col text-center">
-                                        Zona<br/>
-                                        <b>36 pts.</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Examen<br/>
-                                        <b>19 pts.</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Nota Final<br/>
-                                        <b class="text-danger">55 pts. <i class="fa-solid fa-circle-xmark"></i></b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item"> 
-                        <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> MEDIO SOCIAL Y NATURAL
-                            </div>
-                            <div class="col-xl-8 text-center">
-                                <div class="row justify-content-md-center">
-                                    <div class="col text-center">
-                                        Zona<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Examen<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Nota Final<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item"> 
-                        <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> COMUNICACIÓN Y LENGUAJE
-                            </div>
-                            <div class="col-xl-8 text-center">
-                                <div class="row justify-content-md-center">
-                                    <div class="col text-center">
-                                        Zona<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Examen<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Nota Final<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item"> 
-                        <div class="row">
-                            <div class="col-xl-4 fw-bolder text-uppercase h4">
-                                <img src="https://es.seaicons.com/wp-content/uploads/2015/11/note-icon.png" class="rounded-circle" height="35" alt="Notes" loading="lazy" /> DESTREZAS DE APRENDIZAJE
-                            </div>
-                            <div class="col-xl-8 text-center">
-                                <div class="row justify-content-md-center">
-                                    <div class="col text-center">
-                                        Zona<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Examen<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                    <div class="col text-center">
-                                        Nota Final<br/>
-                                        <b>NnI</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
 
             <!-- Pintan promedio -->
-            <div class="row justify-content-center pt-3">
+            <div class="row justify-content-center pt-2 fadeIn second" *ngIf="verNotas">
                 <div class="col-xl-4 text-center">
-                    <span class="badge rounded-pill bg-black px-3 py-2">PROMEDIO DEL BIMESTRE 1: 46.14 PTS</span>
+                    <span class="badge rounded-pill bg-black px-3 py-2">PROMEDIO DEL BIMESTRE {{bimestreSelect}}: {{promedio}} PTS</span>
                 </div>
             </div>
         </div>

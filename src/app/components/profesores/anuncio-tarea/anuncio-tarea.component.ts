@@ -152,7 +152,7 @@ export class AnuncioTareaComponent implements OnInit {
           Swal.fire({
             icon: 'info',
             title: 'Oops...',
-            text: 'Grados no encontrados.'
+            text: 'Cursos no encontrados.'
           })
         } else{
           Swal.fire({

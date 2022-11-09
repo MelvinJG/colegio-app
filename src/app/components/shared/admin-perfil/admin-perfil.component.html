@@ -27,16 +27,22 @@
                     </h3>
                     <div class="row">
                         <div class="col-xl-12 mt-3 form-outline">
-                            <input type="text" id="actual" class="form-control bonus-design" autocomplete="off" />
-                            <label class="form-label" for="actual"><b class="obligatorio">*</b> Contraseña Actual</label>
+                            <mdb-form-control>
+                                <input mdbInput type="password" id="actual" [(ngModel)]="contra.vieja" name="actual" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="actual"><b class="obligatorio">*</b> Contraseña Actual</label>
+                            </mdb-form-control>
                         </div>
                         <div class="col-xl-12 mt-3 form-outline">
-                            <input type="text" id="nuevo" class="form-control bonus-design" autocomplete="off"/>
-                            <label class="form-label" for="nuevo"><b class="obligatorio">*</b> Contraseña Nueva</label>
+                            <mdb-form-control>
+                                <input mdbInput type="password" id="nuevo" [(ngModel)]="contra.nueva" name="nuevo" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="nuevo"><b class="obligatorio">*</b> Contraseña Nueva</label>
+                            </mdb-form-control>
                         </div>
                         <div class="col-xl-12 mt-3 form-outline">
-                            <input type="text" id="repetir" class="form-control bonus-design" autocomplete="off" />
-                            <label class="form-label" for="repetir"><b class="obligatorio">*</b> Vuelve a Escribir la Contraseña</label>
+                            <mdb-form-control>
+                                <input mdbInput type="password" id="repetir" [(ngModel)]="contra.repetida" name="repetir" class="form-control" autocomplete="off" required/>
+                                <label mdbLabel class="form-label" for="repetir"><b class="obligatorio">*</b> Vuelve a Escribir la Contraseña</label>
+                            </mdb-form-control>
                         </div>
                     </div>
                 </div>
@@ -47,7 +53,7 @@
                         Consejo
                     </h3>
                     <div class="card-body mt-3 mb-0 py-0">
-                        Recuerda darle clic al boton "Subir" para almacenar la foto y posteriormente clic al boton "Realizar Cambio" para finalizar el proceso.
+                        Esta foto se mostrará en todos los sitios que puedan ver tu información, recuerda darle clic al boton "Realizar Cambio" para finalizar el proceso.
                     </div>
                 </div>
             </div>
@@ -62,22 +68,13 @@
                         </label>
                     </h3>
                     <div class="row">
-                        <div class="col-xl-12 mt-3">
-                            <div class="row align-items-center">
-                                <div class="col-xl-10">
-                                    <label for="formFile" class="form-label">Seleccionar Foto</label>
-                                    <input class="form-control" type="file" id="formFile">
-                                </div>
-                                <!-- align-self-center  justify-content-end align-items-center-->
-                                <div class="col-xl-2">
-                                    <div class="d-grid gap-2">
-                                        <button class="btn btn-primary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
-                                    </div>
-                                    <!-- <div class="d-grid gap-2 col-6 mx-auto">
-                                        <button class="btn btn-secondary fadeIn second" type="button"><i class="fas fa-cloud-upload-alt"></i> Subir</button>
-                                    </div> -->
-                                </div>
+                        <div class="col-xl-12 mt-3 text-center">
+                            <label for="formFile" class="form-label text-start"><b class="obligatorio">*</b> Seleccione la nueva foto</label>
+                            <input class="form-control" (change)="uploadPhoto($event)" type="file" id="formFile">
+                            <div class="spinner-border text-primary" role="status" *ngIf="lookSpinner">
+                                <span class="visually-hidden">Loading...</span>
                             </div>
+                            <p class="text-center {{textDone[0]}}" *ngIf="lookTextPhoto">{{textDone[1]}} </p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +93,7 @@
         </div>
     </div>
     <div class="d-grid gap-2 d-md-block text-center pt-3" *ngIf="verBotones">
-        <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="fa-solid fa-upload"></i> Realizar Cambio</button>
+        <button class="btn btn-success mx-1 fadeIn second" type="button" (click)="realizarCambio()"><i class="fa-solid fa-upload"></i> Realizar Cambio</button>
         <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
     </div>
 </div>

@@ -27,6 +27,10 @@ export class UserAuthService {
     return this.http.post(`${this.API_URL}/singin`,user);
   }
 
+  adminPerfil(idUsuario: string, tipoCambio: number, newData: any){
+    return this.http.put(`${this.API_URL}/adminPerfil/${idUsuario}/${tipoCambio}`,newData);
+  }
+
   isAuth(): boolean {
     const token = localStorage.getItem('token');
     if(this.JWTHelper.isTokenExpired(token) || !localStorage.getItem('token')){
@@ -43,6 +47,11 @@ export class UserAuthService {
   getIdUsuario(){ //CUI O DPI
     const decodeToken = decode(localStorage.getItem('token'));
     return JSON.parse(JSON.stringify(decodeToken)).id_usuario;
+  }
+
+  getPass(){ //Usuario
+    const decodeToken = decode(localStorage.getItem('token'));
+    return JSON.parse(JSON.stringify(decodeToken)).pass;
   }
 
   getIdRole(){ 

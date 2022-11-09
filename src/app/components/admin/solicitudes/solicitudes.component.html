@@ -6,17 +6,19 @@
                 <th scope="col">#</th>
                 <th scope="col">Alumno</th>
                 <th scope="col">Grado</th>
+                <th scope="col">Monto Colegiatura</th>
                 <th scope="col">Mes Ultimo Pago</th>
                 <th scope="col">Mes que Desea Pagar</th>
                 <th scope="col">Comprobante</th>
                 <th scope="col">Acción</th>
             </tr>
         </thead>
-        <tbody  class="align-middle text-center" *ngFor = 'let solicitud of solicitudesDePago.data'>
+        <tbody  class="align-middle text-center" *ngFor = 'let solicitud of solicitudesDePago.data; index as i;'>
             <tr>
                 <th scope="row">{{solicitud.comprobante_Id}}</th>
                 <td>{{solicitud.nombre}}</td>
                 <td>{{solicitud.grado}}</td>
+                <td>Q. {{solicitud.monto}}</td>
                 <td class="fw-bolder text-danger" *ngIf="solicitud.mesUltimoPago === null; else elseBlock">NINGÚN PAGO REALIZADO</td>
                 <ng-template #elseBlock>
                     <td>{{solicitud.mesUltimoPago}}</td>
@@ -25,7 +27,7 @@
                 <td><a href="{{solicitud.img_Comprobante}}"><i class="fa-solid fa-image">Comprobante</i></a></td>
                 <td>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button class="btn btn-success me-md-2 fadeIn second" type="button">Aceptar</button>
+                        <button class="btn btn-success me-md-2 fadeIn second" type="button" (click)="AceptarSolicitud(solicitud.comprobante_Id, i)">Aceptar</button>
                         <button class="btn btn-danger fadeIn second" type="button" (click)="RechazarSolicitud(solicitud.comprobante_Id)">Rechazar</button>
                     </div>
                 </td>

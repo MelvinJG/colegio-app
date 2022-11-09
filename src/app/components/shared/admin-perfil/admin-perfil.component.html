@@ -4,7 +4,7 @@
             <img src="{{foto}}" class="rounded-circle" height="300" alt="Foto De Perfil" loading="lazy" />
         </div>
         <div class="col-xl-12 mt-3 text-center h2 fadeIn">
-            <span class="badge rounded-pill bg-dark">Melvin Misael Joj Gil</span>
+            <span class="badge text-uppercase rounded-pill bg-dark">{{userName}}</span>
         </div>
     </div>
     <div class="row">
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-6 mt-3">
+        <div class="col-xl-6 mt-3 align-self-center">
             <div class="card fadeInDown" *ngIf="contrasenia">
                 <div class="card-body">
                     <h3 class="card-header text-center">
@@ -41,16 +41,18 @@
                     </div>
                 </div>
             </div>
-            <div class="card mt-3 fadeInDown" *ngIf="perfil">
+            <div class="card fadeInDown" *ngIf="perfil">
                 <div class="card-body">
                     <h3 class="card-header text-center">
                         Consejo
                     </h3>
-                    Recuerda darle clic al boton "Subir" para almacenar la foto y posteriormente clic al boton "Realizar Cambio" para finalizar el proceso.
+                    <div class="card-body mt-3 mb-0 py-0">
+                        Recuerda darle clic al boton "Subir" para almacenar la foto y posteriormente clic al boton "Realizar Cambio" para finalizar el proceso.
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 mt-3">
+        <div class="col-xl-6 mt-3 align-self-center">
             <div class="card fadeInDown" *ngIf="perfil">
                 <div class="card-body">
                     <h3 class="card-header text-center">
@@ -80,18 +82,20 @@
                     </div>
                 </div>
             </div>
-            <div class="card mt-4 fadeInDown" *ngIf="contrasenia">
+            <div class="card fadeInDown" *ngIf="contrasenia">
                 <div class="card-body">
                     <h3 class="card-header text-center">
                         Consejo
                     </h3>
-                    Ten en cuenta que la contraseña es de uso confidencial, no la compartas con ninguna persona. 
-                    Utiliza una contraseña segura y facil de recordar que contenga numeros, caracteres especiales y letras, recuerda darle clic al boton "Realizar Cambio" para finalizar el proceso.
+                    <div class="card-body mt-3 mb-0 py-0">
+                        Ten en cuenta que la contraseña es de uso confidencial, no la compartas con ninguna persona. 
+                        Utiliza una contraseña segura y facil de recordar que contenga numeros, caracteres especiales y letras, recuerda darle clic al boton "Realizar Cambio" para finalizar el proceso.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="d-grid gap-2 d-md-block text-center pt-3" >
+    <div class="d-grid gap-2 d-md-block text-center pt-3" *ngIf="verBotones">
         <button class="btn btn-success mx-1 fadeIn second" type="button"><i class="fa-solid fa-upload"></i> Realizar Cambio</button>
         <button class="btn btn-danger mx-1 fadeIn second" type="button" routerLink="/home"><i class="fas fa-times"></i> Cancelar</button>
     </div>

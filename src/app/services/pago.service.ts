@@ -40,4 +40,8 @@ export class PagoService {
   rechazarComprobante(comprobanteID: number, comprobante: any){
     return this.http.put(`${this.API_URL}/rechazarComprobante/${comprobanteID}`,comprobante);
   }
+
+  aceptarComprobante(comprobanteID: number, comprobante: any){
+    return this.http.put(`${this.API_URL}/aceptarComprobante/${comprobanteID}`,comprobante);
+  }
 }

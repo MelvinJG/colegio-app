@@ -16,6 +16,7 @@ export class VerNotasComponent implements OnInit {
   bimestreSelect: string = "";
   promedio: string = "";
   verNotas: boolean = false;
+  anio: number = new Date().getFullYear();
 
   constructor(private API_USER_AUTH: UserAuthService, private API_ANUNCIO_TAREA: AnuncioTareaService) { }
 

@@ -19,10 +19,18 @@ export class AlumnosComponent implements OnInit {
   verError: boolean = false; // Pinta la vista error
   idGrado: any; // Contendra el parametro que recibimos
   nombreGrado: any; // Contendra el parametro que recibimos
+  verInfoAlumnos: boolean = true;
+  verInfoAlumnosProf: boolean = true;
 
   constructor(private activeRoute: ActivatedRoute, private API_SERVICE: AlumnoService, private API_USER_AUTH: UserAuthService, private API_EMPLEADO: EmpleadoService) { }
 
   ngOnInit(): void {
+    // Validacion Roll para ver info de alumno
+    if(this.API_USER_AUTH.getIdRole() === 'user'){
+      this.verInfoAlumnos = false;
+    } else if(this.API_USER_AUTH.getIdRole() === 'prof'){
+      this.verInfoAlumnosProf = false;
+    }
     this.API_USER_AUTH.ShowNavigation.next(true);
     this.idGrado = this.activeRoute.snapshot.params['grado_Id'];
     this.nombreGrado = this.activeRoute.snapshot.params['nombre_Grado'];

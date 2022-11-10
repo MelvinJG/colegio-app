@@ -1,23 +1,41 @@
 <div class="container pt-5 mb-10">
-    <div class="card mt-4 fadeInDown">
+    <div class="card mt-4">
         <div class="card-body">
-            <h3 class="card-header text-center fadeIn"><i class="fa-solid fa-chart-column"></i> Reportes</h3>
+            <h2 class="card-header text-center fadeIn"><i class="fa-solid fa-chart-column"></i> Reportes</h2>
             <div class="row">
-                <div class="col-xl-6">
-                    <p class="h4 pt-3 text-center">Ingresos y Egresos</p>
-                    <canvas
-                        baseChart
-                        [chartType]="'line'"
-                        [legend]="true"
-                        [datasets]="chartDataIngresos"
-                        [labels]="chartLabelsIngresos"
-                        [options]="chartOptionsIngresos"
-                        
-                    >
-                    </canvas>
+                <div class="col-xl-6 pb-4 border border-1 rounded-5 ">
+                    <p class="h4 pt-3 text-center fadeIn second">Ingresos y Egresos</p>
+                    <div class="chart-container">
+                        <canvas id="MyChartIngresoEgreso"></canvas>
+                    </div>
                 </div>
+                <div class="col-xl-6 pb-4 border border-1 rounded-5">
+                    <p class="h4 pt-3 text-center fadeIn second">Disponibilidad de productos</p>
+                    <div class="chart-container">
+                        <canvas id="MyChartProductosDisponibles"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-4 pb-4 border border-1 rounded-5">
+                    <p class="h4 pt-3 text-center fadeIn second">Alumnos Solventes Al Mes Actual</p>
+                    <div class="chart-container">
+                        <canvas id="MyChartSolventeInsolvente"></canvas>
+                    </div>
+                </div>
+                <div class="col-xl-4 pb-4 border border-1 rounded-5">
+                    <p class="h4 pt-3 text-center fadeIn second">Origen de Pago Colegiatura</p>
+                    <div class="chart-container">
+                        <canvas  id="MyChartPagosAppyAdmin"></canvas>
+                    </div>
+                </div> 
+                <div class="col-xl-4 pb-4 border border-1 rounded-5">
+                    <p class="h4 pt-3 text-center fadeIn second">Cantidad de Alumnos y Empleados</p>
+                    <div class="chart-container">
+                        <canvas  id="MyChartAlumnosEmpleados"></canvas>
+                    </div>
+                </div> 
                 
-                <div class="col-xl-6">
+                
+                <!-- <div class="col-xl-6">
                     <p class="h4 pt-3 text-center">Productos Vendidos</p>
                     <canvas
                         baseChart
@@ -35,19 +53,7 @@
                     <div class="chart-container">
                         <canvas  id="MyChart"></canvas>
                     </div>
-                </div>
-                <div class="col-xl-6">
-                    <p class="h4 pt-3 text-center">Alumnos Solventes Al Mes Actual</p>
-                    <div class="chart-container">
-                        <canvas  id="MyChartSolventes"></canvas>
-                    </div>
-                </div>
-                <div class="col-xl-12 pt-3">
-                    <p class="h4 pt-3 text-center">Porcentaje de Aceptación</p>
-                    <div class="chart-container">
-                        <canvas  id="MyChartAceptacion"></canvas>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

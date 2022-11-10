@@ -114,6 +114,7 @@ export class PagosComponent implements OnInit {
               // Enviamos Datos PDF
               this.objetoDatosPDF = Object.assign(objetoFinal,{motivoPago: this.titulo},{personaPago: this.PersonaPago})
               this.verPDF = true;
+              this.verBotones = false;
             }}
           )
         },

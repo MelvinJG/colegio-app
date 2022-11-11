@@ -42,7 +42,7 @@
                                 <b>Canditad Disponible:</b> {{producto.cantidad}} Unidades
                             </small>
                         </p>
-                        <a class="btn btn-primary fadeIn second">Comprar Ahora</a>
+                        <a class="btn btn-primary fadeIn second" (click)="compraRapida(producto.producto_Id,producto.nombre_Producto,producto.precio)">Compra Rápida</a>
                     </div>
                 </div>
             </div>
@@ -176,4 +176,8 @@
             </form>
         </div>
     </div>
+</div>
+
+<div class="pdf fadeInDown" *ngIf="verPDF">
+    <app-pdf-invoice [data]="objetoDatosPDF"></app-pdf-invoice>
 </div>

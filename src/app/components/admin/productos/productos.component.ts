@@ -26,6 +26,9 @@ export class ProductosComponent implements OnInit {
   lookTextPhoto: boolean = false; // Ver el TEXTO porcentaje de carga o no
   photoProducto: string; // Almacena URL foto del producto
   lookSpinner: boolean = false; // Ver la carga o no
+  //Enviar PDF
+  objetoDatosPDF: any;
+  verPDF: boolean = false;
   
   // Objeto para recibir los datos del formulario y luego enviarlo  
   producto: Producto = {
@@ -249,4 +252,58 @@ export class ProductosComponent implements OnInit {
     );
   }
 
+  compraRapida(productoID: number, productoNombre: string, precio: number){
+    Swal.fire({
+      title: 'Cantidad a Comprar',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Comprar',
+      showLoaderOnConfirm: true,
+      preConfirm: (cantidadCompra) => {
+        let cantNum = Number(cantidadCompra)
+        let cantNumEntero = parseInt(""+cantNum+"")
+        if(isNaN(cantNumEntero)){
+          Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Ingrese Un Número Válido.'
+          })
+        } else{
+          let motivoCompra = `COMPRA DE ${productoNombre}`;
+          let motivoCompraPDF = `COMPRA DE ${productoNombre} [Cant. ${cantidadCompra}, Prec. Q ${precio} c/u]`;
+          let cantidadPagar = precio * cantidadCompra;
+          let objetoFinal = Object.assign({usuario_Registro: this.API_USER_AUTH.getUserName()},{motivo: motivoCompra},{monto: cantidadPagar},{productos: [{"producto_Id": productoID,"cantidad": cantidadCompra}]})
+          this.API_SERVICE.venderProducto(objetoFinal).subscribe(
+            res => {
+              let JSONresponse = JSON.parse(JSON.stringify(res));
+              Swal.fire({
+                icon: 'success',
+                title: '¡Yeeei!',
+                text: JSONresponse.data
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // OK - Enviamos Datos PDF
+                  this.objetoDatosPDF = Object.assign({tipo_pago_Id: 1}, {monto: cantidadPagar},{motivoPago: motivoCompraPDF},{personaPago: "Estudiante Liceo Monte Sinaí"})
+                  this.verPDF = true;
+                  window.scroll(0,1000000);
+                }}
+              )
+            },
+            err => {
+              console.log("ERROR AGREGAR PRODUCTO -> ",err)
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '¡Algo salió mal!'
+              })
+            }
+          );
+        }
+        
+      }
+    })
+  }
 }

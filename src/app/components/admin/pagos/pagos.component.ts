@@ -110,8 +110,7 @@ export class PagosComponent implements OnInit {
             text: JSONresponse.data
           }).then((result) => {
             if (result.isConfirmed) {
-              // OK
-              // Enviamos Datos PDF
+              // OK - Enviamos Datos PDF
               this.objetoDatosPDF = Object.assign(objetoFinal,{motivoPago: this.titulo},{personaPago: this.PersonaPago})
               this.verPDF = true;
               this.verBotones = false;

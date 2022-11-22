@@ -5,8 +5,6 @@ import { UserAuthService } from '../../../services/user-auth.service';
 import Swal from 'sweetalert2'
 // Interfaz
 import { Producto } from '../../../models/Producto';
-// Validar Form
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-productos',
@@ -39,30 +37,7 @@ export class ProductosComponent implements OnInit {
     foto: ''
   };
 
-  validationForm: FormGroup;
-  constructor(private API_SERVICE: ProductoService, private API_PHOTO: InfoExtraService, private API_USER_AUTH: UserAuthService) {
-    this.validationForm = new FormGroup({
-      nameProducto: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
-      precio: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
-      can: new FormControl(null, { validators: Validators.required, updateOn: 'submit' }),
-    });
-  }
-
-  get nameProducto(): AbstractControl {
-    return this.validationForm.get('nameProducto')!;
-  }
-
-  get precio(): AbstractControl {
-    return this.validationForm.get('precio')!;
-  }
-
-  get can(): AbstractControl {
-    return this.validationForm.get('can')!;
-  }
-
-  onSubmit(): void {
-    this.validationForm.markAllAsTouched();
-  }
+  constructor(private API_SERVICE: ProductoService, private API_PHOTO: InfoExtraService, private API_USER_AUTH: UserAuthService) { }
 
   HabilitarPantallaAgregarProducto() {
     this.producto = {};
@@ -252,7 +227,7 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-  compraRapida(productoID: number, productoNombre: string, precio: number){
+  compraRapida(productoID: number, productoNombre: string, precio: number, cantidadActual: number){
     Swal.fire({
       title: 'Cantidad a Comprar',
       input: 'text',
@@ -272,35 +247,43 @@ export class ProductosComponent implements OnInit {
             text: 'Ingrese Un Número Válido.'
           })
         } else{
-          let motivoCompra = `COMPRA DE ${productoNombre}`;
-          let motivoCompraPDF = `COMPRA DE ${productoNombre} [Cant. ${cantidadCompra}, Prec. Q ${precio} c/u]`;
-          let cantidadPagar = precio * cantidadCompra;
-          let objetoFinal = Object.assign({usuario_Registro: this.API_USER_AUTH.getUserName()},{motivo: motivoCompra},{monto: cantidadPagar},{productos: [{"producto_Id": productoID,"cantidad": cantidadCompra}]})
-          this.API_SERVICE.venderProducto(objetoFinal).subscribe(
-            res => {
-              let JSONresponse = JSON.parse(JSON.stringify(res));
-              Swal.fire({
-                icon: 'success',
-                title: '¡Yeeei!',
-                text: JSONresponse.data
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  // OK - Enviamos Datos PDF
-                  this.objetoDatosPDF = Object.assign({tipo_pago_Id: 1}, {monto: cantidadPagar},{motivoPago: motivoCompraPDF},{personaPago: "Estudiante Liceo Monte Sinaí"})
-                  this.verPDF = true;
-                  window.scroll(0,1000000);
-                }}
-              )
-            },
-            err => {
-              console.log("ERROR AGREGAR PRODUCTO -> ",err)
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: '¡Algo salió mal!'
-              })
-            }
-          );
+          if(cantNumEntero > cantidadActual || cantNumEntero <= 0){
+            Swal.fire({
+              icon: 'warning',
+              title: 'Oops...',
+              text: 'Productos Insuficientes.'
+            })
+          } else {
+            let motivoCompra = `COMPRA DE ${productoNombre}`;
+            let motivoCompraPDF = `COMPRA DE ${productoNombre} [Cant. ${cantNumEntero}, Prec. Q ${precio} c/u]`;
+            let cantidadPagar = precio * cantNumEntero;
+            let objetoFinal = Object.assign({usuario_Registro: this.API_USER_AUTH.getUserName()},{motivo: motivoCompra},{monto: cantidadPagar},{productos: [{"producto_Id": productoID,"cantidad": cantNumEntero}]})
+            this.API_SERVICE.venderProducto(objetoFinal).subscribe(
+              res => {
+                let JSONresponse = JSON.parse(JSON.stringify(res));
+                Swal.fire({
+                  icon: 'success',
+                  title: '¡Yeeei!',
+                  text: JSONresponse.data
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    // OK - Enviamos Datos PDF
+                    this.objetoDatosPDF = Object.assign({tipo_pago_Id: 1}, {monto: cantidadPagar},{motivoPago: motivoCompraPDF},{personaPago: "Estudiante Liceo Monte Sinaí"})
+                    this.verPDF = true;
+                    window.scroll(0,1000000);
+                  }}
+                )
+              },
+              err => {
+                console.log("ERROR AGREGAR PRODUCTO -> ",err)
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: '¡Algo salió mal!'
+                })
+              }
+            );
+          }
         }
         
       }

@@ -10,6 +10,7 @@
                 <th scope="col">GRADO</th>
                 <th scope="col">CURSO</th>
                 <th scope="col">PUNTEO</th>
+                <th scope="col">FECHA ENTREGA / VENCIMIENTO</th>
             </tr>
         </thead>
         <tbody  class="align-middle text-center" *ngFor = 'let publicacion of anuncioTarea.data'>
@@ -20,6 +21,10 @@
                 <td>{{publicacion.grado}}</td>
                 <td>{{publicacion.nombre_Curso}}</td>
                 <td>{{publicacion.punteo}} pts.</td>
+                <td>
+                    {{publicacion.fechaVen}}
+                    {{publicacion.fechaEnt}}
+                </td>
             </tr>
         </tbody>
     </table>

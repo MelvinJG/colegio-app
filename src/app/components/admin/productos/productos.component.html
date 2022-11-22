@@ -42,7 +42,7 @@
                                 <b>Canditad Disponible:</b> {{producto.cantidad}} Unidades
                             </small>
                         </p>
-                        <a class="btn btn-primary fadeIn second" (click)="compraRapida(producto.producto_Id,producto.nombre_Producto,producto.precio)">Compra Rápida</a>
+                        <a class="btn btn-primary fadeIn second" (click)="compraRapida(producto.producto_Id,producto.nombre_Producto,producto.precio,producto.cantidad)">Compra Rápida</a>
                     </div>
                 </div>
             </div>
@@ -59,41 +59,26 @@
                     * Obligatorio
                 </label>
             </h3>
-            <form [formGroup]="validationForm" (ngSubmit)="onSubmit()">
+            <form>
                 <div class="row justify-content-md-center">
                     <!--[ngModelOptions]="{standalone: true}"-->
                     <div class="col-xl-4 my-3 form-outline">
                         <mdb-form-control>
-                            <input mdbValidate mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" name="nameProducto" class="form-control" formControlName="nameProducto" autocomplete="off" required />
+                            <input mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" name="nameProducto" class="form-control" autocomplete="off" required />
                             <label mdbLabel class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
-                            <mdb-error *ngIf="nameProducto?.invalid && (nameProducto?.dirty || nameProducto?.touched)">Campo Requerido</mdb-error>
                         </mdb-form-control>
-                        <!-- <mdb-form-control>
-                            <input mdbInput type="text" id="nameProducto" [(ngModel)]="producto.nombre_Producto" name="nameProducto" class="form-control" autocomplete="off" required/>
-                            <label mdbLabel class="form-label" for="nameProducto"><b class="obligatorio">*</b> Nombre Producto</label>
-                        </mdb-form-control> -->
-                    </div>
-                    <div class="col-xl-4 my-3 form-outline text-center">
-                        <mdb-form-control>
-                            <input mdbValidate mdbInput type="text" id="precio" [(ngModel)]="producto.precio" name="precio" class="form-control" formControlName="precio" autocomplete="off" required />
-                            <label mdbLabel class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
-                            <mdb-error *ngIf="precio?.invalid && (precio?.dirty || precio?.touched)">Campo Requerido</mdb-error>
-                        </mdb-form-control>
-                        <!-- <mdb-form-control>
-                            <input mdbInput type="text" id="precio" [(ngModel)]="producto.precio" name="precio" class="form-control" autocomplete="off" required/>
-                            <label mdbLabel class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
-                        </mdb-form-control> -->
                     </div>
                     <div class="col-xl-4 my-3 form-outline">
                         <mdb-form-control>
-                            <input mdbValidate mdbInput type="text" id="can" [(ngModel)]="producto.cantidad" name="can" class="form-control" formControlName="can" autocomplete="off" required />
-                            <label mdbLabel class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label>
-                            <mdb-error *ngIf="can?.invalid && (can?.dirty || can?.touched)">Campo Requerido</mdb-error>
+                            <input mdbInput type="text" id="precio" [(ngModel)]="producto.precio" name="precio" class="form-control" autocomplete="off" required/>
+                            <label mdbLabel class="form-label" for="precio"><b class="obligatorio">*</b> Precio [Q.]</label>
                         </mdb-form-control>
-                        <!-- <mdb-form-control>
+                    </div>
+                    <div class="col-xl-4 my-3 form-outline">
+                        <mdb-form-control>
                             <input mdbInput type="text" id="can" [(ngModel)]="producto.cantidad" name="can" class="form-control" autocomplete="off" required/>
                             <label mdbLabel class="form-label" for="can"><b class="obligatorio">*</b> Cantidad</label>
-                        </mdb-form-control> -->
+                        </mdb-form-control>
                     </div>
                     <div class="col-xl-8 my-3 text-center">
                         <label for="formFile" class="form-label text-start">Seleccione imagen/foto del producto</label>

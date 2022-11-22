@@ -115,6 +115,11 @@
 
     <!-- Right elements -->
     <div class="d-flex align-items-center" *ngIf="isLoggedDentroSistema">
+      <!-- Icono de Carrito -->
+      <a class="text-reset me-3" href="#" *ngIf="isLoggedAdministracion">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge rounded-pill badge-notification bg-danger">New</span>
+      </a>
       <!-- Avatar -->
       <div mdbDropdown class="dropdown">
         <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white"
